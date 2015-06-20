@@ -1,8 +1,12 @@
 var exports = module.exports = {};
 var User = require('../models/user').User;
 
+exports.showDash = function(req, res, next) {
+
+};
+
 exports.newUser = function(req, res, next) {
-  res.render('signup', { title: 'Signup' });
+  // res.render('signup', { title: 'Signup' });
 };
 
 exports.add = function(req, res, next) {

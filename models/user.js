@@ -6,18 +6,18 @@ var userSchema = new Schema({
   username: {
     type: String,
     unique: true,
-    // required: true,
+    required: true,
     trim: true
   },
 
-  password_hash: {
+  password: {
     type: String,
-    // required: true
+    required: true
   },
 
   first_name: {
     type: String,
-    // required: true,
+    required: true,
     trim: true
   },
 
@@ -28,14 +28,14 @@ var userSchema = new Schema({
 
   last_name: {
     type: String,
-    // required: true,
+    required: true,
     trim: true
   },
 
   email: {
     type: String,
-    // unique: true,
-    // required: true,
+    unique: true,
+    required: true,
     trim: true
   },
 

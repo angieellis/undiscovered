@@ -22,7 +22,7 @@ var tourSchema = new Schema({
   zip: Number,
   coordinates: [[String]],
 
-  video_url: {
+  video_id: {
     required: true,
     type: String,
     trim: true

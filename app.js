@@ -1,9 +1,11 @@
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/yourguide_development');
 
@@ -25,15 +27,33 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: "yourguide",
+  resave: false,
+  saveUninitialized: true
+}));
+
+// passport initialization
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(function(req,res,next) {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.user = req.user;
+  next();
+})
 // app.use('/', routes);
 // app.use('/users', users);
 // app.use('/tours', tours);
 
 app.get('/', main.index);
 app.post('/', main.signin);
+app.post('/signout', main.signout);
 
 app.get('/signup', users.newUser);
 app.post('/signup', users.add);
+
+app.get('/dashboard', users.showDash);
 
 app.get('/users/:id', users.getUser);
 app.put('/users/:id', users.update);
