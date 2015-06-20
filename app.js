@@ -7,8 +7,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/yourguide_development');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var main = require('./controllers/index');
+var users = require('./controllers/users');
+var tours = require('./controllers/tours');
 
 var app = express();
 
@@ -24,8 +25,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+// app.use('/', routes);
+// app.use('/users', users);
+// app.use('/tours', tours);
+
+app.get('/', main.index);
+app.post('/', main.sign_in);
+
+app.get('/signup', users.signup);
+app.post('/signup', users.add);
+
+// app.get('/users/:id', users.getUser);
+// app.put('/users/:id', users.update);
+// app.delete('/users/:id', users.destroy);
+
+// // app.get('/tours/new', tours.new_form);
+// app.post('/tours/new', tours.add);
+// app.get('/tours/:id', tours.getTour);
+// app.put('/tours/:id', tours.update);
+// app.delete('/tours/:id', tours.destroy);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
