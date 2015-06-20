@@ -1,11 +1,17 @@
 var exports = module.exports = {};
 
-/* GET home page. */
 exports.index = function(req, res, next) {
   res.render('index', { title: 'Express' });
 };
 
-exports.sign_in = function(req, res, next) {
-  console.log("success");
+exports.signin = function(req, res, next) {
+  var user = User.findOne(req.params.id, function(err, user) {
+    if (err) {
+      console.log("Error: " + err);
+      res.json(err);
+    } else {
+      res.json(user);
+    };
+  })
 };
 

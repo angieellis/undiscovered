@@ -30,20 +30,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/tours', tours);
 
 app.get('/', main.index);
-app.post('/', main.sign_in);
+app.post('/', main.signin);
 
-app.get('/signup', users.signup);
+app.get('/signup', users.newUser);
 app.post('/signup', users.add);
 
-// app.get('/users/:id', users.getUser);
-// app.put('/users/:id', users.update);
-// app.delete('/users/:id', users.destroy);
+app.get('/users/:id', users.getUser);
+app.put('/users/:id', users.update);
+app.delete('/users/:id', users.destroy);
 
-// // app.get('/tours/new', tours.new_form);
-// app.post('/tours/new', tours.add);
-// app.get('/tours/:id', tours.getTour);
-// app.put('/tours/:id', tours.update);
-// app.delete('/tours/:id', tours.destroy);
+app.get('/tours/new', tours.newTour);
+app.post('/tours/new', tours.add);
+app.get('/tours/:id', tours.getTour);
+app.put('/tours/:id', tours.update);
+app.delete('/tours/:id', tours.destroy);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

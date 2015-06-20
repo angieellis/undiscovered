@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
+var Schema = mongoose.Schema;
 
-var tourSchema = new mongoose.Schema({
-
+var tourSchema = new Schema({
   title: {
     required: true,
     type: String,
@@ -43,10 +43,13 @@ var tourSchema = new mongoose.Schema({
     default: Date.now
   },
 
-  trailer: { description: String, photo_url: String },
+  trailer: {
+    description: String,
+    photo_url: String
+  },
 
   tour_guide: {
-    id: {
+    _id: {
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: true
@@ -59,7 +62,10 @@ var tourSchema = new mongoose.Schema({
   },
 
   comments: [{
-    // _id: { type:ObjectIdSchema, default: new ObjectId() },
+    _id: {
+      type: Schema.Types.ObjectId,
+      default: Schema.Types.ObjectId()
+    },
 
     title: {
       type: String,
@@ -77,7 +83,7 @@ var tourSchema = new mongoose.Schema({
     },
 
     author: {
-      id: {
+      _id: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
