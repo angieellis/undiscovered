@@ -4,7 +4,11 @@ var Tour = require('../models/tour').Tour;
 
 // get route method to display new tour form
 exports.newTour = function(req, res, next) {
+   res.render('new_tour', { title: 'Signup' });
+};
 
+exports.showTour = function(req, res, next) {
+  res.render('new_tour', { title: 'Signup' });
 };
 
 // post route method to add new tour record

@@ -65,6 +65,7 @@ app.delete('/users/:id', users.destroy);
 
 // set routes for tour controller
 app.get('/tours/new', tours.newTour);
+app.get('/tours/show', tours.showTour);
 app.post('/tours/new', tours.add);
 app.get('/tours/:id', tours.getTour);
 app.put('/tours/:id', tours.update);
