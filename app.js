@@ -61,6 +61,7 @@ app.put('/users/:id', users.update);
 app.delete('/users/:id', users.destroy);
 
 app.get('/tours/new', tours.newTour);
+app.get('/tours/show', tours.showTour);
 app.post('/tours/new', tours.add);
 app.get('/tours/:id', tours.getTour);
 app.put('/tours/:id', tours.update);
