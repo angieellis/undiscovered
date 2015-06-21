@@ -14,6 +14,8 @@ exports.index = function(req, res, next) {
 
 // post route method to sign in user and create session
 exports.signin = function(req, res, next) {
+  // expects to receive json object with username and password
+
   // authenticate user through passport module
   passport.authenticate('local', function(err, user, info) {
     if (err) { return res.json(err); }
@@ -23,6 +25,9 @@ exports.signin = function(req, res, next) {
       return res.json(user);
     });
   })(req, res, next);
+  // returns user object if signin is successful
+  // returns false if user doesn't exist
+  // returns error message for all other cases
 };
 
 // post route method to sign out user and clear session
