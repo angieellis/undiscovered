@@ -1,3 +1,4 @@
+require('dotenv').load();
 var exports = module.exports = {};
 // require User model
 var User = require('../models/user').User;
@@ -53,15 +54,14 @@ exports.oauthRedirect = function(req, res, next) {
 };
 
 // passport module configuration
-var Passport = require('passport').Passport,
-    passport = new Passport(),
-    googlePassport = new Passport,
+var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 
 // method to save user session
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  var userInfo = { id: user.id, googleId: user.googleId };
+  done(null, userInfo);
 });
 
 // method to clear user session
@@ -88,9 +88,9 @@ passport.use(new LocalStrategy(
 ));
 
 // method to validate user with Google Oauth
-googlePassport.use(new GoogleStrategy({
-    clientID:     "GOOGLE_CLIENT_ID",
-    clientSecret: "GOOGLE_CLIENT_SECRET",
+passport.use(new GoogleStrategy({
+    clientID:     process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "http://yourdormain:3000/auth/google/callback",
     passReqToCallback   : true
   },
@@ -100,15 +100,3 @@ googlePassport.use(new GoogleStrategy({
     });
   }
 ));
-
-// method to save user google oauth session
-googlePassport.serializeUser(function(user, done) {
-  done(null, user.googleId);
-});
-
-// method to clear user google oauth session
-googlePassport.deserializeUser(function(id, done) {
-  User.findById(googleId, function(err, user) {
-    done(err, user);
-  });
-});
