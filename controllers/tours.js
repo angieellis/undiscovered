@@ -4,15 +4,17 @@ var Tour = require('../models/tour').Tour;
 
 // get route method to display new tour form
 exports.newTour = function(req, res, next) {
-   res.render('new_tour', { title: 'Signup' });
+   res.render('new_tour', { title: 'New Tour' });
 };
 
 exports.showTour = function(req, res, next) {
-  res.render('new_tour', { title: 'Signup' });
+  res.render('tours', { title: 'Tours' });
 };
 
 // post route method to add new tour record
 exports.add = function(req, res, next) {
+  // expects to receive json object with new tour attributes
+
   // create new tour
   var tour = new Tour(req.params);
   tour.save(function(err, saved) {
@@ -24,10 +26,14 @@ exports.add = function(req, res, next) {
       res.json(true);
     };
   });
+  // returns true if tour is successfully added to collection
+  // otherwise, returns error message
 };
 
 // get route method to find and show tour
 exports.getTour = function(req, res, next) {
+  // expects to receive json object with tour id
+
   // find tour to show
   Tour.findOne(req.params.id, function(err, tour) {
     if (err || !tour) {
@@ -38,10 +44,14 @@ exports.getTour = function(req, res, next) {
       res.json(tour);
     };
   });
+  // returns tour object if found
+  // otherwise, returns error message
 };
 
 // put route method to find and update tour
 exports.update = function(req, res, next) {
+  // expects to receive json object with tour id
+
   // find tour to update
   Tour.findByIdAndUpdate(req.params.id, {
     // update tour attributes
@@ -52,13 +62,17 @@ exports.update = function(req, res, next) {
       console.log("Error: " + err);
       res.json(err);
     } else {
-      res.json(tour);
+      res.json(true);
     };
   });
+  // returns true if tour is successfully updated
+  // otherwise, returns error message
 };
 
 // delete route method to find and delete tour
 exports.destroy = function(req, res, next) {
+  // expects to receive json object with tour id
+
   // find tour to delete
   Tour.findByIdAndRemove(req.params.id, function(err, tour) {
     if (err) {
@@ -69,4 +83,6 @@ exports.destroy = function(req, res, next) {
       res.json(true);
     };
   });
+  // returns true if tour is successfully destroyed
+  // otherwise, returns error message
 };

@@ -1,11 +1,10 @@
+require('dotenv').load();
 // The client ID is obtained from the {{ Google Cloud Console }}
 // at {{ https://cloud.google.com/console }}.
 // If you run this code from a server other than http://localhost,
 // you need to register your own client ID.
-var OAUTH2_CLIENT_ID = '104781131930-9o6digb6hem1phoi4uo7lduifegmuggh.apps.googleusercontent.com';
-var OAUTH2_SCOPES = [
-  'https://www.googleapis.com/auth/youtube'
-];
+var OAUTH2_CLIENT_ID = process.env.OAUTH2_CLIENT_ID;
+var OAUTH2_SCOPES = process.env.OAUTH2_SCOPES;
 
 // Upon loading, the Google APIs JS client automatically invokes this callback.
 googleApiClientReady = function() {
