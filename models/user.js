@@ -21,11 +21,6 @@ var userSchema = new Schema({
     trim: true
   },
 
-  middle_initial: {
-    type: String,
-    trim: true
-  },
-
   last_name: {
     type: String,
     required: true,
@@ -39,10 +34,10 @@ var userSchema = new Schema({
     trim: true
   },
 
-  phone_numbers: [{
+  phone_number: {
     type: String,
     trim: true
-  }],
+  },
 
   city: {
     type: String,

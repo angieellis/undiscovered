@@ -1,4 +1,5 @@
 var exports = module.exports = {};
+var User = require('../models/user').User;
 
 exports.index = function(req, res, next) {
    if (req.user) {
@@ -9,17 +10,14 @@ exports.index = function(req, res, next) {
 };
 
 exports.signin = function(req, res, next) {
-  passport.authenticate('local', { successRedirect: '/dashboard',
-                                   failureFlash: 'Invalid username or password.' });
-
-  // var user = User.findOne(req.params.id, function(err, user) {
-  //   if (err) {
-  //     console.log("Error: " + err);
-  //     res.json(err);
-  //   } else {
-  //     res.json(user);
-  //   };
-  // })
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return res.json(err); }
+    if (!user) { return res.json(false); }
+    req.logIn(user, function(err) {
+      if (err) { return res.json(err); }
+      return res.json(user);
+    });
+  })(req, res, next);
 };
 
 exports.signout = function(req, res, next) {
