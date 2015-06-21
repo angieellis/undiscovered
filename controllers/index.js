@@ -41,6 +41,7 @@ exports.signout = function(req, res, next) {
 // passport module configuration
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 
 passport.use(new LocalStrategy(
   // method to find user and validate password
@@ -69,3 +70,17 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
+
+// method to validate user with Google Oauth
+passport.use(new GoogleStrategy({
+    clientID:     GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://yourdormain:3000/auth/google/callback",
+    passReqToCallback   : true
+  },
+  function(request, accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
