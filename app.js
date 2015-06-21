@@ -53,6 +53,10 @@ app.get('/', main.index);
 app.post('/', main.signin);
 app.post('/signout', main.signout);
 
+// set routes for Google Oauth
+app.get('/auth/google', main.signinGoogle);
+app.get('/auth/google/callback', main.oauthRedirect);
+
 // set routes for user controller
 app.get('/signup', users.newUser);
 app.post('/signup', users.add);
