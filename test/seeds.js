@@ -1,5 +1,5 @@
 // seed database with faker data
-// run command: node tests/seeds.js
+// run command: node test/seeds.js
 
 //***********************************************
 // doesn't stop execution for unknown reason
