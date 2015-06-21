@@ -21,7 +21,10 @@ var tourSchema = new Schema({
   },
 
   zip: Number,
-  coordinates: [[String]],
+  coordinates: {
+    type: [[String]],
+    index: '2d'
+  },
 
   video_id: {
     required: true,
