@@ -10,6 +10,7 @@ exports.index = function(req, res, next) {
 };
 
 exports.signin = function(req, res, next) {
+  console.log(req.params);
   passport.authenticate('local', function(err, user, info) {
     if (err) { return res.json(err); }
     if (!user) { return res.json(false); }
@@ -30,22 +31,15 @@ exports.signout = function(req, res, next) {
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-passport.use(
-  new LocalStrategy({
-    usernameField: 'username',
-    passwordField: 'password'
-  },
-
+passport.use(new LocalStrategy(
   function(username, password, done) {
-    User.findOne({ where: { username: username }}, function(err, user) {
-      if (err) {
-        return done(err);
-      }
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
       if (!user) {
-        return done(null, false);
+        return done(null, false, { message: 'Incorrect username.' });
       }
-      if (!user.verifyPassword(password)) {
-        return done(null, false);
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
       }
       return done(null, user);
     });
