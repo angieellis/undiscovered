@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
+// create schema for Tour model
 var tourSchema = new Schema({
   title: {
     required: true,
@@ -110,5 +111,6 @@ var tourSchema = new Schema({
   }]
 });
 
+// export Tour model
 exports.Tour = mongoose.model('Tour', tourSchema);
 

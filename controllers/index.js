@@ -1,16 +1,20 @@
 var exports = module.exports = {};
+// require User model
 var User = require('../models/user').User;
 
+// get route method to show index page
 exports.index = function(req, res, next) {
-   if (req.user) {
+  if (req.user) {
+    //redirect if user is in session
     res.redirect('/');
   } else {
     res.render('index');
   };
 };
 
+// post route method to sign in user and create session
 exports.signin = function(req, res, next) {
-  console.log(req.params);
+  // authenticate user through passport module
   passport.authenticate('local', function(err, user, info) {
     if (err) { return res.json(err); }
     if (!user) { return res.json(false); }
@@ -21,6 +25,7 @@ exports.signin = function(req, res, next) {
   })(req, res, next);
 };
 
+// post route method to sign out user and clear session
 exports.signout = function(req, res, next) {
   if (req.isAuthenticated()) {
     req.logout();
@@ -28,10 +33,12 @@ exports.signout = function(req, res, next) {
   res.redirect('/');
 };
 
+// passport module configuration
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 passport.use(new LocalStrategy(
+  // method to find user and validate password
   function(username, password, done) {
     User.findOne({ username: username }, function (err, user) {
       if (err) { return done(err); }
@@ -46,10 +53,12 @@ passport.use(new LocalStrategy(
   }
 ));
 
+// method to save user session
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
+// method to clear user session
 passport.deserializeUser(function(id, done) {
   User.findById(id, function(err, user) {
     done(err, user);

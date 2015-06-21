@@ -1,12 +1,23 @@
+// seed database with faker data
+// run command: node tests/seeds.js
+
+//***********************************************
+// doesn't stop execution for unknown reason
+// manually stop execution after a few seconds
+//***********************************************
+
+// set up connection to database
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/yourguide_development');
 
+// require User and Tour model
 var User = require('../models/user').User;
 var Tour = require('../models/tour').Tour;
 
 var faker = require('faker');
 
 for (var i = 0; i < 10; i++) {
+  // create fake users
   var userName = faker.internet.userName();
   var user = new User({
     username: userName,
@@ -25,6 +36,7 @@ for (var i = 0; i < 10; i++) {
   });
 
   for (var x = 0; x < 2; x++) {
+    //create fake tours
     var tour = new Tour({
       title: faker.lorem.sentence(),
       city: faker.address.city(),

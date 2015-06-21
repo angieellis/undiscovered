@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+// create schema for User model
 var userSchema = new Schema({
-
   username: {
     type: String,
     unique: true,
@@ -69,8 +69,10 @@ var userSchema = new Schema({
   }]
 });
 
+// method to validate user password
 userSchema.methods.validPassword = function( pwd ) {
   return ( this.password === pwd );
 };
 
+// export User model
 exports.User = mongoose.model('User', userSchema);
