@@ -12,9 +12,11 @@
     "ejs": "^2.3.1",
     "express": "~4.12.4",
     "express-session": "^1.11.3",
+    "faker": "^2.1.5",
     "jade": "~1.9.2",
     "mongoose": "^4.0.5",
     "morgan": "~1.5.3",
+    "passport": "^0.2.2",
     "passport-local": "^1.0.0",
     "serve-favicon": "~2.2.1"
   }

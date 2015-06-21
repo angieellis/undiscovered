@@ -1,3 +1,4 @@
+// require node modules
 var express = require('express');
 var session = require('express-session');
 var path = require('path');
@@ -6,9 +7,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+// set up connection to database
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/yourguide_development');
 
+// require controllers for setting routes
 var main = require('./controllers/index');
 var users = require('./controllers/users');
 var tours = require('./controllers/tours');
@@ -28,6 +31,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// session initialization
 app.use(session({
   secret: "yourguide",
   resave: false,
@@ -43,14 +47,13 @@ app.use(function(req,res,next) {
   res.locals.user = req.user;
   next();
 })
-// app.use('/', routes);
-// app.use('/users', users);
-// app.use('/tours', tours);
 
+// set main routes for index controller
 app.get('/', main.index);
 app.post('/', main.signin);
 app.post('/signout', main.signout);
 
+// set routes for user controller
 app.get('/signup', users.newUser);
 app.post('/signup', users.add);
 
@@ -60,6 +63,7 @@ app.get('/users/:id', users.getUser);
 app.put('/users/:id', users.update);
 app.delete('/users/:id', users.destroy);
 
+// set routes for tour controller
 app.get('/tours/new', tours.newTour);
 app.get('/tours/show', tours.showTour);
 app.post('/tours/new', tours.add);
