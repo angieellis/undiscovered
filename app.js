@@ -19,9 +19,6 @@ var users = require('./controllers/users');
 var tours = require('./controllers/tours');
 
 var app = express();
-app.use(ejsLayouts);
-
-
 // setting up ejsLayouts
 app.use(ejsLayouts);
 

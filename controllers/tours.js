@@ -4,7 +4,7 @@ var Tour = require('../models/tour').Tour;
 
 // get route method to display new tour form
 exports.newTour = function(req, res, next) {
-   res.render('new_tour', { title: 'New Tour' });
+   res.render('new_tour', { client_id: "104781131930-9o6digb6hem1phoi4uo7lduifegmuggh.apps.googleusercontent.com" });
 };
 
 exports.showTour = function(req, res, next) {
