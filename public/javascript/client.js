@@ -13,18 +13,8 @@ var TourView = Backbone.View.extend({
   tagName: "li",
   initialize: function() {
     this.template = _.template($('.tours-list-template').html());
-
-    console.log("***************************************")
-    console.log("initialized TourView")
-    console.log("***************************************")
-
   },
   render: function() {
-
-    console.log("***************************************")
-    console.log(this)
-    console.log("***************************************")
-
     this.$el.html(this.template(this.model.toJSON()));
     return this;
   }
@@ -38,7 +28,7 @@ var ToursView = Backbone.View.extend({
     this.model.fetch({
       success: function(response) {
         _.each(response.toJSON(), function(item){
-          // console.log("Successfully got tour with _id: " + item.title);
+          self.render(item)
         })
       },
       error: function() {
@@ -46,25 +36,84 @@ var ToursView = Backbone.View.extend({
       }
     });
   },
-  render: function() {
-    console.log("***************************************")
-    console.log("render")
-    console.log("***************************************")
-
-    var self = this;
-    this.$el.html('');
-    _.each(this.model.toArray(), function(tour) {
-      self.$el.append((new TourView({model: tour})).render().$el);
-    });
+  render: function(item) {
+    this.$el.append("<p>" + item._id + "</p>");
     return this;
   }
 })
 
-var toursView = new ToursView();
 
 
-$(document).ready(function() {
-})
+
+// **************************************************************************
+// HACK
+// **************************************************************************
+
+// var Tour = Backbone.Model.extend({
+//   idAttribute: "_id"
+// });
+
+// var TourCollection = Backbone.Collection.extend({
+//   url: "/tours/show"
+// })
+
+
+// var TourView = Backbone.View.extend({
+//   model: new Tour(),
+//   tagName: "li",
+//   initialize: function() {
+//     this.template = _.template($('.tours-list-template').html());
+//   },
+//   render: function() {
+//     this.$el.html(this.template(this.model.toJSON()));
+//     return this;
+//   }
+// })
+
+// var ToursView = Backbone.View.extend({
+//   el: $('.tours-list'),
+//   initialize: function() {
+//     var self = this;
+//     this.model.fetch({
+//       success: function(response) {
+//         _.each(response.toJSON(), function(item){
+//           self.render();
+//         })
+//       },
+//       error: function() {
+//         console.log("Failed to get tours!");
+//       }
+//     });
+//   },
+//   render: function() {
+//     console.log("RNDR")
+//     var self = this;
+//     console.log(this.model)
+
+//     this.model.each(function(item) {
+//       self.$el.append("<p>" + item.attributes.title + "</p>");
+//     })
+//     return this;
+//   }
+// })
+
+// //   render: function() {
+// //     console.log("RNDR")
+// //     var self = this;
+// //     this.$el.html('');
+// //     _.each(this.model.toArray(), function(tour) {
+// //       self.$el.append((new TourView({model: tour})).render().$el);
+// //     });
+// //     return this;
+// //   }
+// // })
+
+
+// $(function() {
+//   var tourCollections = new TourCollection()
+//   tourCollections.fetch()
+//   var toursView = new ToursView({model: tourCollections});
+// })
 
 
 
@@ -111,6 +160,7 @@ $(document).ready(function() {
 //     });
 //   },
 //   render: function() {
+//     console.log("RNDR")
 //     var self = this;
 //     this.$el.html('');
 //     _.each(this.model.toArray(), function(tour) {
@@ -121,7 +171,7 @@ $(document).ready(function() {
 // })
 
 // var toursView = new ToursView();
-
+// toursView.render()
 
 
 
