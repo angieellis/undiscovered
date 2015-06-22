@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var ejsLayouts = require('express-ejs-layouts');
+
 // set up connection to database
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/yourguide_development');
@@ -21,10 +22,16 @@ var app = express();
 app.use(ejsLayouts);
 
 
+// setting up ejsLayouts
+app.use(ejsLayouts);
+
 // view engine setup
-app.engine('html', require('ejs').renderFile);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+
+app.engine('ejs', require('ejs').renderFile);
+app.use(express.static(__dirname + '../public'));
+app.set('views', path.join(__dirname, 'views/'));
+app.set("view engine","ejs");
+
 
 
 // uncomment after placing your favicon in /public
