@@ -1,9 +1,9 @@
 $(function(){
-  // var collection = new UserCollection();
+  // var collection = new TourCollection();
   // collection.fetch({
   //   success: function(data) {
-  //     var view = new UserCollectionView({ collection: data });
-  //     $("body").append(view.render().el);
+  //     var view = new TourCollectionView({ collection: data });
+  //     $("#tours-list").append(view.render().el);
   //   }
-  // })
+  // });
 })
