@@ -42,9 +42,16 @@ for (var i = 0; i < 10; i++) {
       city: faker.address.city(),
       state: faker.address.state(),
       zip: parseInt(faker.address.zipCode()),
-      coordinates: [[faker.address.longitude(), faker.address.latitude()],
-      [faker.address.longitude(), faker.address.latitude()],
-      [faker.address.longitude(), faker.address.latitude()]],
+      coordinates: [{
+        lng: faker.address.longitude(),
+        lat: faker.address.latitude()
+      }, {
+        lng: faker.address.longitude(),
+        lat: faker.address.latitude()
+      }, {
+        lng: faker.address.longitude(),
+        lat: faker.address.latitude()
+      }],
       video_id: faker.image.imageUrl(),
       photo_urls: [faker.image.imageUrl(), faker.image.imageUrl()],
       content: faker.lorem.paragraph(),
