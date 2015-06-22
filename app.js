@@ -7,7 +7,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+<<<<<<< HEAD
 var ejsLayouts = require('express-ejs-layouts');
+=======
+>>>>>>> uxintegration
 
 // set up connection to database
 var mongoose = require('mongoose');
@@ -26,13 +29,10 @@ app.use(ejsLayouts);
 app.use(ejsLayouts);
 
 // view engine setup
-
 app.engine('ejs', require('ejs').renderFile);
 app.use(express.static(__dirname + '../public'));
 app.set('views', path.join(__dirname, 'views/'));
 app.set("view engine","ejs");
-
-
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -118,6 +118,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

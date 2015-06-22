@@ -42,6 +42,7 @@ for (var i = 0; i < 10; i++) {
       city: faker.address.city(),
       state: faker.address.state(),
       zip: parseInt(faker.address.zipCode()),
+<<<<<<< HEAD:test/seeds.js
       coordinates: [{
         lng: faker.address.longitude(),
         lat: faker.address.latitude()
@@ -52,6 +53,12 @@ for (var i = 0; i < 10; i++) {
         lng: faker.address.longitude(),
         lat: faker.address.latitude()
       }],
+=======
+      loc: [
+        faker.address.longitude(),
+        faker.address.latitude()
+      ],
+>>>>>>> uxintegration:test/seeds.js
       video_id: faker.image.imageUrl(),
       photo_urls: [faker.image.imageUrl(), faker.image.imageUrl()],
       content: faker.lorem.paragraph(),
