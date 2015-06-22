@@ -54,10 +54,10 @@ exports.findTours = function(req, res, next) {
   }
   // query google api if address was received from post
   else {
-  var uri = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURI(params) + '&key=' + process.env.GOOGLE_API_KEY;
-  console.log(uri);
+    var uri = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURI(params) + '&key=' + process.env.GOOGLE_API_KEY;
+    console.log(uri);
 
-  tours = x(uri);
+    tours = x(uri);
   }
   return res.json(tours);
 
@@ -67,20 +67,40 @@ exports.findTours = function(req, res, next) {
 
 function x(uri) {
   var tours;
+  console.log(" in x");
 
-  $.ajax({
-    type: "GET",
-    url: "https://maps.googleapis.com/maps/api/geocode/json?address=San%20Francisco,%20CA&key=AIzaSyCiwGjcVfBvLaCWJc9GuZjijmUnuHs7vCo"
-  }).done(function(data) {
-    console.log("in get");
-    console.log(data);
-    tours = findNearbyTours(data.results["geometry"]["bounds"]["location"]);
-    console.log(tours);
-  }).fail(function(data){
-    console.log("Fail!" + data);
-  })
+  var xmlhttp = new XMLHttpRequest();
 
-  return tours;
+  xmlhttp.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address=San%20Francisco,%20CA&key=AIzaSyCiwGjcVfBvLaCWJc9GuZjijmUnuHs7vCo");
+  xmlhttp.onload = function() {
+
+    if (this.status == 200) {
+      console.log(this.response);
+    } else {
+      console.log(this.statusText); }
+  }
+
+  xmlhttp.onerror = function() {
+    console.log("Network Error");
+  }
+
+  xmlhttp.send();
+
+  // $(document).ready(function(){
+  //   $.ajax({
+  //     type: "GET",
+  //     url: "https://maps.googleapis.com/maps/api/geocode/json?address=San%20Francisco,%20CA&key=AIzaSyCiwGjcVfBvLaCWJc9GuZjijmUnuHs7vCo"
+  //   }).done(function(data) {
+  //     console.log("in get");
+  //     console.log(data);
+  //     tours = findNearbyTours(data.results["geometry"]["bounds"]["location"]);
+  //     console.log(tours);
+  //   }).fail(function(data){
+  //     console.log("Fail!" + data);
+  //   });
+  // });
+  return res.json(true);
+  // return tours;
 };
 
 // query for tours nearby given coordinates
