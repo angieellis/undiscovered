@@ -49,6 +49,7 @@ for (var i = 0; i < 10; i++) {
       video_id: faker.image.imageUrl(),
       photo_urls: [faker.image.imageUrl(), faker.image.imageUrl()],
       content: faker.lorem.paragraph(),
+      tags: [faker.lorem.words, faker.lorem.words, faker.lorem.words],
       trailer: {
         description: faker.lorem.sentence(),
         photo_url: faker.image.imageUrl()

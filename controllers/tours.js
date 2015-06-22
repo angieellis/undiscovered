@@ -122,3 +122,15 @@ exports.destroy = function(req, res, next) {
 exports.browse = function(req, res, next) {
   res.render('browse', { title: 'Browse Tours' });
 };
+
+exports.findByTag = function(req, res, next) {
+  Tour.find({"tags" : req.params}, function(err, tours) {
+    if (err) {
+      // return error message if error occurs
+      console.log("Error: " + err);
+      res.json(err);
+    } else {
+      res.json(tours);
+    };
+  });
+};

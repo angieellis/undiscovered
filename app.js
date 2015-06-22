@@ -76,6 +76,7 @@ app.post('/tours/new', tours.add);
 app.get('/tours/:id', tours.getTour);
 app.get('/browse', tours.browse);
 app.post('/browse', tours.findTours);
+app.post('/browse/tags', tours.findByTag);
 app.put('/tours/:id', tours.update);
 app.delete('/tours/:id', tours.destroy);
 
