@@ -19,7 +19,6 @@ var users = require('./controllers/users');
 var tours = require('./controllers/tours');
 
 var app = express();
-app.use(ejsLayouts);
 
 
 // setting up ejsLayouts
@@ -27,7 +26,7 @@ app.use(ejsLayouts);
 
 // view engine setup
 
-app.engine('ejs', require('ejs').renderFile);
+app.engine('html', require('ejs').renderFile);
 app.use(express.static(__dirname + '../public'));
 app.set('views', path.join(__dirname, 'views/'));
 app.set("view engine","ejs");
