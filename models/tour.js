@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
+// create schema for Tour model
 var tourSchema = new Schema({
   title: {
     required: true,
@@ -20,7 +21,14 @@ var tourSchema = new Schema({
   },
 
   zip: Number,
-  coordinates: [[String]],
+  coordinates: {
+    type: [{
+      _id: false,
+      lng: String,
+      lat: String
+    }],
+    index: '2d'
+  },
 
   video_id: {
     required: true,
@@ -110,5 +118,6 @@ var tourSchema = new Schema({
   }]
 });
 
+// export Tour model
 exports.Tour = mongoose.model('Tour', tourSchema);
 
