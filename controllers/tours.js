@@ -36,23 +36,53 @@ exports.add = function(req, res, next) {
 };
 
 exports.findTours = function(req, res, next) {
-  //expects to receive geolocation of search in json object with longitude and latitude
-  // Tour.find({ coordinates[0]:
-  //   { $near : [req.params.longitude, req.params.latitude],
-  //     spherical : true,
-  //     distanceMultiplier: 0,
-  //     maxDistance: 0 }},
-  //   function(err, tours) {
-  //   if (err || !tours) {
-  //     // return error message if error occurs
-  //     console.log("Error: " + err);
-  //     res.json(err);
-  //   } else {
-  //     res.json(tour);
-  //   };
-  // })
+  console.log("in find tours");
+  //expects to receive geolocation of search in json object with longitude and latitude or address
+  var app = express();
+  var tours;
+  var params = "San Francisco, CA";
+  // console.log(req);
+  // query for nearby tours if given coordinates from post
+  // if (req.latitude && req.longitude) {
+  //   tours = findNearbyTours(req);
+  //   console.log(tours);
+  // }
+  // query google api if address was received from post
+  // else {
+    console.log(encodeURI(params));
+    var uri = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURI(params);
+    console.log(uri);
+    app.post(uri, function(gReq, gRes, gNext) {
+      console.log(gReq);
+      tours = findNearbyTours(greq.results["geometry"]["location"]);
+      console.log(tours);
+    });
+  // }
+  return res.json(tours);
+
   // returns nearby tour objects if found
   // otherwise, returns error message
+};
+
+// query for tours nearby given coordinates
+function findNearbyTours(req) {
+  console.log("in find tours");
+   Tour.find({ "coordinates.0" :
+    { $near : [req.lng, req.lat],
+      spherical : true,
+      // distance multiplier for a mile
+      distanceMultiplier: 3959,
+      // max of 25 miles from location coordinates
+      maxDistance: 25/3959 }},
+    function(err, tours) {
+    if (err || !tours) {
+      // return error message if error occurs
+      console.log("Error: " + err);
+      return err;
+    } else {
+      return tours;
+    };
+  })
 };
 
 // get route method to find and show tour

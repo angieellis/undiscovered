@@ -22,7 +22,11 @@ var tourSchema = new Schema({
 
   zip: Number,
   coordinates: {
-    type: [[String]],
+    type: [{
+      _id: false,
+      lng: String,
+      lat: String
+    }],
     index: '2d'
   },
 
