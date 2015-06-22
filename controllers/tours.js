@@ -1,5 +1,5 @@
 var exports = module.exports = {};
-// require Tour model
+var mongoose = require("mongoose");
 var Tour = require('../models/tour').Tour;
 
 // get route method to display new tour form
@@ -36,9 +36,7 @@ exports.add = function(req, res, next) {
 };
 
 exports.findTours = function(req, res, next) {
-  console.log("in find tours");
   //expects to receive geolocation of search in json object with longitude and latitude or address
-  var app = express();
   var tours;
   var params = "San Francisco, CA";
   // console.log(req);
@@ -49,19 +47,33 @@ exports.findTours = function(req, res, next) {
   // }
   // query google api if address was received from post
   // else {
-    console.log(encodeURI(params));
-    var uri = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURI(params);
-    console.log(uri);
-    app.post(uri, function(gReq, gRes, gNext) {
-      console.log(gReq);
-      tours = findNearbyTours(greq.results["geometry"]["location"]);
-      console.log(tours);
-    });
+  var uri = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURI(params) + '&key=' + process.env.GOOGLE_API_KEY;
+  console.log(uri);
+
+  tours = x(uri);
   // }
   return res.json(tours);
 
   // returns nearby tour objects if found
   // otherwise, returns error message
+};
+
+function x(uri) {
+  var tours;
+
+  $.ajax({
+    type: "GET",
+    url: "https://maps.googleapis.com/maps/api/geocode/json?address=San%20Francisco,%20CA&key=AIzaSyCiwGjcVfBvLaCWJc9GuZjijmUnuHs7vCo"
+  }).done(function(data) {
+    console.log("in get");
+    console.log(data);
+    tours = findNearbyTours(data.results["geometry"]["bounds"]["location"]);
+    console.log(tours);
+  }).fail(function(data){
+    console.log("Fail!" + data);
+  })
+
+  return tours;
 };
 
 // query for tours nearby given coordinates
@@ -90,7 +102,7 @@ exports.getTour = function(req, res, next) {
   // expects to receive json object with tour id
 
   // find tour to show
-  Tour.findOne(req.params.id, function(err, tour) {
+  Tour.findOne(mongoose.Types.ObjectId(req.params.id), function(err, tour) {
     if (err || !tour) {
       // return error message if error occurs
       console.log("Error: " + err);
@@ -108,7 +120,7 @@ exports.update = function(req, res, next) {
   // expects to receive json object with tour id
 
   // find tour to update
-  Tour.findByIdAndUpdate(req.params.id, {
+  Tour.findByIdAndUpdate(mongoose.Types.ObjectId(req.params.id), {
     // update tour attributes
     $set: req.params
   }, function(err, saved) {
@@ -129,7 +141,7 @@ exports.destroy = function(req, res, next) {
   // expects to receive json object with tour id
 
   // find tour to delete
-  Tour.findByIdAndRemove(req.params.id, function(err, tour) {
+  Tour.findByIdAndRemove(mongoose.Types.ObjectId(req.params.id), function(err, tour) {
     if (err) {
       // return error message if error occurs
       console.log("Error: " + err);
