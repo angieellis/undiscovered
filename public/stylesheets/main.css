@@ -72,10 +72,12 @@ ul, ol {
 .p-md { padding: 4em; }
 .p-lg { padding: 7em;}
 .p-xxl { padding: 10em; }
-.p-hero { padding: 24em; }
+.p-hero { padding: 19em; }
 
-.bgc-cool { background-color: blue; }
+.fz-l { font-size: 4em; }
 .fz-xxl { font-size: 16em; }
+.fc-light {color: white;}
+.bgc-cool { background-color: blue; }
 
 .fl-l { float: left; }
 .fl-r { float: right; }
@@ -95,6 +97,8 @@ ul, ol {
 
 .va-mid { vertical-align: middle; }
 .txt-center { text-align: center;}
+
+/*.full-container { width: 100%; }*/
 
 body { background-color: #ece8e5; }
 

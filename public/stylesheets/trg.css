@@ -8,6 +8,7 @@
 /*
     http://www.paulirish.com/2012/box-sizing-border-box-ftw/
 */
+.trailer,
 .container,
 .row,
 .col {
@@ -19,6 +20,7 @@
 /*
     https://css-tricks.com/snippets/css/clear-fix/
 */
+.trailer:after,
 .container:after,
 .row:after,
 .col:after {
@@ -33,6 +35,11 @@
 .container {
     width: 90%;
     margin: 0 auto;
+}
+
+.trailer{
+    width: 30%;
+    height: 20%;
 }
 
 /*
@@ -101,7 +108,12 @@
 /* 1200px */
 @media (min-width: 75em) {
     .container {
-        width: 100%; /* 1024px */
+        width: 75em; /* px */
+    }
+
+    .trailer{
+        width: 15em;
+        height: 12em;
     }
 
     .gutters-t .col {
