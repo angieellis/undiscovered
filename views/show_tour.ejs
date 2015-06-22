@@ -13,12 +13,12 @@
 
 $(document).ready(function(){
 	$.ajax({
-		url: tours/,
+		url: 'tours/id',
 		type: 'GET'
-	}).done({
-
-	}).error({
-
+	}).done(function(data){
+    console.log(data);
+	}).error(function(data){
+    console.log(data);
 	})
 });
 

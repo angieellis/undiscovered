@@ -4,8 +4,11 @@ var User = require('../models/user').User;
 
 // get route method to show index page
 exports.index = function(req, res, next) {
+<<<<<<< HEAD
   res.render('index', { layout: 'index' });
 
+=======
+>>>>>>> uxintegration
   if (req.user) {
     //redirect if user is in session
     res.redirect('/');
@@ -55,6 +58,7 @@ exports.oauthRedirect = function(req, res, next) {
 };
 
 // passport module configuration
+<<<<<<< HEAD
 
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
@@ -66,6 +70,18 @@ passport.serializeUser(function(user, done) {
   done(null, userInfo);
 });
 
+=======
+var passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy,
+    GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
+
+// method to save user session
+passport.serializeUser(function(user, done) {
+  var userInfo = { id: user.id, googleId: user.googleId };
+  done(null, userInfo);
+});
+
+>>>>>>> uxintegration
 // method to clear user session
 passport.deserializeUser(function(id, done) {
   User.findById(id, function(err, user) {
