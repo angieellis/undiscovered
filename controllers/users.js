@@ -1,5 +1,5 @@
 var exports = module.exports = {};
-// require User model
+var mongoose = require("mongoose");
 var User = require('../models/user').User;
 
 // get route method to show user dashboard
@@ -46,9 +46,8 @@ exports.add = function(req, res, next) {
 // get route method to find and show user
 exports.getUser = function(req, res, next) {
   // expects to receive json object with user id
-
   // find user to show
-  var user = User.findOne(req.params.id, function(err, user) {
+  var user = User.findOne(mongoose.Types.ObjectId(req.params.id), function(err, user) {
     console.log(err);
     console.log(user);
     if (err) {
@@ -68,7 +67,7 @@ exports.update = function(req, res, next) {
   // expects to receive json object with user id
 
   // find user to update
-  User.findByIdAndUpdate(req.params.id, {
+  User.findByIdAndUpdate(mongoose.Types.ObjectId(req.params.id), {
     // update user attributes
     $set: req.params
       // username: req.body.username,
@@ -99,7 +98,7 @@ exports.destroy = function(req, res, next) {
   // expects to receive json object with user id
 
   // find user to delete
-  User.findByIdAndRemove(req.params.id, function(err, user) {
+  User.findByIdAndRemove(mongoose.Types.ObjectId(req.params.id), function(err, user) {
     if (err) {
       // return error message if error occurs
       console.log("Error: " + err);

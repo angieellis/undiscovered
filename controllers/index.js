@@ -1,10 +1,11 @@
 require('dotenv').load();
 var exports = module.exports = {};
-// require User model
 var User = require('../models/user').User;
 
 // get route method to show index page
 exports.index = function(req, res, next) {
+  res.render('index', { layout: 'index' });
+
   if (req.user) {
     //redirect if user is in session
     res.redirect('/');
@@ -72,7 +73,6 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-
 passport.use(new LocalStrategy(
   // method to find user and validate password
   function(username, password, done) {
@@ -88,7 +88,6 @@ passport.use(new LocalStrategy(
     });
   }
 ));
-
 
 // method to validate user with Google Oauth
 passport.use(new GoogleStrategy({

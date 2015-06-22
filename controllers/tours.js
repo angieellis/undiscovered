@@ -1,5 +1,5 @@
 var exports = module.exports = {};
-// require Tour model
+var mongoose = require("mongoose");
 var Tour = require('../models/tour').Tour;
 
 // get route method to display new tour form
@@ -14,7 +14,6 @@ exports.showTour = function(req, res, next) {
 // post route method to add new tour record
 exports.add = function(req, res, next) {
   // expects to receive json object with new tour attributes
-
 
   // check if user has google oauth session
   if(req.user.googleId === null) {
@@ -37,23 +36,68 @@ exports.add = function(req, res, next) {
 };
 
 exports.findTours = function(req, res, next) {
-  //expects to receive geolocation of search in json object with longitude and latitude
-  // Tour.find({ coordinates[0]:
-  //   { $near : [req.params.longitude, req.params.latitude],
-  //     spherical : true,
-  //     distanceMultiplier: 0,
-  //     maxDistance: 0 }},
-  //   function(err, tours) {
-  //   if (err || !tours) {
-  //     // return error message if error occurs
-  //     console.log("Error: " + err);
-  //     res.json(err);
-  //   } else {
-  //     res.json(tour);
-  //   };
-  // })
+  //expects to receive geolocation of search in json object with longitude and latitude or address
+  var tours;
+  var params = "San Francisco, CA";
+  // console.log(req);
+  // query for nearby tours if given coordinates from post
+  // if (req.latitude && req.longitude) {
+  //   tours = findNearbyTours(req);
+  //   console.log(tours);
+  // }
+  // query google api if address was received from post
+  // else {
+  var uri = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURI(params) + '&key=' + process.env.GOOGLE_API_KEY;
+  console.log(uri);
+
+  tours = x(uri);
+  // }
+  return res.json(tours);
+
   // returns nearby tour objects if found
   // otherwise, returns error message
+<<<<<<< HEAD
+=======
+};
+
+function x(uri) {
+  var tours;
+
+  $.ajax({
+    type: "GET",
+    url: "https://maps.googleapis.com/maps/api/geocode/json?address=San%20Francisco,%20CA&key=AIzaSyCiwGjcVfBvLaCWJc9GuZjijmUnuHs7vCo"
+  }).done(function(data) {
+    console.log("in get");
+    console.log(data);
+    tours = findNearbyTours(data.results["geometry"]["bounds"]["location"]);
+    console.log(tours);
+  }).fail(function(data){
+    console.log("Fail!" + data);
+  })
+
+  return tours;
+};
+
+// query for tours nearby given coordinates
+function findNearbyTours(req) {
+  console.log("in find tours");
+   Tour.find({ "coordinates.0" :
+    { $near : [req.lng, req.lat],
+      spherical : true,
+      // distance multiplier for a mile
+      distanceMultiplier: 3959,
+      // max of 25 miles from location coordinates
+      maxDistance: 25/3959 }},
+    function(err, tours) {
+    if (err || !tours) {
+      // return error message if error occurs
+      console.log("Error: " + err);
+      return err;
+    } else {
+      return tours;
+    };
+  })
+>>>>>>> 1a273cf7e4774955a3eae00f66205749c6f5d5ee
 };
 
 // get route method to find and show tour
@@ -61,7 +105,7 @@ exports.getTour = function(req, res, next) {
   // expects to receive json object with tour id
 
   // find tour to show
-  Tour.findOne(req.params.id, function(err, tour) {
+  Tour.findOne(mongoose.Types.ObjectId(req.params.id), function(err, tour) {
     if (err || !tour) {
       // return error message if error occurs
       console.log("Error: " + err);
@@ -80,7 +124,7 @@ exports.update = function(req, res, next) {
   // expects to receive json object with tour id
 
   // find tour to update
-  Tour.findByIdAndUpdate(req.params.id, {
+  Tour.findByIdAndUpdate(mongoose.Types.ObjectId(req.params.id), {
     // update tour attributes
     $set: req.params
   }, function(err, saved) {
@@ -101,7 +145,7 @@ exports.destroy = function(req, res, next) {
   // expects to receive json object with tour id
 
   // find tour to delete
-  Tour.findByIdAndRemove(req.params.id, function(err, tour) {
+  Tour.findByIdAndRemove(mongoose.Types.ObjectId(req.params.id), function(err, tour) {
     if (err) {
       // return error message if error occurs
       console.log("Error: " + err);
