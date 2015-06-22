@@ -8,7 +8,14 @@ exports.newTour = function(req, res, next) {
 };
 
 exports.showTour = function(req, res, next) {
-  res.render('tours', { title: 'Tours' });
+  Tour.find({}, function(err, tours){
+    if (err || !tours) {
+      // return error message if error occurs or tour isn't saved
+      console.log("Error: " + err);
+      res.json(err);
+    };
+    res.json(tours);
+  });
 };
 
 // post route method to add new tour record
@@ -39,19 +46,19 @@ exports.findTours = function(req, res, next) {
   //expects to receive geolocation of search in json object with longitude and latitude or address
   var tours;
   var params = "San Francisco, CA";
-  // console.log(req);
+  console.log(req);
   // query for nearby tours if given coordinates from post
-  // if (req.latitude && req.longitude) {
-  //   tours = findNearbyTours(req);
-  //   console.log(tours);
-  // }
+  if (req.latitude && req.longitude) {
+    tours = findNearbyTours(req);
+    console.log(tours);
+  }
   // query google api if address was received from post
-  // else {
+  else {
   var uri = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURI(params) + '&key=' + process.env.GOOGLE_API_KEY;
   console.log(uri);
 
   tours = x(uri);
-  // }
+  }
   return res.json(tours);
 
   // returns nearby tour objects if found

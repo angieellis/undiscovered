@@ -19,7 +19,8 @@ var tours = require('./controllers/tours');
 var app = express();
 
 // view engine setup
-app.engine('html', require('ejs').renderFile);
+app.engine('ejs', require('ejs').renderFile);
+// app.engine('html', require('ejs').renderFile);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -69,7 +70,10 @@ app.delete('/users/:id', users.destroy);
 
 // set routes for tour controller
 app.get('/tours/new', tours.newTour);
+app.get('/tours/show', tours.showTour);
 app.post('/tours/new', tours.add);
+
+app.get('/tours/', tours.findTours);
 app.get('/tours/:id', tours.getTour);
 app.put('/tours/:id', tours.update);
 app.delete('/tours/:id', tours.destroy);
