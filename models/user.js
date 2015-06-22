@@ -57,6 +57,13 @@ var userSchema = new Schema({
     default: Date.now
   },
 
+  wishlist: [{
+    tour_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Tour'
+    }
+  }],
+
   tour_votes: [{
     tour_id: {
       type: Schema.Types.ObjectId,

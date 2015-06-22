@@ -1,10 +1,38 @@
 var exports = module.exports = {};
 var mongoose = require("mongoose");
 var User = require('../models/user').User;
+var Tour = require('../models/tour').Tour;
 
 // get route method to show user dashboard
 exports.showDash = function(req, res, next) {
-  res.render('dashboard', { title: 'Dashboard' });
+  var userInfo = [];
+  User.findOne(mongoose.Types.ObjectId(req.params.id), function(err, user) {
+    if (err || !user) {
+      // return error message if error occurs
+      console.log("Error: " + err);
+      return res.json(err);
+    } else {
+      userInfo.push(user);
+    };
+  });
+
+  Tour.find({ "loc" :
+    { $geoWithin : {
+        $centerSphere : [ [req.lng, req.lat], 25/3959 ] }
+    }},
+    function(err, tours) {
+    if (err || !tours) {
+      // return error message if error occurs
+      console.log("Error: " + err);
+      return res.json(err);
+    } else {
+      console.log(tours);
+      userInfo.push(tours);
+    };
+  })
+  res.json(userInfo);
+  // res.render('dashboard', { title: 'Dashboard' });
+  // returns the user object and recommended tours based on proximity to their current location
 };
 
 // get route method to render new user form

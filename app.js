@@ -83,13 +83,16 @@ app.get('/tours/show', tours.showTour);
 app.post('/tours/new', tours.add);
 
 // set routes for tour ejs files
-app.get('/tours/all', tours.allTours)
-
-
+app.get('/tours/all', tours.allTours);
 app.get('/tours/', tours.findTours);
 app.get('/tours/:id', tours.getTour);
 app.put('/tours/:id', tours.update);
 app.delete('/tours/:id', tours.destroy);
+
+//set routes for browsing tours
+app.get('/browse', tours.browse);
+app.post('/browse', tours.findTours);
+app.post('/browse/tags', tours.findByTag);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
