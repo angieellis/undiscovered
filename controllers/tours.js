@@ -120,7 +120,17 @@ exports.destroy = function(req, res, next) {
 };
 
 exports.browse = function(req, res, next) {
-  res.render('browse', { title: 'Browse Tours' });
+  Category.find({}, function(err, categories) {
+    if (err) {
+      // return error message if error occurs
+      console.log("Error: " + err);
+      res.json(err);
+    } else {
+      res.json(categories);
+    };
+  });
+  // res.render('browse', { title: 'Browse Tours' });
+  // returns list of locations and interests in json object
 };
 
 exports.findByTag = function(req, res, next) {

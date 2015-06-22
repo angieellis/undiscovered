@@ -13,6 +13,7 @@ mongoose.connect('mongodb://localhost/yourguide_development');
 // require User and Tour model
 var User = require('../models/user').User;
 var Tour = require('../models/tour').Tour;
+var Category = require('../models/Category').Category;
 
 var faker = require('faker');
 
@@ -63,7 +64,21 @@ for (var i = 0; i < 10; i++) {
     });
 
     tour.save(function(err, tour) {
-      if (err) console.log(err);
+      if (err) {
+        console.log(err);
+      }
     });
   };
 };
+
+
+var categories = new Category({
+  locations: ["San Francisco, CA", "Manhattan, New York", "Boston, Massachusetts", "Seattle, Washington", "Miami, Florida", "Portland, Oregon", "Salt Lake City, Utah"],
+  interests: ["Food", "Shopping", "Outdoors", "Sights", "Lifestyle", "Parks", "Activities"]
+})
+
+categories.save(function(err, categories) {
+  if (err) {
+    console.log(err);
+  }
+});
