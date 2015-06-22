@@ -4,6 +4,8 @@ var User = require('../models/user').User;
 
 // get route method to show index page
 exports.index = function(req, res, next) {
+  res.render('index', { layout: 'index' });
+
   if (req.user) {
     //redirect if user is in session
     res.redirect('/');
@@ -53,6 +55,7 @@ exports.oauthRedirect = function(req, res, next) {
 };
 
 // passport module configuration
+
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
