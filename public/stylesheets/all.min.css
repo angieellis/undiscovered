@@ -1,0 +1,2 @@
+#map-canvas{height:600px;margin:0;padding:0;width:600px}#panel{position:absolute;top:5px;left:50%;margin-left:-180px;z-index:5;1
+  background-color:#fff;padding:5px;border:1px solid #999}#channel-image{width:2em;height:2em;vertical-align:middle}#channel-name{margin-left:.2em;margin-right:.2em}#disclaimer{font-size:.75em;color:#aeaeae;max-width:350px}.during-upload,.post-sign-in,.post-upload{display:none}label{display:block}input[type=text],progress,textarea{font-size:.75em;width:15em;margin-bottom:1em;padding:.5em;font-family:"Open Sans",sans-serif}textarea{height:7em}
