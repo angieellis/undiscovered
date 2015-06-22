@@ -1,6 +1,5 @@
 require('dotenv').load();
 var exports = module.exports = {};
-// require User model
 var User = require('../models/user').User;
 
 // get route method to show index page
