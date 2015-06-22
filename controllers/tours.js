@@ -120,6 +120,6 @@ exports.destroy = function(req, res, next) {
 };
 
 
-exports.browser = function(req, res, next) {
-  res.render('browser', { title: 'New Tour' });
+exports.browse = function(req, res, next) {
+  res.render('browse', { title: 'Browse Tours' });
 };
