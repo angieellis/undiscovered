@@ -119,7 +119,6 @@ exports.destroy = function(req, res, next) {
   // otherwise, returns error message
 };
 
-
 exports.browse = function(req, res, next) {
   res.render('browse', { title: 'Browse Tours' });
 };
