@@ -46,11 +46,11 @@ exports.findTours = function(req, res, next) {
   //expects to receive geolocation of search in json object with longitude and latitude or address
   var tours;
   var params = "San Francisco, CA";
-  console.log(req);
+  // console.log(req);
   // query for nearby tours if given coordinates from post
   if (req.latitude && req.longitude) {
     tours = findNearbyTours(req);
-    console.log(tours);
+    // console.log(tours);
   }
   // query google api if address was received from post
   else {
@@ -66,25 +66,38 @@ exports.findTours = function(req, res, next) {
 };
 
 function x(uri) {
+  console.log("a");
   var tours;
+  console.log($( this ));
+  $.ajax({
+    type: "GET",
+    url: "https://maps.googleapis.com/maps/api/geocode/json?address=San%20Fransco,%20CA&key=AIzaSyCiwGjcVfBvLaCWJc9GuZjijmUnuHs7vCo"
+  }).done(function(data) {
+    console.log("in get");
+    console.log(data);
+    tours = findNearbyTours(data.results["geometry"]["bounds"]["location"]);
+    console.log(tours);
+  }).fail(function(data){
+    console.log("Fail!" + data);
+  });
   console.log(" in x");
 
-  var xmlhttp = new XMLHttpRequest();
+  // var xmlhttp = new XMLHttpRequest();
 
-  xmlhttp.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address=San%20Francisco,%20CA&key=AIzaSyCiwGjcVfBvLaCWJc9GuZjijmUnuHs7vCo");
-  xmlhttp.onload = function() {
+  // xmlhttp.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address=San%20Francisco,%20CA&key=AIzaSyCiwGjcVfBvLaCWJc9GuZjijmUnuHs7vCo");
+  // xmlhttp.onload = function() {
 
-    if (this.status == 200) {
-      console.log(this.response);
-    } else {
-      console.log(this.statusText); }
-  }
+  //   if (this.status == 200) {
+  //     console.log(this.response);
+  //   } else {
+  //     console.log(this.statusText); }
+  // }
 
-  xmlhttp.onerror = function() {
-    console.log("Network Error");
-  }
+  // xmlhttp.onerror = function() {
+  //   console.log("Network Error");
+  // }
 
-  xmlhttp.send();
+  // xmlhttp.send();
 
   // $(document).ready(function(){
   //   $.ajax({
@@ -179,4 +192,9 @@ exports.destroy = function(req, res, next) {
   });
   // returns true if tour is successfully destroyed
   // otherwise, returns error message
+};
+
+
+exports.browser = function(req, res, next) {
+  res.render('browser', { title: 'New Tour' });
 };
