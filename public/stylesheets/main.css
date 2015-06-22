@@ -72,6 +72,7 @@ ul, ol {
 .p-md { padding: 4em; }
 .p-lg { padding: 7em;}
 .p-xxl { padding: 10em; }
+.p-hero { padding: 24em; }
 
 .bgc-cool { background-color: blue; }
 .fz-xxl { font-size: 16em; }
@@ -92,9 +93,8 @@ ul, ol {
     height: 50em;
 }
 
-#banner {
-
-}
+.va-mid { vertical-align: middle; }
+.txt-center { text-align: center;}
 
 body { background-color: #ece8e5; }
 

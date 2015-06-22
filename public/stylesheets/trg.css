@@ -101,7 +101,7 @@
 /* 1200px */
 @media (min-width: 75em) {
     .container {
-        width: 64em; /* 1024px */
+        width: 100%; /* 1024px */
     }
 
     .gutters-t .col {
