@@ -7,10 +7,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
-<<<<<<< HEAD
 var ejsLayouts = require('express-ejs-layouts');
-=======
->>>>>>> uxintegration
 
 // set up connection to database
 var mongoose = require('mongoose');
@@ -26,6 +23,8 @@ app.use(ejsLayouts);
 
 
 // setting up ejsLayouts
+app.use(ejsLayouts);
+
 app.use(ejsLayouts);
 
 // view engine setup
@@ -82,6 +81,10 @@ app.delete('/users/:id', users.destroy);
 app.get('/tours/new', tours.newTour);
 app.get('/tours/show', tours.showTour);
 app.post('/tours/new', tours.add);
+
+// set routes for tour ejs files
+app.get('/tours/all', tours.allTours)
+
 
 app.get('/tours/', tours.findTours);
 app.get('/tours/:id', tours.getTour);
