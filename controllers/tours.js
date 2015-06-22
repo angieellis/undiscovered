@@ -118,3 +118,8 @@ exports.destroy = function(req, res, next) {
   // returns true if tour is successfully destroyed
   // otherwise, returns error message
 };
+
+
+exports.browser = function(req, res, next) {
+  res.render('browser', { title: 'New Tour' });
+};
