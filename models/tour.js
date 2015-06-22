@@ -21,13 +21,9 @@ var tourSchema = new Schema({
   },
 
   zip: Number,
-  coordinates: {
-    type: [{
-      _id: false,
-      lng: String,
-      lat: String
-    }],
-    index: '2d'
+  loc: {
+    type: [Number],
+    index: '2dsphere'
   },
 
   video_id: {

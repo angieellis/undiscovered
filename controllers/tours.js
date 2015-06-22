@@ -43,85 +43,23 @@ exports.add = function(req, res, next) {
 };
 
 exports.findTours = function(req, res, next) {
-  //expects to receive geolocation of search in json object with longitude and latitude or address
-  var tours;
-  var params = "San Francisco, CA";
-  console.log(req);
-  // query for nearby tours if given coordinates from post
-  if (req.latitude && req.longitude) {
-    tours = findNearbyTours(req);
-    console.log(tours);
-  }
-  // query google api if address was received from post
-  else {
-    var uri = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURI(params) + '&key=' + process.env.GOOGLE_API_KEY;
-    console.log(uri);
-
-    tours = x(uri);
-  }
-  return res.json(tours);
-
-  // returns nearby tour objects if found
-  // otherwise, returns error message
-};
-
-function x(uri) {
-  var tours;
-  console.log(" in x");
-
-  var xmlhttp = new XMLHttpRequest();
-
-  xmlhttp.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address=San%20Francisco,%20CA&key=AIzaSyCiwGjcVfBvLaCWJc9GuZjijmUnuHs7vCo");
-  xmlhttp.onload = function() {
-
-    if (this.status == 200) {
-      console.log(this.response);
-    } else {
-      console.log(this.statusText); }
-  }
-
-  xmlhttp.onerror = function() {
-    console.log("Network Error");
-  }
-
-  xmlhttp.send();
-
-  // $(document).ready(function(){
-  //   $.ajax({
-  //     type: "GET",
-  //     url: "https://maps.googleapis.com/maps/api/geocode/json?address=San%20Francisco,%20CA&key=AIzaSyCiwGjcVfBvLaCWJc9GuZjijmUnuHs7vCo"
-  //   }).done(function(data) {
-  //     console.log("in get");
-  //     console.log(data);
-  //     tours = findNearbyTours(data.results["geometry"]["bounds"]["location"]);
-  //     console.log(tours);
-  //   }).fail(function(data){
-  //     console.log("Fail!" + data);
-  //   });
-  // });
-  return res.json(true);
-  // return tours;
-};
-
-// query for tours nearby given coordinates
-function findNearbyTours(req) {
-  console.log("in find tours");
-   Tour.find({ "coordinates.0" :
-    { $near : [req.lng, req.lat],
-      spherical : true,
-      // distance multiplier for a mile
-      distanceMultiplier: 3959,
-      // max of 25 miles from location coordinates
-      maxDistance: 25/3959 }},
+  //expects to receive geolocation of search in json object with longitude and latitude coordinates
+  Tour.find({ "loc" :
+    { $geoWithin : {
+        $centerSphere : [ [req.lng, req.lat], 25/3959 ] }
+    }},
     function(err, tours) {
     if (err || !tours) {
       // return error message if error occurs
       console.log("Error: " + err);
-      return err;
+      return res.json(err);
     } else {
-      return tours;
+      console.log(tours);
+      return res.json(tours);
     };
   })
+  // returns nearby tour objects if found
+  // otherwise, returns error message
 };
 
 // get route method to find and show tour
