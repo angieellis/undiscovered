@@ -56,8 +56,7 @@ exports.findTours = function(req, res, next) {
 
   // returns nearby tour objects if found
   // otherwise, returns error message
-<<<<<<< HEAD
-=======
+
 };
 
 function x(uri) {
@@ -97,7 +96,6 @@ function findNearbyTours(req) {
       return tours;
     };
   })
->>>>>>> 1a273cf7e4774955a3eae00f66205749c6f5d5ee
 };
 
 // get route method to find and show tour
