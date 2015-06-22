@@ -1,9 +1,12 @@
+require('dotenv').load();
 var exports = module.exports = {};
 // require User model
 var User = require('../models/user').User;
 
 // get route method to show index page
 exports.index = function(req, res, next) {
+  res.render('index', { layout: 'index' });
+
   if (req.user) {
     //redirect if user is in session
     res.redirect('/');
@@ -38,10 +41,38 @@ exports.signout = function(req, res, next) {
   res.redirect('/');
 };
 
+exports.signinGoogle = function(req, res, next) {
+  passport.authenticate('google', { scope:
+      [ 'https://www.googleapis.com/auth/plus.login',
+      , 'https://www.googleapis.com/auth/plus.profile.emails.read' ] }
+  )
+};
+
+exports.oauthRedirect = function(req, res, next) {
+  passport.authenticate( 'google', {
+          successRedirect: '/dashboard',
+          failureRedirect: '/auth/google'
+  });
+};
+
 // passport module configuration
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
+
+var passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy,
+    GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
+
+// method to save user session
+passport.serializeUser(function(user, done) {
+  var userInfo = { id: user.id, googleId: user.googleId };
+  done(null, userInfo);
+});
+
+// method to clear user session
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
 
 passport.use(new LocalStrategy(
   // method to find user and validate password
@@ -59,22 +90,10 @@ passport.use(new LocalStrategy(
   }
 ));
 
-// method to save user session
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-// method to clear user session
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
-
 // method to validate user with Google Oauth
 passport.use(new GoogleStrategy({
-    clientID:     GOOGLE_CLIENT_ID,
-    clientSecret: GOOGLE_CLIENT_SECRET,
+    clientID:     process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "http://yourdormain:3000/auth/google/callback",
     passReqToCallback   : true
   },

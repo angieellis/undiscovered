@@ -15,6 +15,11 @@ exports.showTour = function(req, res, next) {
 exports.add = function(req, res, next) {
   // expects to receive json object with new tour attributes
 
+  // check if user has google oauth session
+  if(req.user.googleId === null) {
+    return res.redirect('/auth/google');
+  }
+
   // create new tour
   var tour = new Tour(req.params);
   tour.save(function(err, saved) {
@@ -27,6 +32,26 @@ exports.add = function(req, res, next) {
     };
   });
   // returns true if tour is successfully added to collection
+  // otherwise, returns error message
+};
+
+exports.findTours = function(req, res, next) {
+  //expects to receive geolocation of search in json object with longitude and latitude
+  // Tour.find({ coordinates[0]:
+  //   { $near : [req.params.longitude, req.params.latitude],
+  //     spherical : true,
+  //     distanceMultiplier: 0,
+  //     maxDistance: 0 }},
+  //   function(err, tours) {
+  //   if (err || !tours) {
+  //     // return error message if error occurs
+  //     console.log("Error: " + err);
+  //     res.json(err);
+  //   } else {
+  //     res.json(tour);
+  //   };
+  // })
+  // returns nearby tour objects if found
   // otherwise, returns error message
 };
 
