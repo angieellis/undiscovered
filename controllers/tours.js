@@ -41,7 +41,8 @@ exports.getTour = function(req, res, next) {
       console.log("Error: " + err);
       res.json(err);
     } else {
-      res.json(tour);
+      // res.json(tour);
+      res.render('show_tour', { title: 'Tours' });
     };
   });
   // returns tour object if found
