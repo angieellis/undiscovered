@@ -162,6 +162,6 @@ exports.destroy = function(req, res, next) {
 };
 
 
-exports.allTours = function(req, res, next) {
-  res.render('all_tours');
+exports.browseTours = function(req, res, next) {
+  res.render('browse');
 }

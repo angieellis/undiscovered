@@ -1,0 +1,66 @@
+<body>
+  <h1>Browse</h1>
+  <div class="browse-wrapper">
+
+  <br>
+
+    <div class="browse-search">
+      <h3>Browse Search</h3>
+      <form action="">
+        <input type="text" class="browse-search-input">
+        <input type="submit" class="browse-submit-button" value="Search">
+    </div>
+
+    <br>
+
+    <div class="browse-container">
+
+      <div class="browse-interests">
+        <h3>Browse by Interests</h3>
+        <div class="list-of-interests">
+
+        </div>
+      </div>
+
+      <br>
+
+      <div class="browse-cities">
+        <h3>Browse by Cities</h3>
+        <div class="list-of-cities">
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <br>
+
+  <div>
+    <h3>Tours List</h3>
+    <div class="tours-list">
+    </div>
+  </div>
+
+</body>
+
+<script id="interest-template" type="text/x-handlebars-template">
+  <a href="#{{title}}"><p>{{title}}</p></a>
+</script>
+
+<script id="city-template" type="text/x-handlebars-template">
+  <a href="#{{name}}"><div>
+    <h2>{{name}}</h2>
+  </div></a>
+</script>
+
+<script id="tour-template" type="text/x-handlebars-template">
+  <a href="/tours/{{_id}}">
+  // {{trailer.photo_url}}
+  {{city}}
+  {{state}}
+  {{title}}
+  {{_id}}
+  </a>
+</script>

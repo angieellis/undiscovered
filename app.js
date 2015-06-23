@@ -78,7 +78,7 @@ app.get('/tours/show', tours.showTour);
 app.post('/tours/new', tours.add);
 
 // set routes for tour ejs files
-app.get('/tours/all', tours.allTours)
+app.get('/browse', tours.browseTours)
 
 
 app.get('/tours/', tours.findTours);
