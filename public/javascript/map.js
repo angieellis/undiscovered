@@ -26,7 +26,9 @@ function codeAddress() {
           draggable: true
       });
       markers_array.push(marker);
-      markers_array.forEach(function(obj){ console.log(obj.position.A); console.log(obj.position.F)})
+      markers_array.forEach(function(obj){
+        console.log(obj.position.A);
+        console.log(obj.position.F)})
       google.maps.event.addListener( marker, 'dragend', function(ev){
        // イベントの引数evの、プロパティ.latLngが緯度経度。
         document.getElementById('latitude').value = ev.latLng.lat();

@@ -114,10 +114,6 @@ var individualTour = new IndividualTour({
   _id: tourMongoId
 })
 
-individualTour.fetch()
-
-console.log(individualTour)
-
 var IndividualTourView = Backbone.View.extend({
   model: individualTour,
   el: "#individual-tour-display",
@@ -147,9 +143,46 @@ var individualTourView = new IndividualTourView()
 // USER/:ID PAGE
 // **************************************************************************
 
-var User = Backbone.Model.extend({
+var IndividualUser = Backbone.Model.extend({
   idAttribute: "_id",
   urlRoot: "/users"
 })
 
-var tourMongoId = window.location.pathname.slice(15)
+var userMongoId = window.location.pathname.slice(12)
+
+var individualUser = new IndividualUser({
+  _id: userMongoId
+})
+
+var IndividualUserView = Backbone.View.extend({
+  model: individualUser,
+  el: "#individual-user-display",
+  initialize: function() {
+    this.model.fetch({
+      success: function(response) {
+        console.log("Successful")
+      },
+      error: function() {
+        console.log("Failed to get user")
+      }
+    })
+    this.listenTo(this.model, 'sync', this.render)
+  },
+    render: function() {
+    var template = $("#individual-user-template").html();
+    var compiled = Handlebars.compile(template);
+    var html = compiled(this.model.attributes);
+    $("#individual-user-display").html(html)
+
+    var userTourTemplate = $("#individual-user-wishlist-template").html();
+    var compiledTours = Handlebars.compile(userTourTemplate);
+    var userWishlist = compiledTours(this.model.attributes.wishlist)
+
+    for (var i=0; i < this.model.attributes.wishlist.length; i++) {
+      var loopedWishlist = compiledTours(this.model.attributes.wishlist[i])
+      $("#user-wishlist-list").append(loopedWishlist)
+    }
+  }
+})
+
+var individualUserView = new IndividualUserView()

@@ -6,6 +6,8 @@
     <script src="//apis.google.com/js/client:plusone.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script src="/javascript/map.js"></script>
+    <script type="application/javascript" src="/javascript/new_tour.js"></script>
+
     <span id="signinButton" class="pre-sign-in">
 
       <!-- IMPORTANT: Replace the value of the <code>data-clientid</code>
@@ -13,7 +15,7 @@
       <span
         class="g-signin"
         data-callback="signinCallback"
-        data-clientid=""
+        data-clientid="<%= process.env.OAUTH2_CLIENT_ID %>"
         data-cookiepolicy="single_host_origin"
         data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
       </span>
@@ -67,4 +69,5 @@
     <script src="/javascript/cors_upload.js"></script>
     <script src="/javascript/upload_video.js"></script>
 
+<button id="submit-new-tour-button">SUBMIT</button>
 
