@@ -6,7 +6,7 @@ var User = require('../models/user').User;
 exports.index = function(req, res, next) {
   if (req.user) {
     //redirect if user is in session
-    res.redirect('/');
+    res.redirect('/dashboard');
   } else {
     res.render('index');
   };
