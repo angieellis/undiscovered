@@ -44,7 +44,7 @@ exports.add = function(req, res, next) {
 
 exports.findTours = function(req, res, next) {
   //expects to receive geolocation of search in json object with longitude and latitude coordinates
-  Tour.find({ "loc" :
+  Tour.find({ "coordinates" :
     { $geoWithin : {
         $centerSphere : [ [req.lng, req.lat], 25/3959 ] }
     }},
@@ -117,4 +117,34 @@ exports.destroy = function(req, res, next) {
   });
   // returns true if tour is successfully destroyed
   // otherwise, returns error message
+};
+
+exports.allTours = function(req, res, next) {
+  res.render('all_tours');
+};
+
+exports.browse = function(req, res, next) {
+  Category.find({}, function(err, categories) {
+    if (err) {
+      // return error message if error occurs
+      console.log("Error: " + err);
+      res.json(err);
+    } else {
+      res.json(categories);
+    };
+  });
+  // res.render('browse', { title: 'Browse Tours' });
+  // returns list of locations and interests in json object
+};
+
+exports.findByTag = function(req, res, next) {
+  Tour.find({"tags" : req.params}, function(err, tours) {
+    if (err) {
+      // return error message if error occurs
+      console.log("Error: " + err);
+      res.json(err);
+    } else {
+      res.json(tours);
+    };
+  });
 };

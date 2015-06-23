@@ -21,7 +21,7 @@ var tourSchema = new Schema({
   },
 
   zip: Number,
-  loc: {
+  coordinates: {
     type: [Number],
     index: '2dsphere'
   },
@@ -39,6 +39,11 @@ var tourSchema = new Schema({
 
   content: {
     type: String,
+    trim: true
+  },
+
+  tags: {
+    type: [String],
     trim: true
   },
 
