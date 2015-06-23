@@ -28,7 +28,8 @@ var coordinate = $('#coordinates').html().split(",");
 function initialize() {
   var mapOptions = {
     zoom: 10,
-    center: new google.maps.LatLng(coordinate[0], coordinate[1])
+    center: new google.maps.LatLng(coordinate[1], coordinate[0]
+)
   }
   var map = new google.maps.Map(document.getElementById('map-canvas'),
                                 mapOptions);
@@ -36,12 +37,14 @@ function initialize() {
 }
 
 function setMarkers(map, locations) {
+  console.log(coordinate)
   console.log("Google map is working")
   var shape = {
       coords: [1, 1, 1, 20, 18, 20, 18 , 1],
       type: 'poly'
   };
-  var myLatLng = new google.maps.LatLng(locations[0], locations[1]);
+  var myLatLng = new google.maps.LatLng(coordinate[1], coordinate[0]
+);
   var marker = new google.maps.Marker({
       position: myLatLng,
       map: map,
