@@ -2,17 +2,19 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // create schema for Category model
-var categorySchema = new Schema({
-  locations: {
-    type: [String],
+var citySchema = new Schema({
+  city: {
+    type: String,
     trim: true
-  },
+  }
+});
 
-  interests: {
-    type: [String],
+var interestSchema = new Schema({
+  interest: {
+    type: String,
     trim: true
   }
 });
 
 // export Category model
-exports.Category = mongoose.model('Category', categorySchema);
+exports.City = mongoose.model('City', citySchema);
