@@ -85,22 +85,35 @@ ul, ol {
 
 .m-none { margin: 0; }
 .mr-small { margin-right: .5em; }
+.mt-md { margin-top: 2em; }
+.mb-md { margin-bottom: .5em; }
 
+.b-lft { border-left: 2px solid white; }
+.b-rt { border-right: 3px solid white; }
+.b-top { border-top: 2px solid white; }
+.b-bttm { border-bottom: 2px solid white; }
 
+.p-xxs { padding: .1em; }
+.p-top { padding-top: .1em; }
+.p-bttm { padding-bottom: .1em; }
+.p-rt { padding-right: .25em; }
+.p-lt { padding-left: .25em; }
 .p-xs { padding: .5em;}
 .p-sm { padding: 1em;}
 .p-md { padding: 4em; }
 .p-lg { padding: 7em;}
 .p-xxl { padding: 10em; }
 .p-none { padding: 0;}
+.p-hero { padding: 23em; } /* ask josh about this */
 
-.p-hero { padding: 22em; }
+.lh-sm { line-height: 80%; }
 
 .fz-xs { font-size: 1.5em; }
+.fz-xss { font-size: 2em; }
 .fz-sm { font-size: 2.5em; }
 .fz-lg { font-size: 4.5em; }
 .fz-xxl { font-size: 16em; }
-.fs-index { font-family: ''Julius Sans One'', sans-serif; }
+.fs-index { font-family: 'Julius Sans One', sans-serif; }
 .fc-light {color: white;}
 .fc-dark {color: #042037};
 .bgc-cool { background-color: blue; }
@@ -111,6 +124,8 @@ ul, ol {
 .fl-r { float: right; }
 
 .lis-n { list-style: none; }
+
+.dis-i { display: inline-block; }
 
 .tt--logo {
     width: 50px;
@@ -125,6 +140,8 @@ ul, ol {
 
 .va-mid { vertical-align: middle; }
 .txt-center { text-align: center;}
+.txt-underline { text-decoration: underline; }
+
 
 .full-container { width: 100%; }
 
