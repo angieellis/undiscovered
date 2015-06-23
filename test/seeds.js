@@ -10,7 +10,7 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/yourguide_development');
 
-// require User and Tour model
+// // require User and Tour model
 var User = require('../models/user').User;
 var Tour = require('../models/tour').Tour;
 var City = require('../models/Category').City;
@@ -21,12 +21,12 @@ var faker = require('faker');
 var coordinates = [[122.4167, 37.7833], [73.9597, 40.7903], [71.0589, 42.3601], [122.3331, 47.6097],
   [122.6819, 45.5200], [111.8833, 40.7500]]
 
-// SF: 37.7833° N, 122.4167°
-// NY: 40.7903° N, 73.9597° W
-// MA: 42.3601° N, 71.0589° W
-// WA: 47.6097° N, 122.3331° W
-// OR: 45.5200° N, 122.6819° W
-// UT: 40.7500° N, 111.8833° W
+// // SF: 37.7833° N, 122.4167°
+// // NY: 40.7903° N, 73.9597° W
+// // MA: 42.3601° N, 71.0589° W
+// // WA: 47.6097° N, 122.3331° W
+// // OR: 45.5200° N, 122.6819° W
+// // UT: 40.7500° N, 111.8833° W
 
 var interestTags = ["Food", "Shopping", "Outdoors", "Sights", "Lifestyle", "Parks", "Activities"];
 var otherTags = ["Beach", "Hike", "Quick", "Group", "Parking", "Dangerous", "Easy", "Relaxing", "Physical"];
@@ -79,7 +79,7 @@ for (var i = 0; i < 10; i++) {
         photo_url: faker.image.imageUrl()
       },
       tour_guide: {
-        _id: user._id,
+        _id: mongoose.Types.ObjectId(user._id),
         username: user.username
       },
       comments: [],
@@ -109,3 +109,7 @@ for (var i = 0; i < interestTags.length; i++) {
     }
   });
 };
+
+setTimeout( function () {
+  mongoose.disconnect();
+}, 2000);
