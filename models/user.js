@@ -52,10 +52,25 @@ var userSchema = new Schema({
   },
 
   zip: Number,
+  coordinates: {
+    type: [Number],
+    index: '2dsphere'
+  },
+
   created_at: {
     type: Date,
     default: Date.now
   },
+
+  wishlist: [{
+    tour_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Tour',
+      required: true
+    },
+
+    tour_title: String
+  }],
 
   tour_votes: [{
     tour_id: {
