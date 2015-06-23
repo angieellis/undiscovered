@@ -1,11 +1,12 @@
 <div class="ind-tour">
 
-  <div>Individual Tour</div>
 
-  <div id="individual-tour-display"></div>
+  <div id="individual-tour-display" class="debug"></div>
 
 
   <script id="individual-tour-template" type="text/x-handlebars-template">
+    {{title}}
+    <br>
     <a href="/tours/{{_id}}">
     <img src="{{trailer.photo_url}}">
     {{city}}
@@ -13,8 +14,6 @@
     {{state}}
     <br>
     {{tags}}
-    <br>
-    {{title}}
     <br>
     {{_id}}
     <br>
