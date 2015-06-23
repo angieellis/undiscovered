@@ -4,8 +4,6 @@ var User = require('../models/user').User;
 
 // get route method to show index page
 exports.index = function(req, res, next) {
-  res.render('index');
-
   if (req.user) {
     //redirect if user is in session
     res.redirect('/');
