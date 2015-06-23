@@ -29,10 +29,15 @@ var coordinates = [[122.4167, 37.7833], [73.9597, 40.7903], [71.0589, 42.3601], 
 // UT: 40.7500° N, 111.8833° W
 
 var interestTags = ["Food", "Shopping", "Outdoors", "Sights", "Lifestyle", "Parks", "Activities"];
-console.log(interestTags[Math.floor(Math.random()*interestTags.length)]);
-console.log(faker.company.bsNoun());
+var otherTags = ["Beach", "Hike", "Quick", "Group", "Parking", "Dangerous", "Easy", "Relaxing", "Physical"];
+var cities = ["San Francisco, California", "Manhattan, New York", "Boston, Massachusetts", "Seattle, Washington", "Portland, Oregon", "Salt Lake City, Utah"];
+
+var citiesHash = [["San Francisco", "CA", 94105, [122.4167, 37.7833]], ["Manhattan", "NY", 10021, [73.9597, 40.7903]], ["Boston", "MA", 02108, [71.0589, 42.3601]], ["Seattle", "WA", 98101, [122.3331, 47.6097]], ["Portland", "OR", 97201, [122.6819, 45.5200]], ["Salt Lake City", "UT", 84101, [111.8833, 40.7500]]];
+
 for (var i = 0; i < 10; i++) {
   // create fake users
+  var city = citiesHash[Math.floor(Math.random()*citiesHash.length)];
+
   var userName = faker.internet.userName();
   var user = new User({
     username: userName,
@@ -41,9 +46,10 @@ for (var i = 0; i < 10; i++) {
     last_name: faker.name.lastName(),
     email: faker.internet.email(),
     phone_number: faker.phone.phoneNumber(),
-    city: faker.address.city(),
-    state: faker.address.state(),
-    zip: parseInt(faker.address.zipCode())
+    city: city[0],
+    state: city[1],
+    zip: city[2],
+    coordinates: city[3]
   });
 
   user.save(function(err, user) {
@@ -52,16 +58,22 @@ for (var i = 0; i < 10; i++) {
 
   for (var x = 0; x < 2; x++) {
     //create fake tours
+    var city = citiesHash[Math.floor(Math.random()*citiesHash.length)];
+
     var tour = new Tour({
       title: faker.lorem.sentence(),
-      city: faker.address.city(),
-      state: faker.address.state(),
-      zip: parseInt(faker.address.zipCode()),
-      loc: coordinates[Math.floor(Math.random()*coordinates.length)],
+      city: city[0],
+      state: city[1],
+      zip: city[2],
+      coordinates: city[3],
       video_id: faker.image.imageUrl(),
       photo_urls: [faker.image.imageUrl(), faker.image.imageUrl()],
       content: faker.lorem.paragraph(),
-      tags: [interestTags[Math.floor(Math.random()*interestTags.length)], faker.company.bsNoun(), faker.company.bsNoun()],
+      tags: [
+        interestTags[Math.floor(Math.random()*interestTags.length)],
+        otherTags[Math.floor(Math.random()*otherTags.length)],
+        otherTags[Math.floor(Math.random()*otherTags.length)]
+      ],
       trailer: {
         description: faker.lorem.sentence(),
         photo_url: faker.image.imageUrl()
@@ -81,8 +93,6 @@ for (var i = 0; i < 10; i++) {
     });
   };
 };
-
-var cities = ["San Francisco, CA", "Manhattan, New York", "Boston, Massachusetts", "Seattle, Washington", "Portland, Oregon", "Salt Lake City, Utah"];
 
 for (var i = 0; i < cities.length; i++) {
   City.create({"name" : cities[i]}, function(err, categories) {

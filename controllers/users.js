@@ -16,7 +16,7 @@ exports.showDash = function(req, res, next) {
     };
   });
 
-  Tour.find({ "loc" :
+  Tour.find({ "coordinates" :
     { $geoWithin : {
         $centerSphere : [ [req.lng, req.lat], 25/3959 ] }
     }},

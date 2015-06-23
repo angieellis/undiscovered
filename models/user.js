@@ -52,6 +52,11 @@ var userSchema = new Schema({
   },
 
   zip: Number,
+  coordinates: {
+    type: [Number],
+    index: '2dsphere'
+  },
+
   created_at: {
     type: Date,
     default: Date.now

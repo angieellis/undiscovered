@@ -44,7 +44,7 @@ exports.add = function(req, res, next) {
 
 exports.findTours = function(req, res, next) {
   //expects to receive geolocation of search in json object with longitude and latitude coordinates
-  Tour.find({ "loc" :
+  Tour.find({ "coordinates" :
     { $geoWithin : {
         $centerSphere : [ [req.lng, req.lat], 25/3959 ] }
     }},
