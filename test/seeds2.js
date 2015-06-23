@@ -68,4 +68,4 @@ setTimeout( function () {
     if (err) throw err;
     console.log('disconnected');
   });
-}, 2000);
+}, 6000);
