@@ -2,6 +2,7 @@
 // TOUR ALL HANDLEBARS MODEL
 // **************************************************************************
 
+
 var Tour = Backbone.Model.extend({
   idAttribute: "_id"
 });
@@ -96,3 +97,48 @@ var SearchView = Backbone.View.extend({
 })
 
 var searchView = new SearchView()
+
+
+// **************************************************************************
+// TOUR/:ID PAGE
+// **************************************************************************
+
+var userMongoId = window.location.pathname.slice(15)
+
+var IndividualTour = Backbone.Model.extend({
+  idAttribute: "_id",
+  urlRoot: "/tours"
+})
+
+var individualTour = new IndividualTour({
+  _id: userMongoId
+})
+
+individualTour.fetch()
+
+console.log(individualTour)
+
+var IndividualTourView = Backbone.View.extend({
+  model: individualTour,
+  el: "#individual-tour-display",
+  initialize: function() {
+    this.model.fetch({
+      success: function(response) {
+        console.log(response)
+      },
+      error: function() {
+        console.log("Failed")
+      }
+    })
+    this.listenTo(this.model, 'sync', this.render)
+  },
+  render: function() {
+    var template = $("#individual-tour-template").html();
+    var compiled = Handlebars.compile(template);
+    var html = compiled(this.model.attributes);
+    $("#individual-tour-display").html(html);
+  }
+})
+
+var individualTourView = new IndividualTourView()
+

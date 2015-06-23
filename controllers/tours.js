@@ -78,6 +78,7 @@ exports.getTour = function(req, res, next) {
   });
   // returns tour object if found
   // otherwise, returns error message
+
 };
 
 // put route method to find and update tour
@@ -151,4 +152,8 @@ exports.findByTag = function(req, res, next) {
 
 exports.browseTours = function(req, res, next) {
   res.render('browse_tours');
+}
+
+exports.displayTour = function(req, res, next) {
+  res.render("individual_tour")
 }

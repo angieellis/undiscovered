@@ -89,6 +89,7 @@ app.get('/tours/', tours.findTours);
 app.get('/tours/:id', tours.getTour);
 app.put('/tours/:id', tours.update);
 app.delete('/tours/:id', tours.destroy);
+app.get('/tours/display/:id', tours.displayTour)
 
 //set routes for browsing tours
 app.get('/browse', tours.browse);
