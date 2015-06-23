@@ -7,17 +7,24 @@
 <!--     <meta name="description" content>
  -->    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/stylesheets/normalize.min.css"/>
-    <link rel="stylesheet" href="/stylesheets/trg.css"/>
-    <link rel="stylesheet" href="/stylesheets/main.css"/>
+    <link rel="stylesheet" href="/stylesheets/all.min.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//apis.google.com/js/client:plusone.js"></script>
     <script type="application/javascript" src="/javascript/lib/jquery.js"></script>
     <script type="application/javascript" src="/javascript/lib/underscore.js"></script>
     <script type="application/javascript" src="/javascript/lib/backbone.js"></script>
+    <script type="application/javascript" src="/javascript/all.min.js"></script>
+    <script src="/javascript/script.js"></script>
     <script type="application/javascript" src="/javascript/lib/handlebars.js"></script>
     <script type="application/javascript" src="/javascript/client.js"></script>
     <script type="application/javascript" src="/javascript/init.js"></script>
+    <script type="application/javascript" src="/javascript/script.js"></script>
+    <script src="/javascript/cors_upload.js"></script>
+    <script src="/javascript/upload_video.js"></script>
   </head>
 
-  <body class="fs-head">
+  <body class="fs-index">
 
 
     <div class="tr-head full-container fz-xs">
@@ -27,17 +34,66 @@
         <h4 class="fl-l m-none">-- UnDiscovered --</h4>
 
         <ul class="fl-r lis-n">
-            <li class="fl-l mr-small clearfix">
-              Sign In
+            <li class="fl-l b-bttm mr-small clearfix signin">
+                SignIn
             </li>
-            <li class="fl-l clearfix">
-              Sign Up
+            <li class="fl-l b-bttm clearfix signup">
+                Signup
             </li>
         </ul>
 
       </header>
     </div>
-
+    <div id="form_area" class="form_area">
+      <div class='formbox signupbox'>
+        <form action="" method="post" id="subForm">
+          <h3>Signup</h3>
+          <div class="input">
+            <input type="text" name="username" id="name" placeholder="username" />
+          </div>
+          <div class="input">
+            <input type="text" name="email" id="email" placeholder="email" />
+          </div>
+          <div class="input">
+            <input type="password" name="password" id="password" placeholder="password" />
+          </div>
+          <div class="input">
+            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="password again" />
+          </div>
+          <input type="submit" value="Signup" />
+          <span id="signinButton" class="pre-sign-in">
+          <span
+            class="g-signin"
+            data-callback="signinCallback"
+            data-clientid=""
+            data-cookiepolicy="single_host_origin"
+            data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
+          </span>
+          <p class="close"><i class="fa fa-times"></i>close</p>
+        </form>
+      </div>
+      <div class='formbox signinbox '>
+        <form action="" method="post" id="subForm">
+          <h3>Signin</h3>
+          <div class="input">
+            <input type="text" name="username" id="name" placeholder="username" />
+          </div>
+          <div class="input">
+            <input type="password" name="password" id="nklki-nklki" placeholder="password" />
+          </div>
+          <input type="submit" value="Signin" />
+          <span id="signinButton" class="pre-sign-in">
+          <span
+            class="g-signin"
+            data-callback="signinCallback"
+            data-clientid=""
+            data-cookiepolicy="single_host_origin"
+            data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
+          </span>
+          <p class="close"><i class="fa fa-times"></i>close</p>
+         </form>
+      </div>
+    </div>
     <div class="full-container">
       <%- body %>
     </div>
@@ -48,9 +104,5 @@
       </footer>
 <<<<<<< HEAD
     </div> -->
-
-=======
-    </div>
->>>>>>> master
   </body>
 </html>
