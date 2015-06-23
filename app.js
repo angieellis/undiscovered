@@ -24,8 +24,6 @@ var app = express();
 // setting up ejsLayouts
 app.use(ejsLayouts);
 
-app.use(ejsLayouts);
-
 // view engine setup
 
 app.engine('html', require('ejs').renderFile);
@@ -74,6 +72,9 @@ app.post('/signup', users.add);
 
 app.get('/dashboard', users.showDash);
 
+app.get('/users/show/:id', users.userPage)
+
+app.get('/users/show', users.showUsers)
 app.get('/users/:id', users.getUser);
 app.put('/users/:id', users.update);
 app.delete('/users/:id', users.destroy);
@@ -89,11 +90,14 @@ app.get('/tours/', tours.findTours);
 app.get('/tours/:id', tours.getTour);
 app.put('/tours/:id', tours.update);
 app.delete('/tours/:id', tours.destroy);
+app.get('/tours/display/:id', tours.displayTour)
 
 //set routes for browsing tours
 app.get('/browse', tours.browse);
 app.post('/browse', tours.findTours);
 app.post('/browse/tags', tours.findByTag);
+
+app.get('/browse_tours', tours.browseTours)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
