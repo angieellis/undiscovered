@@ -174,13 +174,13 @@ var IndividualUserView = Backbone.View.extend({
     var html = compiled(this.model.attributes);
     $("#individual-user-display").html(html)
 
-    var userTourTemplate = $("#individual-user-wishlist-template").html();
+    var userTourTemplate = $("#individual-user-authored-template").html();
     var compiledTours = Handlebars.compile(userTourTemplate);
-    var userWishlist = compiledTours(this.model.attributes.wishlist)
+    var userWishlist = compiledTours(this.model.attributes.authored_tours)
 
-    for (var i=0; i < this.model.attributes.wishlist.length; i++) {
-      var loopedWishlist = compiledTours(this.model.attributes.wishlist[i])
-      $("#user-wishlist-list").append(loopedWishlist)
+    for (var i=0; i < this.model.attributes.authored_tours.length; i++) {
+      var loopedAuthoredList = compiledTours(this.model.attributes.authored_tours[i])
+      $("#user-authored-list").append(loopedAuthoredList)
     }
   }
 })
