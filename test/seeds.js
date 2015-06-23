@@ -115,3 +115,6 @@ for (var i = 0; i < interestTags.length; i++) {
 setTimeout( function () {
   mongoose.disconnect();
 }, 2000);
+
+// var cities = ["San Francisco, California", "Manhattan, New York", "Boston, Massachusetts", "Seattle, Washington", "Portland, Oregon", "Salt Lake City, Utah"];
+//sf : http://s3.amazonaws.com/tgc-ee2/articles/San-Francisco.jpg

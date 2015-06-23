@@ -22,9 +22,10 @@ exports.signin = function(req, res, next) {
     if (!user) { return res.json(false); }
     req.logIn(user, function(err) {
       if (err) { return res.json(err); }
-      return res.json(user);
+      res.redirect('/dashboard');
     });
   })(req, res, next);
+
   // returns user object if signin is successful
   // returns false if user doesn't exist
   // returns error message for all other cases
@@ -50,6 +51,24 @@ exports.oauthRedirect = function(req, res, next) {
           successRedirect: '/dashboard',
           failureRedirect: '/auth/google'
   });
+};
+
+// helper method to check if user is logged in
+exports.userLoggedIn = function() {
+  if (passport.session.name === "") {
+    return false;
+  } else {
+    return true;
+  };
+};
+
+// helper method to get user that is logged in
+exports.currentUser = function() {
+  if (passport.session.name === "") {
+    return false;
+  } else {
+    return passport.session.name;
+  };
 };
 
 // passport module configuration

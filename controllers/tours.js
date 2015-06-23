@@ -5,9 +5,11 @@ var Tour = require('../models/tour').Tour;
 var City = require('../models/categories').City;
 var Interest = require('../models/categories').Interest;
 
+var main = require('./index');
+
 // get route method to display new tour form
 exports.newTour = function(req, res, next) {
-   res.render('new_tour', { title: 'New Tour' });
+  res.render('new_tour', { title: 'New Tour' });
 };
 
 exports.showTour = function(req, res, next) {

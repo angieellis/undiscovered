@@ -3,11 +3,14 @@ var mongoose = require("mongoose-q")();
 
 var User = require('../models/user').User;
 var Tour = require('../models/tour').Tour;
+var usrCtrl = require('./users');
 
 // get route method to show user dashboard
 exports.showDash = function(req, res, next) {
+  console.log("in show dash");
+  var user = usrCtrl.currentUser();
   var userInfo = [];
-
+  console.log(user);
   // use promises to handle async callbacks
   // find user from given id
   User.findOneQ(mongoose.Types.ObjectId(req.params.id))
@@ -37,6 +40,10 @@ exports.showDash = function(req, res, next) {
       .done();
   };
   // returns the user object, their authored tours, and recommended tours based on proximity to their current location
+};
+
+exports.renderDash = function(req, res, next) {
+  res.render('dashboard');
 };
 
 // get route method to render new user form
@@ -154,4 +161,7 @@ exports.showUsers = function(req, res, next) {
 
 exports.renderUser = function(req, res, next) {
   res.render('user_page')
-}
+};
+
+
+
