@@ -13,8 +13,8 @@ mongoose.connect('mongodb://localhost/yourguide_development');
 // // require User and Tour model
 var User = require('../models/user').User;
 var Tour = require('../models/tour').Tour;
-var City = require('../models/Category').City;
-var Interest = require('../models/Category').Interest;
+var City = require('../models/categories').City;
+var Interest = require('../models/categories').Interest;
 
 var faker = require('faker');
 
