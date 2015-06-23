@@ -148,3 +148,7 @@ exports.findByTag = function(req, res, next) {
     };
   });
 };
+
+exports.browseTours = function(req, res, next) {
+  res.render('browse_tours');
+}

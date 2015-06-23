@@ -1,3 +1,3 @@
-$(document).on("ready", function(){
-  console.log("Init.js")
-});
+// $(document).on("ready", function(){
+//   console.log("Init.js")
+// });

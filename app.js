@@ -95,6 +95,8 @@ app.get('/browse', tours.browse);
 app.post('/browse', tours.findTours);
 app.post('/browse/tags', tours.findByTag);
 
+app.get('/browse_tours', tours.browseTours)
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
