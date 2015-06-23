@@ -13,7 +13,8 @@ mongoose.connect('mongodb://localhost/yourguide_development');
 // require User and Tour model
 var User = require('../models/user').User;
 var Tour = require('../models/tour').Tour;
-var Category = require('../models/Category').Category;
+var City = require('../models/Category').City;
+var Interest = require('../models/Category').Interest;
 
 var faker = require('faker');
 
@@ -28,7 +29,8 @@ var coordinates = [[122.4167, 37.7833], [73.9597, 40.7903], [71.0589, 42.3601], 
 // UT: 40.7500° N, 111.8833° W
 
 var interestTags = ["Food", "Shopping", "Outdoors", "Sights", "Lifestyle", "Parks", "Activities"];
-
+console.log(interestTags[Math.floor(Math.random()*interestTags.length)]);
+console.log(faker.company.bsNoun());
 for (var i = 0; i < 10; i++) {
   // create fake users
   var userName = faker.internet.userName();
@@ -59,7 +61,7 @@ for (var i = 0; i < 10; i++) {
       video_id: faker.image.imageUrl(),
       photo_urls: [faker.image.imageUrl(), faker.image.imageUrl()],
       content: faker.lorem.paragraph(),
-      tags: [interestTags[Math.floor(Math.random()*interestTags.length)], faker.lorem.words, faker.lorem.words],
+      tags: [interestTags[Math.floor(Math.random()*interestTags.length)], faker.company.bsNoun(), faker.company.bsNoun()],
       trailer: {
         description: faker.lorem.sentence(),
         photo_url: faker.image.imageUrl()
@@ -83,7 +85,7 @@ for (var i = 0; i < 10; i++) {
 var cities = ["San Francisco, CA", "Manhattan, New York", "Boston, Massachusetts", "Seattle, Washington", "Portland, Oregon", "Salt Lake City, Utah"];
 
 for (var i = 0; i < cities.length; i++) {
-  City.create({"city" : cities[i]}, function(err, categories) {
+  City.create({"name" : cities[i]}, function(err, categories) {
     if (err) {
       console.log(err);
     }
@@ -91,7 +93,7 @@ for (var i = 0; i < cities.length; i++) {
 };
 
 for (var i = 0; i < interestTags.length; i++) {
-  Interest.create({"interest" : interestTags[i]}, function(err, categories) {
+  Interest.create({"name" : interestTags[i]}, function(err, categories) {
     if (err) {
       console.log(err);
     }

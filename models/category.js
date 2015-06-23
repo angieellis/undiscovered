@@ -3,14 +3,14 @@ var Schema = mongoose.Schema;
 
 // create schema for Category model
 var citySchema = new Schema({
-  city: {
+  name: {
     type: String,
     trim: true
   }
 });
 
 var interestSchema = new Schema({
-  interest: {
+  name: {
     type: String,
     trim: true
   }
@@ -18,3 +18,4 @@ var interestSchema = new Schema({
 
 // export Category model
 exports.City = mongoose.model('City', citySchema);
+exports.Interest = mongoose.model('Interest', interestSchema);
