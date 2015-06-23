@@ -79,7 +79,7 @@ for (var i = 0; i < 10; i++) {
         photo_url: faker.image.imageUrl()
       },
       tour_guide: {
-        _id: mongoose.Types.ObjectId(user._id),
+        _id: user._id,
         username: user.username
       },
       comments: [],
@@ -91,6 +91,8 @@ for (var i = 0; i < 10; i++) {
         console.log(err);
       }
     });
+
+    user.authored_tours.push({_id: tour._id, title: tour.title});
   };
 };
 

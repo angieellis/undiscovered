@@ -20,17 +20,14 @@ var tours = require('./controllers/tours');
 
 var app = express();
 
-
 // setting up ejsLayouts
 app.use(ejsLayouts);
 
 // view engine setup
-
 app.engine('html', require('ejs').renderFile);
-
-app.use(express.static(__dirname + '../public'));
 app.set('views', path.join(__dirname, 'views/'));
 app.set("view engine","ejs");
+app.use(express.static(__dirname + '../public'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -72,9 +69,9 @@ app.post('/signup', users.add);
 
 app.get('/dashboard', users.showDash);
 
-app.get('/users/show/:id', users.userPage)
+app.get('/users/show/:id', users.renderUser);
 
-app.get('/users/show', users.showUsers)
+app.get('/users/show', users.showUsers);
 app.get('/users/:id', users.getUser);
 app.put('/users/:id', users.update);
 app.delete('/users/:id', users.destroy);
@@ -90,14 +87,15 @@ app.get('/tours/', tours.findTours);
 app.get('/tours/:id', tours.getTour);
 app.put('/tours/:id', tours.update);
 app.delete('/tours/:id', tours.destroy);
-app.get('/tours/display/:id', tours.displayTour)
+app.get('/tours/display/:id', tours.renderTour);
 
 //set routes for browsing tours
 app.get('/browse', tours.browse);
+app.get('/browse/cities', tours.browseCities);
+app.get('/browse/interests', tours.browseInterests);
 app.post('/browse', tours.findTours);
 app.post('/browse/tags', tours.findByTag);
-
-app.get('/browse_tours', tours.browseTours)
+app.get('/browse_tours', tours.renderBrowse);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
