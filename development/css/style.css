@@ -7,7 +7,6 @@
 	top:100px;
 	left:35%;
 	width:30%;
-	color:white;
 	min-width:400px;
 	max-width:600px;
 	margin:0 auto;
@@ -19,6 +18,9 @@
 	z-index:2;
 }
 
+.formbox h3, .formbox p {
+	color:white;
+}
 
 .formbox input[type="text"], .formbox input[type="password"]{
 	font-size:16px;
@@ -37,6 +39,7 @@
 .formbox input[type="submit"] {
 	background-color:#1E88E5;
 	width:110px;
+	color:white;
 	font-size:14px;
 	height:32px;
 	margin:15px;

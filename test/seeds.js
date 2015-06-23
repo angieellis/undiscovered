@@ -66,7 +66,7 @@ for (var i = 0; i < 10; i++) {
       state: city[1],
       zip: city[2],
       coordinates: city[3],
-      video_id: faker.image.imageUrl(),
+      video_id: "gDJ2THIbfQw",
       photo_urls: [faker.image.imageUrl(), faker.image.imageUrl()],
       content: faker.lorem.paragraph(),
       tags: [
