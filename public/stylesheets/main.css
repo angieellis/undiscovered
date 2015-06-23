@@ -64,20 +64,48 @@ ul, ol {
     -webkit-padding-before: 0;
 }
 
+.tr-head {
+    background-color: none;
+    /*Opacity start*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.80;
+    -khtml-opacity: 0.8;
+    opacity: 0.8;
+    /*Opacity end*/
+    color: white;
+    position: fixed;
+    padding: 0;
+    margin: 0;
+}
+
 .debug {
     border: 1px solid red;
 }
 
+.m-none { margin: 0; }
+.mr-small { margin-right: .5em; }
+
+
+.p-xs { padding: .5em;}
 .p-sm { padding: 1em;}
 .p-md { padding: 4em; }
 .p-lg { padding: 7em;}
 .p-xxl { padding: 10em; }
-.p-hero { padding: 19em; }
+.p-none { padding: 0;}
 
-.fz-l { font-size: 4em; }
+.p-hero { padding: 22em; }
+
+.fz-xs { font-size: 1.5em; }
+.fz-sm { font-size: 2.5em; }
+.fz-lg { font-size: 4.5em; }
 .fz-xxl { font-size: 16em; }
+.fs-index { font-family: ''Julius Sans One'', sans-serif; }
 .fc-light {color: white;}
+.fc-dark {color: #042037};
 .bgc-cool { background-color: blue; }
+
+.txt-sdw { text-shadow: 2px 2px #042037; }
 
 .fl-l { float: left; }
 .fl-r { float: right; }
@@ -92,13 +120,13 @@ ul, ol {
     background-image: url("https://santabarbariansandtheircars.files.wordpress.com/2014/02/baby_blue_3.jpg");
     background-size: cover;
     width: 100%;
-    height: 50em;
+    height: 100%;
 }
 
 .va-mid { vertical-align: middle; }
 .txt-center { text-align: center;}
 
-/*.full-container { width: 100%; }*/
+.full-container { width: 100%; }
 
 body { background-color: #ece8e5; }
 
@@ -110,6 +138,21 @@ footer {
     bottom: 0px;
 }
 
+.discover {
+    width: 15em;
+    display: inline-block;
+    margin: auto;
+    border-radius: .5em;
+    background-color: #042037;
+    /*Opacity start*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.80;
+    -khtml-opacity: 0.8;
+    opacity: 0.8;
+    /*Opacity end*/
+
+}
 
 /* ==========================================================================
    Media Queries
