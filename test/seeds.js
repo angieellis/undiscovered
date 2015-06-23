@@ -13,8 +13,8 @@ mongoose.connect('mongodb://localhost/yourguide_development');
 // // require User and Tour model
 var User = require('../models/user').User;
 var Tour = require('../models/tour').Tour;
-var City = require('../models/Category').City;
-var Interest = require('../models/Category').Interest;
+var City = require('../models/categories').City;
+var Interest = require('../models/categories').Interest;
 
 var faker = require('faker');
 
@@ -79,7 +79,7 @@ for (var i = 0; i < 10; i++) {
         photo_url: faker.image.imageUrl()
       },
       tour_guide: {
-        _id: mongoose.Types.ObjectId(user._id),
+        _id: user._id,
         username: user.username
       },
       comments: [],
@@ -91,6 +91,8 @@ for (var i = 0; i < 10; i++) {
         console.log(err);
       }
     });
+
+    user.authored_tours.push({_id: tour._id, title: tour.title});
   };
 };
 
@@ -113,3 +115,6 @@ for (var i = 0; i < interestTags.length; i++) {
 setTimeout( function () {
   mongoose.disconnect();
 }, 2000);
+
+// var cities = ["San Francisco, California", "Manhattan, New York", "Boston, Massachusetts", "Seattle, Washington", "Portland, Oregon", "Salt Lake City, Utah"];
+//sf : http://s3.amazonaws.com/tgc-ee2/articles/San-Francisco.jpg

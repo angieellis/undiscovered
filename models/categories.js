@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 var citySchema = new Schema({
   name: {
     type: String,
+    unique: true,
     trim: true
   }
 });
@@ -12,6 +13,7 @@ var citySchema = new Schema({
 var interestSchema = new Schema({
   name: {
     type: String,
+    unique: true,
     trim: true
   }
 });
