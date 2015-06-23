@@ -24,8 +24,6 @@ var app = express();
 // setting up ejsLayouts
 app.use(ejsLayouts);
 
-app.use(ejsLayouts);
-
 // view engine setup
 
 app.engine('html', require('ejs').renderFile);
@@ -74,6 +72,9 @@ app.post('/signup', users.add);
 
 app.get('/dashboard', users.showDash);
 
+app.get('/users/show/:id', users.userPage)
+
+app.get('/users/show', users.showUsers)
 app.get('/users/:id', users.getUser);
 app.put('/users/:id', users.update);
 app.delete('/users/:id', users.destroy);

@@ -103,7 +103,7 @@ var searchView = new SearchView()
 // TOUR/:ID PAGE
 // **************************************************************************
 
-var userMongoId = window.location.pathname.slice(15)
+var tourMongoId = window.location.pathname.slice(15)
 
 var IndividualTour = Backbone.Model.extend({
   idAttribute: "_id",
@@ -111,7 +111,7 @@ var IndividualTour = Backbone.Model.extend({
 })
 
 var individualTour = new IndividualTour({
-  _id: userMongoId
+  _id: tourMongoId
 })
 
 individualTour.fetch()
@@ -142,3 +142,14 @@ var IndividualTourView = Backbone.View.extend({
 
 var individualTourView = new IndividualTourView()
 
+
+// **************************************************************************
+// USER/:ID PAGE
+// **************************************************************************
+
+var User = Backbone.Model.extend({
+  idAttribute: "_id",
+  urlRoot: "/users"
+})
+
+var tourMongoId = window.location.pathname.slice(15)

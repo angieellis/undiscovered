@@ -138,3 +138,18 @@ exports.destroy = function(req, res, next) {
   // returns true if user was successfully destroyed
   // otherwise, returns error message
 };
+
+exports.showUsers = function(req, res, next) {
+  User.find({}, function(err, users){
+    if (err || !users) {
+      // return error message if error occurs or tour isn't saved
+      console.log("Error: " + err);
+      res.json(err);
+    };
+    res.json(users);
+  });
+}
+
+exports.userPage = function(req, res, next) {
+  res.render('user_page')
+}
