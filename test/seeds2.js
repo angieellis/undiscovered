@@ -10,28 +10,27 @@ var User = require('../models/user').User;
 var Tour = require('../models/tour').Tour;
 
 var userList;
+var tourList;
 
 User.find({}, function(err, users) {
   if(err) {
     console.log(err);
   } else {
     userList = users;
+    getTours();
   }
 });
 
-var tourList;
-
-Tour.find({}, function(err, tours) {
-  if (err) {
-    console.log("error: ", err);
-  } else {
-    tourList = tours;
-  }
-});
-
-setTimeout( function () {
-  getWishes();
-}, 2000);
+var getTours = function() {
+  Tour.find({}, function(err, tours) {
+    if (err) {
+      console.log("error: ", err);
+    } else {
+      tourList = tours;
+      getWishes();
+    }
+  });
+}
 
 var getWishes = (function(){
   for (var i = 0; i < userList.length; i++) {
@@ -63,4 +62,4 @@ setTimeout( function () {
     if (err) throw err;
     console.log('disconnected');
   });
-}, 6000);
+}, 5000);
