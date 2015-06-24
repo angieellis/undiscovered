@@ -30,7 +30,7 @@ var coordinates = [[122.4167, 37.7833], [73.9597, 40.7903], [71.0589, 42.3601], 
 
 var interestTags = ["Food", "Shopping", "Outdoors", "Sights", "Lifestyle", "Parks", "Activities"];
 var otherTags = ["Beach", "Hike", "Quick", "Group", "Parking", "Dangerous", "Easy", "Relaxing", "Physical"];
-var cities = ["San Francisco, California", "Manhattan, New York", "Boston, Massachusetts", "Seattle, Washington", "Portland, Oregon", "Salt Lake City, Utah"];
+var cities = [["San Francisco, California", "http://s3.amazonaws.com/tgc-ee2/articles/San-Francisco.jpg"], ["Manhattan, New York", "http://www.rew-online.com/wp-content/uploads/2013/02/LowerManhattan.jpg"], ["Boston, Massachusetts", "http://lizzdurbin.files.wordpress.com/2010/09/boston.jpg"], ["Seattle, Washington", "http://doubletree3.hilton.com/resources/media/dt/CTAC-DT/en_US/img/shared/full_page_image_gallery/main/dh_seattleskyline_11_677x380_FitToBoxSmallDimension_Center.jpg"], ["Portland, Oregon", "http://joshblatteryoga.com/wp-content/uploads/2013/06/oregon.jpg"], ["Salt Lake City, Utah", "https://www.dfcu.com/images/backgrounds/salt-lake-city-skyline-cropped.jpg"]];
 
 var citiesHash = [["San Francisco", "CA", 94105, [122.4167, 37.7833]], ["Manhattan", "NY", 10021, [73.9597, 40.7903]], ["Boston", "MA", 02108, [71.0589, 42.3601]], ["Seattle", "WA", 98101, [122.3331, 47.6097]], ["Portland", "OR", 97201, [122.6819, 45.5200]], ["Salt Lake City", "UT", 84101, [111.8833, 40.7500]]];
 
@@ -40,6 +40,7 @@ for (var i = 0; i < 10; i++) {
 
   var userName = faker.internet.userName();
   var user = new User({
+    profile_pic: "https://avatars1.githubusercontent.com/u/24913?v=3&s=400",
     username: userName,
     password: userName,
     first_name: faker.name.firstName(),
@@ -97,7 +98,10 @@ for (var i = 0; i < 10; i++) {
 };
 
 for (var i = 0; i < cities.length; i++) {
-  City.create({"name" : cities[i]}, function(err, categories) {
+  City.create({
+    "name" : cities[i][0],
+    "photo_url" : cities[i][1]
+  }, function(err, categories) {
     if (err) {
       console.log(err);
     }
@@ -116,5 +120,9 @@ setTimeout( function () {
   mongoose.disconnect();
 }, 2000);
 
-// var cities = ["San Francisco, California", "Manhattan, New York", "Boston, Massachusetts", "Seattle, Washington", "Portland, Oregon", "Salt Lake City, Utah"];
 //sf : http://s3.amazonaws.com/tgc-ee2/articles/San-Francisco.jpg
+//ny : http://www.rew-online.com/wp-content/uploads/2013/02/LowerManhattan.jpg
+//ma : http://lizzdurbin.files.wordpress.com/2010/09/boston.jpg
+//wa : http://doubletree3.hilton.com/resources/media/dt/CTAC-DT/en_US/img/shared/full_page_image_gallery/main/dh_seattleskyline_11_677x380_FitToBoxSmallDimension_Center.jpg
+//or : http://joshblatteryoga.com/wp-content/uploads/2013/06/oregon.jpg
+//ut : https://www.dfcu.com/images/backgrounds/salt-lake-city-skyline-cropped.jpg

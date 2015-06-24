@@ -3,14 +3,11 @@ var mongoose = require("mongoose-q")();
 
 var User = require('../models/user').User;
 var Tour = require('../models/tour').Tour;
-var usrCtrl = require('./users');
+var main = require('./index');
 
 // get route method to show user dashboard
 exports.showDash = function(req, res, next) {
-  console.log("in show dash");
-  // var user = usrCtrl.currentUser();
   var userInfo = [];
-  // console.log(user);
   // use promises to handle async callbacks
   // find user from given id
   User.findOneQ(mongoose.Types.ObjectId("5589b20dc3d2f7bf352874a0"))
@@ -58,12 +55,11 @@ exports.add = function(req, res, next) {
   // create new user
   var user = new User(req.params);
     // username: req.body.username,
-    // password_hash: req.body.password,
+    // password: req.body.password,
     // first_name: req.body.first_name,
-    // middle_initial: req.body.middle_initial,
     // last_name: req.body.last_name,
     // email: req.body.email,
-    // phone_numbers: req.body.phone_numbers,
+    // phone_number: req.body.phone_numbers,
     // city: req.body.city,
     // state: req.body.state,
     // zip: req.body.zip

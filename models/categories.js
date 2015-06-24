@@ -7,7 +7,8 @@ var citySchema = new Schema({
     type: String,
     unique: true,
     trim: true
-  }
+  },
+  photo_url: String
 });
 
 var interestSchema = new Schema({
