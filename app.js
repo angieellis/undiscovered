@@ -1,6 +1,5 @@
 // require node modules
 var express = require('express');
-var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -17,45 +16,29 @@ mongoose.connect('mongodb://localhost/yourguide_development');
 var main = require('./controllers/index');
 var users = require('./controllers/users');
 var tours = require('./controllers/tours');
+var User = require('./models/user').User;
 
 var app = express();
-
 
 // setting up ejsLayouts
 app.use(ejsLayouts);
 
 // view engine setup
-
 app.engine('html', require('ejs').renderFile);
-
-app.use(express.static(__dirname + '../public'));
 app.set('views', path.join(__dirname, 'views/'));
 app.set("view engine","ejs");
+app.use(express.static(__dirname + '../public'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// session initialization
-app.use(session({
-  secret: "yourguide",
-  resave: false,
-  saveUninitialized: true
-}));
 
 // passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use(function(req,res,next) {
-  res.locals.isAuthenticated = req.isAuthenticated();
-  res.locals.user = req.user;
-  next();
-})
 
 // set main routes for index controller
 app.get('/', main.index);
@@ -70,11 +53,12 @@ app.get('/auth/google/callback', main.oauthRedirect);
 app.get('/signup', users.newUser);
 app.post('/signup', users.add);
 
-app.get('/dashboard', users.showDash);
+app.get('/dashboard/:id', users.showDash);
+app.get('/show_dashboard', users.renderDash);
 
-app.get('/users/show/:id', users.userPage)
+app.get('/users/show/:id', users.renderUser);
 
-app.get('/users/show', users.showUsers)
+app.get('/users/show', users.showUsers);
 app.get('/users/:id', users.getUser);
 app.put('/users/:id', users.update);
 app.delete('/users/:id', users.destroy);
@@ -90,20 +74,73 @@ app.get('/tours/', tours.findTours);
 app.get('/tours/:id', tours.getTour);
 app.put('/tours/:id', tours.update);
 app.delete('/tours/:id', tours.destroy);
-app.get('/tours/display/:id', tours.displayTour)
+app.get('/tours/display/:id', tours.renderTour);
 
 //set routes for browsing tours
 app.get('/browse', tours.browse);
+app.get('/browse/cities', tours.browseCities);
+app.get('/browse/interests', tours.browseInterests);
 app.post('/browse', tours.findTours);
 app.post('/browse/tags', tours.findByTag);
-
-app.get('/browse_tours', tours.browseTours)
+app.get('/browse_tours', tours.renderBrowse);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
+});
+
+// passport module configuration
+var LocalStrategy = require('passport-local').Strategy,
+    GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
+
+passport.use(new LocalStrategy(
+  // method to find user and validate password
+  function(username, password, done) {
+    console.log("in local func");
+    console.log(username);
+    User.findOne({ username: username }, function (err, user) {
+      console.log("in findOne");
+      console.log(user);
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
+
+// method to validate user with Google Oauth
+passport.use(new GoogleStrategy({
+    clientID:     process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: "http://yourdormain:3000/auth/google/callback",
+    passReqToCallback   : true
+  },
+  function(request, accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
+
+// method to save user session
+passport.serializeUser(function(user, done) {
+  // var userInfo = { id: user.id, googleId: user.googleId };
+  // console.log(userInfo);
+  done(null, user.id);
+});
+
+// method to clear user session
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
 });
 
 // error handlers
@@ -129,5 +166,7 @@ app.use(function(err, req, res, next) {
   //   error: {}
   // });
 });
+
+// app.listen(3000);
 
 module.exports = app;
