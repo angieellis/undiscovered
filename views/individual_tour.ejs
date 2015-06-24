@@ -1,28 +1,44 @@
-<div class="ind-tour">
+<div class="not-index container">
+
+<div id="individual-tour-display"></div>
 
 
-  <div id="individual-tour-display" class="debug"></div>
+<script id="individual-tour-template" type="text/x-handlebars-template">
 
+  <div class="tour-text p-sm debug">
+    <div class="fz-lg debug">
+      {{title}}
+    </div>
 
-  <script id="individual-tour-template" type="text/x-handlebars-template">
-    {{title}}
-    <br>
-    <a href="/tours/{{_id}}">
-    <img src="{{trailer.photo_url}}">
-    {{city}}
-    <br>
-    {{state}}
-    <br>
-    {{tags}}
-    <br>
-    {{_id}}
-    <br>
-    {{video_id}}
-    <br>
-    {{coordinates}}
-    </a>
-    </script>
-</div>
+    <div class="location fz-sm debug">
+      {{city}}, {{state}}
+    </div>
+
+    <div class="description fz-xs debug">
+      {{trailer.description}} Im jstoijaf;ajsdf;lkja alkdjf;klsdjfadf asjf adding text to have a bigger description and what not a;kdfj;askdfj.skjljse ;fkajdsflkjas;dfkj.kzmklj;fkasf.kda flskfj.askdjf; jfaksldjf a;lkdjfa;sdlkfjals;dkfj jf;lkasjdf ;akldjsf;alskdjf fjsiekd fjfisle  jfifl jsi jfieleke tjtke eke ghs srtkaofdj lkjf wjek jflfjskljf
+    </div>
+
+    <div class="debug">
+      {{tags}}
+    </div>
+
+    <p id="coordinates" style="display:none;">{{coordinates}}</p>
+  </div>
+
+  <div class="actions span-4-t debug">
+    <i class="fa fa-star-o fa-4x"></i>
+    Option to Favorite or add to Wishlist
+  </div>
+
+  <div class="user-info span-4-t debug">
+    {{tour_guide.username}}
+  </div>
+
+    <img src="{{trailer.photo_url}}" class="trailer">
+    <iframe width="420" height="345"
+      src="http://www.youtube.com/embed/{{video_id}}">
+    </iframe>
+</script>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 
@@ -60,4 +76,6 @@ function setMarkers(map, locations) {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>
-<div id="map-canvas"></div>
+<div  class="debug" id="map-canvas"></div>
+
+</div>
