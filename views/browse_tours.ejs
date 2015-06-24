@@ -1,4 +1,5 @@
-<div class="not-index container">
+<link rel="stylesheet" href="/stylesheets/main.css">
+<link rel="stylesheet" href="/stylesheets/browse.css">
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 <script src="javascript/browse.js"></script>
@@ -29,9 +30,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </div>
  -->
 <body>
-  <h1>Browse</h1>
-  <div class="browse-wrapper">
-
+  <div id="center-box" class=" container cl-b">
+    <h1 class="txt-center mt-xss mb-md debug fz-md ">Discover</h1>
     <br>
 <!--
     <div class="browse-search">
@@ -43,19 +43,15 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     <br>
 
-    <div class="browse-container">
+    <div class="browse-container ">
+      <h2 class="fz-xxss m-none">Browse by Interests</h2>
+      <div class="browse-interests interests-container clearfix ">
 
-      <div class="browse-interests">
-        <h3>Browse by Interests</h3>
-        <div class="list-of-interests">
-
-        </div>
       </div>
-
       <br>
 
-      <div class="browse-cities">
-        <h3>Browse by Cities</h3>
+      <h2 class="fz-xxss m-none ">Browse by Cities</h2>
+      <div class="browse-cities cl-b  p-ssm clearfix">
         <div class="list-of-cities">
 
         </div>
@@ -64,6 +60,59 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </div>
 
   </div>
+</body>
+
+<div class="not-index container">
+
+  <p>Click the button to get your coordinates.</p>
+
+  <button onclick="getCurrentPosition()">Try It</button>
+
+</div>
+
+<script id="interest-template" type="text/x-handlebars-template">
+  <a href="#interest_item?{{name}}" >
+    <div class="interest-template-div fl-l p-rt-md p-lf-md p-lt mb-lg mr-xss debug">
+      <h3 class="m-none fz-xxxs">{{name}}</h3>
+    </div>
+  </a>
+</script>
+
+<script id="city-template" type="text/x-handlebars-template">
+  <a href="#city_item?{{name}}">
+    <div class="debug fl-l m-ssm box-225">
+      <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/8/005/038/221/2d4502f.jpg" class="city-img debug">
+      <h2 class="city-img-text">{{name}}</h2>
+    </div>
+  </a>
+</script>
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+
+<script src="javascript/browse.js"></script>
+
+<script>
+  var geocoder;
+  var map;
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+  }
+
+  function codeAddress() {
+    var address = document.getElementById('address').value;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        console.log(results[0].geometry.location);
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 
   <!-- <br> -->
   <!--
@@ -72,20 +121,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <div class="tours-list">
     </div>
   </div> -->
-
 </body>
 
-<script id="interest-template" type="text/x-handlebars-template">
-  <a href="#interest_item?{{name}}">
-    <h2>{{name}}</h2>
-  </a>
-</script>
 
-<script id="city-template" type="text/x-handlebars-template">
-  <a href="#city_item?{{name}}"><div>
-    <img src="{{photo_urls}}"><h2>{{name}}</h2>
-  </div></a>
-</script>
 
 <script id="search-result-template" type="text/x-handlebars-template">
   <p>
