@@ -98,11 +98,7 @@ var LocalStrategy = require('passport-local').Strategy,
 passport.use(new LocalStrategy(
   // method to find user and validate password
   function(username, password, done) {
-    console.log("in local func");
-    console.log(username);
     User.findOne({ username: username }, function (err, user) {
-      console.log("in findOne");
-      console.log(user);
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });

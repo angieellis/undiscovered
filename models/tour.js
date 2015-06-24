@@ -43,7 +43,7 @@ var tourSchema = new Schema({
   },
 
   tags: {
-    type: [String],
+    type: String,
     trim: true
   },
 

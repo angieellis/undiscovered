@@ -1,5 +1,6 @@
 // seed database with faker data
 // run command: node test/seeds.js
+// second seed file: test/seeds2.js
 
 //***********************************************
 // doesn't stop execution for unknown reason
@@ -27,8 +28,8 @@ var faker = require('faker');
 // // OR: 45.5200° N, 122.6819° W
 // // UT: 40.7500° N, 111.8833° W
 
-var interestTags = ["Food", "Shopping", "Outdoors", "Sights", "Lifestyle", "Parks", "Activities"];
-var otherTags = ["Beach", "Hike", "Quick", "Group", "Parking", "Dangerous", "Easy", "Relaxing", "Physical"];
+var interestTags = ["Food", "Shopping", "Hiking", "Sports", "Beer/Wine", "Nature", "Educational", "Historic", "Arts", "Music", "Theater", "Group", "Lifestyle", "Parks", "Festivals", "Alternative", "Technology", "Business", "Museum"];
+
 var cities = [["San Francisco, California", "http://s3.amazonaws.com/tgc-ee2/articles/San-Francisco.jpg"], ["Manhattan, New York", "http://www.rew-online.com/wp-content/uploads/2013/02/LowerManhattan.jpg"], ["Boston, Massachusetts", "http://lizzdurbin.files.wordpress.com/2010/09/boston.jpg"], ["Seattle, Washington", "http://doubletree3.hilton.com/resources/media/dt/CTAC-DT/en_US/img/shared/full_page_image_gallery/main/dh_seattleskyline_11_677x380_FitToBoxSmallDimension_Center.jpg"], ["Portland, Oregon", "http://joshblatteryoga.com/wp-content/uploads/2013/06/oregon.jpg"], ["Salt Lake City, Utah", "https://www.dfcu.com/images/backgrounds/salt-lake-city-skyline-cropped.jpg"]];
 
 var citiesHash = [["San Francisco", "CA", 94105, [122.4167, 37.7833]], ["Manhattan", "NY", 10021, [73.9597, 40.7903]], ["Boston", "MA", 02108, [42.3601, 71.0589]], ["Seattle", "WA", 98101, [122.3331, 47.6097]], ["Portland", "OR", 97201, [122.6819, 45.5200]], ["Salt Lake City", "UT", 84101, [111.8833, 40.7500]]];
@@ -69,11 +70,7 @@ for (var i = 0; i < 10; i++) {
       video_id: "gDJ2THIbfQw",
       photo_urls: [faker.image.imageUrl(), faker.image.imageUrl()],
       content: faker.lorem.paragraph(),
-      tags: [
-        interestTags[Math.floor(Math.random()*interestTags.length)],
-        otherTags[Math.floor(Math.random()*otherTags.length)],
-        otherTags[Math.floor(Math.random()*otherTags.length)]
-      ],
+      tags: interestTags[Math.floor(Math.random()*interestTags.length)],
       trailer: {
         description: faker.lorem.sentence(),
         photo_url: faker.image.imageUrl()

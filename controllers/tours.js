@@ -136,7 +136,6 @@ exports.browse = function(req, res, next) {
   // find list of cities
   City.findQ()
   .then(function(cities) {
-    console.log(cities);
     categories.push(cities);
     findInterests();
   })
