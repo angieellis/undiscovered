@@ -18,11 +18,61 @@
     },
     cityRender: function() {
       console.log("City Render")
+      console.log(tourCollection)
       $(".browse-container").html("")
+      var userSelection = window.location.toString().split("?")[1]
+      var selectedCity = userSelection.split(",")[0]
+      console.log(selectedCity)
+
+      var ToursView = Backbone.View.extend({
+        model: filterCollection,
+        initialize: function() {
+          console.log(selectedCity)
+          var filterCollection = tourCollection.where({city: selectedCity})
+          console.log(filterCollection)
+
+          var template = $("#selected-city-template").html();
+          var compiled = Handlebars.compile(template);
+          for (var i=0; i < filterCollection.length; i++) {
+            console.log(filterCollection[i])
+            var html = compiled(filterCollection[i].attributes);
+            $(".browse-container").append(html)
+          }
+        },
+      })
+
+      var toursView = new ToursView()
+
+      var individualTourView = new IndividualTourView()
+
+
     },
     interestRender: function() {
       console.log("Interest Render")
+      console.log(tourCollection)
+      console.log(filterCollection)
       $(".browse-container").html("")
+      var selectedInterest = window.location.toString().split("?")[1]
+      console.log(selectedInterest)
+
+      var ToursView = Backbone.View.extend({
+        model: filterCollection,
+        initialize: function() {
+          console.log(selectedInterest)
+          var filterCollection = tourCollection.where({city: selectedInterest})
+          console.log(filterCollection)
+
+          var template = $("#selected-city-template").html();
+          var compiled = Handlebars.compile(template);
+          for (var i=0; i < filterCollection.length; i++) {
+            console.log(filterCollection[i])
+            var html = compiled(filterCollection[i].attributes);
+            $(".browse-container").append(html)
+          }
+        },
+      })
+
+
     }
   })
 
@@ -31,111 +81,111 @@
 
 })();
 
-// **************************************************************************
-// TOUR ALL HANDLEBARS MODEL
-// **************************************************************************
+// // **************************************************************************
+// // TOUR ALL HANDLEBARS MODEL
+// // **************************************************************************
 
 
-var Tour = Backbone.Model.extend({
-  idAttribute: "_id"
-});
+// var Tour = Backbone.Model.extend({
+//   idAttribute: "_id"
+// });
 
-var TourCollection = Backbone.Collection.extend({
-  url: "/tours/show"
-})
+// var TourCollection = Backbone.Collection.extend({
+//   url: "/tours/show"
+// })
 
-var tourCollections = new TourCollection()
+// var tourCollections = new TourCollection()
 
-var TourView = Backbone.View.extend({
-  model: new Tour(),
-  tagName: "div",
-  render: function() {
-    var template = $("#tour-template").html();
-    var compiled = Handlebars.compile(template);
-    var html = compiled(this.model.attributes);
-    this.$el.html(html);
-    return this;
-  }
-})
+// var TourView = Backbone.View.extend({
+//   model: new Tour(),
+//   tagName: "div",
+//   render: function() {
+//     var template = $("#tour-template").html();
+//     var compiled = Handlebars.compile(template);
+//     var html = compiled(this.model.attributes);
+//     this.$el.html(html);
+//     return this;
+//   }
+// })
 
-var ToursView = Backbone.View.extend({
-  model: tourCollections,
-  el: $('.tours-list'),
-  initialize: function() {
-    var self = this;
-    this.model.fetch({
-      success: function( collection, response, options ) {
-        _.each(collection.toJSON(), function(item){
-          // console.log("Successfully got tour with _id: " + item.title);
-        })
-      },
-      error: function() {
-        console.log("Failed to get tours!");
-      }
-    });
-    this.listenTo(this.model, 'sync', this.render)
-  },
-  render: function() {
-    var self = this;
-    var allModels = this.model.models
-    for (var i=0; i < allModels.length; i++) {
-      var tourView = new TourView({model: allModels[i]})
-      this.$el.append(tourView.render().el)
-    };
-    return this;
-  }
-})
+// var ToursView = Backbone.View.extend({
+//   model: tourCollections,
+//   el: $('.tours-list'),
+//   initialize: function() {
+//     var self = this;
+//     this.model.fetch({
+//       success: function( collection, response, options ) {
+//         _.each(collection.toJSON(), function(item){
+//           // console.log("Successfully got tour with _id: " + item.title);
+//         })
+//       },
+//       error: function() {
+//         console.log("Failed to get tours!");
+//       }
+//     });
+//     this.listenTo(this.model, 'sync', this.render)
+//   },
+//   render: function() {
+//     var self = this;
+//     var allModels = this.model.models
+//     for (var i=0; i < allModels.length; i++) {
+//       var tourView = new TourView({model: allModels[i]})
+//       this.$el.append(tourView.render().el)
+//     };
+//     return this;
+//   }
+// })
 
-var toursView = new ToursView()
-
-
-// **************************************************************************
-// SEARCH BY CITY
-// **************************************************************************
+// var toursView = new ToursView()
 
 
-var searchCollections = new TourCollection()
+// // **************************************************************************
+// // SEARCH BY CITY
+// // **************************************************************************
 
-var SearchView = Backbone.View.extend({
-  el: ".browse-container",
-  model: searchCollections,
-  events: {
-    "submit #browse-search-form" : "createSearch",
-  },
-  initialize: function() {
-    console.log("ALSDKFJGAFKGJDAFKGJ")
-    // this.collection = searchCollections;
-  },
 
-  createSearch: function(event) {
-    console.log("INSIDE createSearch")
-    event.preventDefault();
-    var searchInput = $(".browse-search-input").val();
-    var correspondingList = tourCollections.where({ city: searchInput })
-    console.log(correspondingList)
-    searchCollections.reset(correspondingList)
-    console.log("break")
-    console.log(searchCollections)
-    this.render()
-  },
+// var searchCollections = new TourCollection()
 
-  render: function() {
-    var self = this;
-    var allModels = searchCollections
-    $(".browse-container").empty()
+// var SearchView = Backbone.View.extend({
+//   el: ".browse-container",
+//   model: searchCollections,
+//   events: {
+//     "submit #browse-search-form" : "createSearch",
+//   },
+//   initialize: function() {
+//     console.log("ALSDKFJGAFKGJDAFKGJ")
+//     // this.collection = searchCollections;
+//   },
 
-    for (var i=0; i < allModels.length; i++) {
-      var template = $("#search-result-template").html();
-      var compiled = Handlebars.compile(template);
-      var html = compiled(allModels.models[i].attributes);
-      $(".browse-container").append(html);
-    };
-    return this;
-  }
+//   createSearch: function(event) {
+//     console.log("INSIDE createSearch")
+//     event.preventDefault();
+//     var searchInput = $(".browse-search-input").val();
+//     var correspondingList = tourCollections.where({ city: searchInput })
+//     console.log(correspondingList)
+//     searchCollections.reset(correspondingList)
+//     console.log("break")
+//     console.log(searchCollections)
+//     this.render()
+//   },
 
-})
+//   render: function() {
+//     var self = this;
+//     var allModels = searchCollections
+//     $(".browse-container").empty()
 
-var searchView = new SearchView()
+//     for (var i=0; i < allModels.length; i++) {
+//       var template = $("#search-result-template").html();
+//       var compiled = Handlebars.compile(template);
+//       var html = compiled(allModels.models[i].attributes);
+//       $(".browse-container").append(html);
+//     };
+//     return this;
+//   }
+
+// })
+
+// var searchView = new SearchView()
 
 // **************************************************************************
 // TOUR/:ID PAGE
@@ -400,3 +450,37 @@ var InterestsView = Backbone.View.extend({
 })
 
 var interestsView = new InterestsView()
+
+
+
+
+// **************************************************************************
+// LIST ALL TOURS
+// **************************************************************************
+
+var Tour = Backbone.Model.extend({
+  idAttribute: "_id"
+});
+
+var TourCollection = Backbone.Collection.extend({
+  url: "/tours/show"
+})
+
+var tourCollection = new TourCollection()
+
+tourCollection.fetch()
+
+var filterCollection = new TourCollection()
+
+
+var individualTourView = new IndividualTourView()
+
+// **************************************************************************
+// LIST TOURS BY CITIES
+// **************************************************************************
+
+
+
+// **************************************************************************
+// LIST TOURS BY INTERESTS
+// **************************************************************************

@@ -53,7 +53,7 @@ app.get('/auth/google/callback', main.oauthRedirect);
 app.get('/signup', users.newUser);
 app.post('/signup', users.add);
 
-app.get('/dashboard/:id', users.showDash);
+app.get('/dashboard', users.showDash);
 app.get('/show_dashboard', users.renderDash);
 
 app.get('/users/show/:id', users.renderUser);
