@@ -3,7 +3,7 @@ var map;
 
 function initialize() {
   geocoder = new google.maps.Geocoder();
-  var latlng = new google.maps.LatLng(-34.397, 150.644); //Setting Default
+  var latlng = new google.maps.LatLng(37.774929, -122.419416); //Setting Default
   var mapOptions = {
     zoom: 8,
     center: latlng

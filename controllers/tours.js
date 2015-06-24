@@ -72,7 +72,6 @@ exports.findTours = function(req, res, next) {
 // get route method to find and show tour
 exports.getTour = function(req, res, next) {
   // expects to receive json object with tour id
-
   // find tour to show
   Tour.findOne(mongoose.Types.ObjectId(req.params.id), function(err, tour) {
     if (err || !tour) {
@@ -204,5 +203,6 @@ exports.renderBrowse = function(req, res, next) {
 }
 
 exports.renderTour = function(req, res, next) {
+  debugger
   res.render("individual_tour");
 }
