@@ -35,7 +35,6 @@ exports.showTour = function(req, res, next) {
 // post route method to add new tour record
 exports.add = function(req, res, next) {
   // expects to receive json object with new tour attributes
-
   var tourParams = req.body;
   tourParams["tour_guide"] = { "_id": mongoose.Types.ObjectId("558aec856b56e1e9333c2609"), "username": "Eve_Wyman" }
 

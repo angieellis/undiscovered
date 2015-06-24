@@ -1,4 +1,15 @@
 // require node modules
+<<<<<<< HEAD
+var express = require('express');
+var session = require('express-session');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var passport = require('passport');
+var ejsLayouts = require('express-ejs-layouts');
+=======
 require('dotenv').load();
 var express = require('express'),
     path = require('path'),
@@ -10,16 +21,23 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     passport = require('passport'),
     ejsLayouts = require('express-ejs-layouts');
+>>>>>>> master
 
 // set up connection to database
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/yourguide_development');
 
 // require controllers for setting routes
+<<<<<<< HEAD
+var main = require('./controllers/index');
+var users = require('./controllers/users');
+var tours = require('./controllers/tours');
+=======
 var main = require('./controllers/index'),
     users = require('./controllers/users'),
     tours = require('./controllers/tours'),
     User = require('./models/user').User,
+>>>>>>> master
 
     app = express();
 
@@ -37,6 +55,7 @@ app.use(express.static(__dirname + '../public'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // enable sessions
@@ -54,6 +73,12 @@ app.use(flash());
 // passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(function(req,res,next) {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.user = req.user;
+  next();
+})
 
 // set main routes for index controller
 app.get('/', main.index);
@@ -186,7 +211,5 @@ app.use(function(err, req, res, next) {
   //   error: {}
   // });
 });
-
-// app.listen(3000);
 
 module.exports = app;
