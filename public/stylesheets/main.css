@@ -64,19 +64,14 @@ ul, ol {
     -webkit-padding-before: 0;
 }
 
-.tr-head {
-    background-color: none;
-    /*Opacity start*/
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-    filter: alpha(opacity=80);
-    -moz-opacity: 0.80;
-    -khtml-opacity: 0.8;
-    opacity: 0.8;
-    /*Opacity end*/
+.op-head {
+    background-color: red;
     color: white;
-    position: fixed;
+    position: absolute;
+    top: 0;
     padding: 0;
     margin: 0;
+    opacity: 1;
 }
 
 .debug {
@@ -84,9 +79,11 @@ ul, ol {
 }
 
 .m-none { margin: 0; }
+.m-sm { margin: .5em; }
 .mr-small { margin-right: .5em; }
 .mt-md { margin-top: 2em; }
 .mb-md { margin-bottom: .5em; }
+.mb-sm { margin-bottom: .25em; }
 
 .b-lft { border-left: 2px solid white; }
 .b-rt { border-right: 3px solid white; }
@@ -111,6 +108,7 @@ ul, ol {
 .fz-xs { font-size: 1.5em; }
 .fz-xss { font-size: 2em; }
 .fz-sm { font-size: 2.5em; }
+.fz-md { font-size: 3em; }
 .fz-lg { font-size: 4.5em; }
 .fz-xxl { font-size: 16em; }
 .fs-index { font-family: 'Julius Sans One', sans-serif; }
@@ -145,7 +143,7 @@ ul, ol {
 
 .full-container { width: 100%; }
 
-body { background-color: #ece8e5; }
+body { background-color: white; }
 
 footer {
     right: 0;
@@ -154,6 +152,13 @@ footer {
     width: 100%;
     bottom: 0px;
 }
+
+.not-index {
+    margin-top: 60px;
+}
+
+.tour-text{}
+
 
 .discover {
     width: 15em;
@@ -168,7 +173,6 @@ footer {
     -khtml-opacity: 0.8;
     opacity: 0.8;
     /*Opacity end*/
-
 }
 
 /* ==========================================================================

@@ -13,14 +13,16 @@
     <link rel="stylesheet" href="/stylesheets/style.css"/>
     <!-- <link rel="stylesheet" href="/stylesheets/all.min.css"/> -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//apis.google.com/js/client:plusone.js"></script>
     <script type="application/javascript" src="/javascript/lib/jquery.js"></script>
     <script type="application/javascript" src="/javascript/lib/underscore.js"></script>
     <script type="application/javascript" src="/javascript/lib/backbone.js"></script>
     <script type="application/javascript" src="/javascript/all.min.js"></script>
-    <script src="/javascript/script.js"></script>
     <script type="application/javascript" src="/javascript/lib/handlebars.js"></script>
+    <script src="/javascript/script.js"></script>
     <script type="application/javascript" src="/javascript/client.js"></script>
     <script type="application/javascript" src="/javascript/script.js"></script>
     <script src="/javascript/tour_new.js"></script>
@@ -28,14 +30,14 @@
     <script src="/javascript/upload_video.js"></script>
   </head>
 
+
   <body class="fs-index">
 
-
-    <div class="tr-head full-container fz-xs">
+    <div class="op-head full-container fz-xs">
       <header class="clearfix fc-light txt-sdw p-xs">
 
 
-        <h4 class="fl-l m-none">-- UnDiscovered --</h4>
+        <h4 class="fl-l m-none">-- unDiscovered --</h4>
 
         <ul class="fl-r lis-n">
             <li class="fl-l b-bttm mr-small clearfix signin">
@@ -48,8 +50,10 @@
 
       </header>
     </div>
+
     <div id="form_area" class="form_area">
       <div class='formbox signupbox'>
+      <p class="close"><i class="fa fa-times"></i></p>
         <form action="" method="post" id="subForm">
           <h3>Signup</h3>
           <div class="input">
@@ -65,7 +69,7 @@
             <input type="password" name="password_confirmation" id="password_confirmation" placeholder="password again" />
           </div>
           <input type="submit" value="Signup" />
-          <span id="signinButton" class="pre-sign-in">
+          <span id="signinButton" class="pre-sign-in"></span>
           <span
             class="g-signin"
             data-callback="signinCallback"
@@ -73,9 +77,11 @@
             data-cookiepolicy="single_host_origin"
             data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
           </span>
-          <p class="close"><i class="fa fa-times"></i>close</p>
+          <p class="close"><i class="fa fa-times"></i> close</p>
+
         </form>
       </div>
+
       <div class='formbox signinbox '>
         <form action="" method="post" id="subForm">
           <h3>Signin</h3>
@@ -86,7 +92,7 @@
             <input type="password" name="password" id="nklki-nklki" placeholder="password" />
           </div>
           <input type="submit" value="Signin" />
-          <span id="signinButton" class="pre-sign-in">
+          <span id="signinButton" class="pre-sign-in"></span>
           <span
             class="g-signin"
             data-callback="signinCallback"
@@ -94,12 +100,13 @@
             data-cookiepolicy="single_host_origin"
             data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
           </span>
-          <p class="close"><i class="fa fa-times"></i>close</p>
+          <p class="close"><i class="fa fa-times"></i> close</p>
          </form>
       </div>
     </div>
-    <div class="full-container">
-      <%- body %>
-    </div>
+    <%- body %>
   </body>
 </html>
+
+
+

@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 // create schema for User model
 var userSchema = new Schema({
   googleId: String,
+  profile_pic: String,
 
   username: {
     type: String,
@@ -19,13 +20,11 @@ var userSchema = new Schema({
 
   first_name: {
     type: String,
-    required: true,
     trim: true
   },
 
   last_name: {
     type: String,
-    required: true,
     trim: true
   },
 
@@ -63,13 +62,23 @@ var userSchema = new Schema({
   },
 
   wishlist: [{
-    tour_id: {
+    _id: {
       type: Schema.Types.ObjectId,
       ref: 'Tour',
       required: true
     },
 
-    tour_title: String
+    title: String
+  }],
+
+  authored_tours: [{
+     _id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Tour',
+      required: true
+    },
+
+    title: String
   }],
 
   tour_votes: [{
