@@ -59,23 +59,3 @@ exports.oauthRedirect = function(req, res, next) {
           failureRedirect: '/auth/google'
   });
 };
-
-// helper method to check if user is logged in
-exports.userLoggedIn = function() {
-  if (passport.session.name === "") {
-    return false;
-  } else {
-    return true;
-  };
-};
-
-// helper method to get user that is logged in
-exports.currentUser = function() {
-  console.log("passport local: \n", passport.deserializeUser());
-  console.log("req user :", req.user);
-  if (passport.session.name === "") {
-    return false;
-  } else {
-    return passport.session.name;
-  };
-};
