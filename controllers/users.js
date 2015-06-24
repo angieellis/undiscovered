@@ -159,6 +159,3 @@ exports.renderUser = function(req, res, next) {
   console.log("Render User")
   res.render('user_page')
 };
-
-
-

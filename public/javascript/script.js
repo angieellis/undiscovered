@@ -1,7 +1,4 @@
 $(document).ready(function(){
-	$('.signinbox').hide();
-	$('.signupbox').hide();
-
 	$('.signin').click(function(){
 		console.log("a");
 		$('.signupbox').hide();

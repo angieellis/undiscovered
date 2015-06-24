@@ -33,7 +33,7 @@ function handleAuthResult(authResult) {
   if (authResult && !authResult.error) {
     // Authorization was successful. Hide authorization prompts and show
     // content that should be visible after authorization succeeds.
-    $('.pre-auth').hide();
+    // $('.pre-auth').hide();
     $('.post-auth').show();
     loadAPIClientInterfaces();
   } else {
