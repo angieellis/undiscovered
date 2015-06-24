@@ -15,6 +15,7 @@
     "expect.js": "^0.3.1",
     "express": "~4.12.4",
     "express-ejs-layouts": "^1.1.0",
+    "express-session": "^1.11.3",
     "faker": "^2.1.5",
     "googleapis": "^2.0.5",
     "jade": "~1.9.2",
