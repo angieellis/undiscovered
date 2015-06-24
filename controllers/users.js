@@ -10,7 +10,7 @@ exports.showDash = function(req, res, next) {
   var userInfo = [];
   // use promises to handle async callbacks
   // find user from given id
-  User.findOneQ(mongoose.Types.ObjectId("5589b20dc3d2f7bf352874a0"))
+  User.findOneQ(mongoose.Types.ObjectId("5589d37e77bba8daace44eb5"))
     .then(function(user) {
       userInfo.push({"user" : user });
       findRecommendedTours(user);
