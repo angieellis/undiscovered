@@ -1,0 +1,24 @@
+.square200 {
+	width:200px;
+	height:200px;
+	background-color:lightgray;
+}
+
+.photo {
+	position:relative;
+	float:left;
+	width:200px;
+	height:200px;
+	background-color:lightgray;
+	margin:1%;
+}
+
+.post-title {
+	position:absolute;
+	top:34%;
+	left:34%;
+}
+
+h3 {
+	clear:both;
+}

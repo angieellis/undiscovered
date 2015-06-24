@@ -63,9 +63,7 @@
 */
 /* 800px */
 @media (min-width: 50em) {
-    .container {
-        width: 45em; /* 720px */
-    }
+
 
     .gutters-t .col {
         margin-left: 2%;
@@ -107,9 +105,7 @@
 */
 /* 1200px */
 @media (min-width: 75em) {
-    .container {
-        width: 75em; /* px */
-    }
+
 
     .trailer{
         width: 15em;
