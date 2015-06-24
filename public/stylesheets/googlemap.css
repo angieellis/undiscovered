@@ -9,10 +9,11 @@
 }
 
 #panel {
-  /*position: absolute;*/
+  position: absolute;
   top: 5px;
   left: 50%;
-  z-index: 5;
+  margin-left: -180px;
+  z-index: 5;1
   background-color: #fff;
   padding: 5px;
   border: 1px solid #999;
