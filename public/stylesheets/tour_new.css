@@ -69,17 +69,22 @@
 }
 
 
-input [type="button"]:focus{
-	border:none;
-}
-
-
 .sm-label{
 	font-size:12px;
 	color:gray;
 }
 
 .inner-box {
-	width:90%;
+	width:80%;
+	padding:10%;
+}
+
+#panel input[type="text"]{
+	width:60%;
+}
+
+
+input[type="text"]:focus, input[type="password"]:focus{
+	border: 1px solid #7a7a7a;
 }
 
