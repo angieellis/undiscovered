@@ -1,0 +1,13 @@
+#right-box {
+	float:left;
+}
+
+#left-box{
+	float:left;
+	background-color: #ffffff;
+	padding-top: 30px;
+}
+
+.w100 {
+	width:100%;
+}
