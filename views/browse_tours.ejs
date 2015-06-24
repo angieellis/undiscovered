@@ -76,13 +76,13 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </body>
 
 <script id="interest-template" type="text/x-handlebars-template">
-  <a href="#interest_item">
+  <a href="#interest_item?{{name}}">
     <h2>{{name}}</h2>
   </a>
 </script>
 
 <script id="city-template" type="text/x-handlebars-template">
-  <a href="#city_item"><div>
+  <a href="#city_item?{{name}}"><div>
     <h2>{{name}}</h2>
   </div></a>
 </script>
@@ -105,3 +105,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <p id="demo"></p>
 </div>
+
+<script id="selected-city-template" type="text/x-handlebars-template">
+  <a href="tours/display/{{_id}}"><p>
+    {{city}}
+    {{state}}
+    {{title}}
+    {{_id}}
+  </p></a>
+</script>
