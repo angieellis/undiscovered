@@ -54,5 +54,8 @@
 	background-color:#42A5F5;
 }
 
+.signinbox, .signupbox {
+	display:none;
+}
 
 

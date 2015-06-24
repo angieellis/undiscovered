@@ -11,12 +11,12 @@ function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 };
 
-var markers_array = [];
-
 function codeAddress() {
-  console.log(markers_array);
-  var address = document.getElementById('address').value; //Get the address
+  var address = document.getElementById('state').value + " " + document.getElementById('city').value + " " + document.getElementById('street').value;
+   //Get the address
   geocoder.geocode( { 'address': address}, function(results, status) {
+    document.getElementById('latitude').value = results[0].geometry.location.A;
+    document.getElementById('longitude').value = results[0].geometry.location.F;
     if (status == google.maps.GeocoderStatus.OK) {
       console.log(results)
       map.setCenter(results[0].geometry.location);
@@ -25,8 +25,7 @@ function codeAddress() {
           position: results[0].geometry.location,
           draggable: true
       });
-      markers_array.push(marker);
-      markers_array.forEach(function(obj){ console.log(obj.position.A); console.log(obj.position.F)})
+
       google.maps.event.addListener( marker, 'dragend', function(ev){
        // イベントの引数evの、プロパティ.latLngが緯度経度。
         document.getElementById('latitude').value = ev.latLng.lat();

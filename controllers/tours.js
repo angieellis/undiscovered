@@ -21,7 +21,9 @@ exports.showTour = function(req, res, next) {
 // post route method to add new tour record
 exports.add = function(req, res, next) {
   // expects to receive json object with new tour attributes
-
+  console.log("+++++++++++++++++++++++++++");
+  console.log(req.params);
+  console.log("+++++++++++++++++++++++++++");
   // check if user has google oauth session
   if(req.user.googleId === null) {
     return res.redirect('/auth/google');

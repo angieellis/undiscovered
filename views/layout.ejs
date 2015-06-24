@@ -22,6 +22,7 @@
     <script type="application/javascript" src="/javascript/client.js"></script>
     <script type="application/javascript" src="/javascript/init.js"></script>
     <script type="application/javascript" src="/javascript/script.js"></script>
+    <script src="/javascript/tour_new.js"></script>
     <script src="/javascript/cors_upload.js"></script>
     <script src="/javascript/upload_video.js"></script>
   </head>
@@ -67,7 +68,7 @@
           <span
             class="g-signin"
             data-callback="signinCallback"
-            data-clientid=""
+            data-clientid="<%= process.env.OAUTH2_CLIENT_ID %>"
             data-cookiepolicy="single_host_origin"
             data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
           </span>
@@ -88,7 +89,7 @@
           <span
             class="g-signin"
             data-callback="signinCallback"
-            data-clientid=""
+            data-clientid="<%= process.env.OAUTH2_CLIENT_ID %>"
             data-cookiepolicy="single_host_origin"
             data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
           </span>
@@ -99,23 +100,5 @@
     <div class="full-container">
       <%- body %>
     </div>
-<!--
-    <div class="debug">
-      <footer class="container p-md debug">
-        Footer stuff to come
-      </footer>
-<<<<<<< HEAD
-    </div> -->
-<<<<<<< HEAD
-
-    </div>
-
-    <script type="application/javascript" src="/javascript/lib/jquery.js"></script>
-    <script type="application/javascript" src="/javascript/lib/underscore.js"></script>
-    <script type="application/javascript" src="/javascript/lib/backbone.js"></script>
-    <script type="application/javascript" src="/javascript/lib/handlebars.js"></script>
-    <script type="application/javascript" src="/javascript/client.js"></script>
-=======
->>>>>>> a9f76d9e30042d11d6e5970c2293f04c2e0e42d2
   </body>
 </html>
