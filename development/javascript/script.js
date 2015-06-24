@@ -3,7 +3,6 @@ $(document).ready(function(){
 	$('.signupbox').hide();
 
 	$('.signin').click(function(){
-		console.log("a");
 		$('.signupbox').hide();
 		$('.signinbox').fadeIn();
 	});

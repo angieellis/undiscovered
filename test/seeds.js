@@ -71,10 +71,8 @@ for (var i = 0; i < 10; i++) {
       photo_urls: [faker.image.imageUrl(), faker.image.imageUrl()],
       content: faker.lorem.paragraph(),
       tag: interestTags[Math.floor(Math.random()*interestTags.length)],
-      trailer: {
-        description: faker.lorem.sentence(),
-        photo_url: faker.image.imageUrl()
-      },
+      trailer_description: faker.lorem.sentence(),
+      trailer_photo_url: faker.image.imageUrl(),
       tour_guide: {
         _id: user._id,
         username: user.username

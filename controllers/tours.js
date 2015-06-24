@@ -9,6 +9,15 @@ var main = require('./index');
 
 // get route method to display new tour form
 exports.newTour = function(req, res, next) {
+  // check if user has google oauth session
+  if ( req.session.googleUser === null) {
+    res.redirect('/auth/google');
+  } else {
+    res.redirect('/tours/new_tour');
+  };
+};
+
+exports.renderNewTour = function(req, res, next) {
   res.render('new_tour', { title: 'New Tour' });
 };
 
@@ -26,22 +35,19 @@ exports.showTour = function(req, res, next) {
 // post route method to add new tour record
 exports.add = function(req, res, next) {
   // expects to receive json object with new tour attributes
-  // console.log("+++++++++++++++++++++++++++");
-  // console.log(req.params);
-  // console.log("+++++++++++++++++++++++++++");
-  // check if user has google oauth session
-  if(req.user.googleId === null) {
-    return res.redirect('/auth/google');
-  }
+
+  var tourParams = req.body;
+  tourParams["tour_guide"] = { "_id": mongoose.Types.ObjectId("558aec856b56e1e9333c2609"), "username": "Eve_Wyman" }
 
   // create new tour
-  var tour = new Tour(req.params);
+  var tour = new Tour(tourParams);
   tour.save(function(err, saved) {
     if (err || !saved) {
       // return error message if error occurs or tour isn't saved
       console.log("Error: ", err);
       res.json(err);
     } else {
+      console.log('successful!');
       res.json(true);
     };
   });

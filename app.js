@@ -1,26 +1,27 @@
 // require node modules
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var flash = require('connect-flash');
-var bodyParser = require('body-parser');
-var passport = require('passport');
-var ejsLayouts = require('express-ejs-layouts');
+require('dotenv').load();
+var express = require('express'),
+    path = require('path'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
+    flash = require('connect-flash'),
+    bodyParser = require('body-parser'),
+    passport = require('passport'),
+    ejsLayouts = require('express-ejs-layouts');
 
 // set up connection to database
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/yourguide_development');
 
 // require controllers for setting routes
-var main = require('./controllers/index');
-var users = require('./controllers/users');
-var tours = require('./controllers/tours');
-var User = require('./models/user').User;
+var main = require('./controllers/index'),
+    users = require('./controllers/users'),
+    tours = require('./controllers/tours'),
+    User = require('./models/user').User,
 
-var app = express();
+    app = express();
 
 // setting up ejsLayouts
 app.use(ejsLayouts);
@@ -60,11 +61,17 @@ app.post('/', main.signin);
 app.post('/signout', main.signout);
 
 // set routes for Google Oauth
-app.get('/auth/google', main.signinGoogle);
-app.get('/auth/google/callback', main.oauthRedirect);
+app.get('/auth/google', passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/youtube' }));
+
+app.get('/auth/google/callback',
+  function(req, res) {
+    req.session.user.googleLogin = true;
+    req.session.save(function(err){
+      res.redirect('/tours/new_tour');
+    })
+});
 
 // set routes for user controller
-app.get('/signup', users.newUser);
 app.post('/signup', users.add);
 
 app.get('/dashboard', users.showDash);
@@ -79,6 +86,7 @@ app.delete('/users/:id', users.destroy);
 
 // set routes for tour controller
 app.get('/tours/new', tours.newTour);
+app.get('/tours/new_tour', tours.renderNewTour);
 app.get('/tours/show', tours.showTour);
 app.post('/tours/new', tours.add);
 
@@ -107,7 +115,7 @@ app.use(function(req, res, next) {
 
 // passport module configuration
 var LocalStrategy = require('passport-local').Strategy,
-    GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
+    GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 passport.use(new LocalStrategy(
   // method to find user and validate password
@@ -129,13 +137,15 @@ passport.use(new LocalStrategy(
 passport.use(new GoogleStrategy({
     clientID:     process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://yourdormain:3000/auth/google/callback",
+    callbackURL: "http://localhost:3000/auth/google/callback",
     passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return done(err, user);
-    });
+    console.log("in google strategy");
+    console.log(profile);
+    // User.findOrCreate({ googleId: profile.id }, function (err, user) {
+    //   return done(err, user);
+    // });
   }
 ));
 

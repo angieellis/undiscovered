@@ -5,7 +5,7 @@ var passport = require('passport');
 
 // get route method to show index page
 exports.index = function(req, res, next) {
-  if (req.user) {
+  if (req.session.user || req.session.googleUser) {
     //redirect if user is in session
     res.redirect('/show_dashboard');
   } else {
@@ -29,6 +29,7 @@ exports.signin = function(req, res, next) {
           return res.json(err);
         } else {
           req.session.user = user;
+          req.session.googleUser = null;
           req.session.save(function(err) {
             res.redirect('/show_dashboard');
           })
@@ -45,20 +46,28 @@ exports.signin = function(req, res, next) {
 exports.signout = function(req, res, next) {
   if (req.isAuthenticated()) {
     req.session.user = null;
+    req.session.save(function(err) {
+      res.redirect('/');
+    });
   };
   res.redirect('/');
 };
 
-exports.signinGoogle = function(req, res, next) {
-  passport.authenticate('google', { scope:
-      [ 'https://www.googleapis.com/auth/plus.login',
-      , 'https://www.googleapis.com/auth/plus.profile.emails.read' ] }
-  )
-};
+var LocalStrategy = require('passport-local').Strategy,
+    GoogleStrategy = require('passport-google-oauth2').Strategy;
 
-exports.oauthRedirect = function(req, res, next) {
-  passport.authenticate( 'google', {
-          successRedirect: '/dashboard',
-          failureRedirect: '/auth/google'
-  });
-};
+passport.use(new LocalStrategy(
+  // method to find user and validate password
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
