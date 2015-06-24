@@ -65,7 +65,7 @@ ul, ol {
 }
 
 .op-head {
-    background-color: red;
+    background-color: #D32F2F;
     color: white;
     position: absolute;
     top: 0;
@@ -111,7 +111,9 @@ ul, ol {
 .fz-md { font-size: 3em; }
 .fz-lg { font-size: 4.5em; }
 .fz-xxl { font-size: 16em; }
-.fs-index { font-family: 'Julius Sans One', sans-serif; }
+.fs-index {
+    font-family: 'Julius Sans One', sans-serif;
+}
 .fc-light {color: white;}
 .fc-dark {color: #042037};
 .bgc-cool { background-color: blue; }

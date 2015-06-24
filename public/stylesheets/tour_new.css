@@ -5,9 +5,81 @@
 #left-box{
 	float:left;
 	background-color: #ffffff;
-	padding-top: 30px;
+}
+
+.left-box{
+	/*border: 1px solid #e1e1e1;*/
+	background-color:#f9f9f9;
 }
 
 .w100 {
 	width:100%;
 }
+
+.post-sign-in input[type="text"], .post-sign-in textarea {
+	border: 1px solid lightgray;
+	width:90%;
+	padding:8px;
+}
+
+.post-sign-in textarea {
+	height:200px;
+}
+
+.btn {
+	border:none;
+	padding:12px 24px;
+	border-radius: 2px;
+}
+
+.btn-submit {
+	color:white;
+	background-color:#1C7F7F;
+	border-bottom: 2px solid #095252;
+	margin-top:30px;
+}
+
+
+.btn-submit:hover {
+	background-color: #209a9a;
+}
+
+.btn-clear {
+	border:none;
+	background-color: rgba(0,0,0,0);
+	color:#1C7F7F;
+	text-decoration: underline;
+	font-weight:bold;
+	font-size:14px;
+}
+
+.btn-clear:hover {
+	color:#095252;
+}
+
+.btn-normal {
+	color:white;
+	font-size:12px;
+	background-color:#546E7A;
+	border-bottom: 2px solid #37474F;
+}
+
+.btn-normal:hover {
+	background-color:#607D8B;
+}
+
+
+input [type="button"]:focus{
+	border:none;
+}
+
+
+.sm-label{
+	font-size:12px;
+	color:gray;
+}
+
+.inner-box {
+	width:90%;
+}
+

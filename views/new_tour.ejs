@@ -6,67 +6,70 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script src="/javascript/map.js"></script>
     <div id="container w100" >
-      <div id="left-box" class="span-3-t p-sm">
-        <span id="signinButton" class="pre-sign-in">
-          <span
-            class="g-signin"
-            data-callback="signinCallback"
-            data-clientid="<%= process.env.OAUTH2_CLIENT_ID %>"
-            data-cookiepolicy="single_host_origin"
-            data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
+      <div id="left-box" class="span-3-t left-box">
+        <div id="inner-left-box" class="inner-box">
+          <span id="signinButton" class="pre-sign-in">
+            <span
+              class="g-signin"
+              data-callback="signinCallback"
+              data-clientid="<%= process.env.OAUTH2_CLIENT_ID %>"
+              data-cookiepolicy="single_host_origin"
+              data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
+            </span>
           </span>
-        </span>
-        <div class="post-sign-in">
-          <div>
-            <img id="channel-thumbnail">
-            <span id="channel-name"></span>
-          </div>
+          <div class="post-sign-in">
+            <div>
+              <img id="channel-thumbnail">
+              <span id="channel-name"></span>
+            </div>
 
-          <div>
-            <label for="title">Title:</label>
-            <input id="title" type="text" value="Default Title">
-          </div>
-          <div>
-            <label for="description">Description:</label>
-            <textarea id="description">Default description</textarea>
-          </div>
-          <div>
-            <label for="privacy-status">Privacy Status:</label>
-            <select id="privacy-status">
-              <option>public</option>
-              <option>unlisted</option>
-              <option>private</option>
-            </select>
-          </div>
+            <div>
+              <p><label for="title" class="sm-label">Title:</label></p>
+              <p><input id="title" type="text" value="Default Title"></p>
+            </div>
+            <div>
+              <p><label for="description" class="sm-label">Description:</label></p>
+              <p><textarea id="description">Default description</textarea></P>
+            </div>
+            <div>
+              <p><label for="privacy-status" class="sm-label">Privacy Status:</label></P>
+              <p><select id="privacy-status">
+                <option>public</option>
+                <option>unlisted</option>
+                <option>private</option>
+              </select></P>
+            </div>
 
-          <div>
-            <input input type="file" id="file" class="button" accept="video/*">
-            <button id="button">Upload Video</button>
-          <div class="during-upload">
-            <p><span id="percent-transferred"></span>% done (<span id="bytes-transferred"></span>/<span id="total-bytes"></span> bytes)</p>
-            <progress id="upload-progress" max="1" value="0"></progress>
-          </div>
+            <div>
+              <p><label for="upload" class="sm-label">Choose you video:</label></P>
+              <p><input input type="file" id="file" class="button" accept="video/*"></P>
+              <button id="button" class="btn btn-normal">Upload Video</button>
+            <div class="during-upload">
+              <p><span id="percent-transferred"></span>% done (<span id="bytes-transferred"></span>/<span id="total-bytes"></span> bytes)</p>
+              <progress id="upload-progress" max="1" value="0"></progress>
+            </div>
 
-          <div class="post-upload">
-            <p>Uploaded video with id <span id="video-id"></span>. Polling for status...</p>
-            <ul id="post-upload-status"></ul>
-            <div id="player"></div>
-          </div>
+            <div class="post-upload">
+              <p>Uploaded video with id <span id="video-id"></span>. Polling for status...</p>
+              <ul id="post-upload-status"></ul>
+              <div id="player"></div>
+            </div>
         </div>
       </div>
       </div>
-      <div id="right-box" class="span-8-t p-sm ">
-        <div id="panel">
-          <input id="state" type="textbox" value="" placeholder="State">
-          <input id="city" type="textbox" value="" placeholder="City">
-          <input id="street" type="textbox" value="" placeholder="Street">
-          <input type="button" value="Geocode" onclick="codeAddress()">
-          <input id="latitude" type="textbox" value="">
-          <input id="longitude" type="textbox" value="">
+      <div id="right-box" class="span-9-t right-box">
+        <div id="inner-right-box" class="inner-box">
+          <div id="panel">
+            <p><label class="sm-label">State: </label></p><p><input id="state" type="text" value="" placeholder="State"></p>
+            <p><label class="sm-label">City: </label></p><p><input id="city" type="text" value="" placeholder="City"></p>
+            <p><label class="sm-label">Street: </label></p><p><input id="street" type="text" value="" placeholder="Street"></p>
+            <p><input type="button" class="btn-clear" value="Drop Pin on google map" onclick="codeAddress()"></p>
+            <p><input id="latitude" type="hidden" value="" ></p>
+            <p><input id="longitude" type="hidden" value=""></p>
+          </div>
+          <div id="map-canvas" width="400px" height="400px"></div>
+          <button id="tour-submit" class="btn btn-submit">Submit</button>
         </div>
-        <div id="map-canvas" width="400px" height="400px"></div>
-        <button id="tour-submit">HEYYEYYEEYEYEYEYEYEYEYEY</button>
       </div>
     </div>
-
 </div>

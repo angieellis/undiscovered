@@ -2,15 +2,21 @@
   height: 400px;
   margin: 0px;
   padding: 0px;
-  width: 400px;
+  width: 100%;
 }
 
-#panel {
+#panel{
   width:100%;
   z-index: 5;
   background-color: #fff;
   padding: 5px;
-  border: 1px solid #999;
+/*  border: 1px solid #999;*/
+}
+
+#panel input[type="text"] {
+  width:90%;
+  display:inline;
+  padding:8px;
 }
 
 
