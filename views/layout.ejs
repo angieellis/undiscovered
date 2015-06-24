@@ -21,7 +21,6 @@
     <script src="/javascript/script.js"></script>
     <script type="application/javascript" src="/javascript/lib/handlebars.js"></script>
     <script type="application/javascript" src="/javascript/client.js"></script>
-    <script type="application/javascript" src="/javascript/init.js"></script>
     <script type="application/javascript" src="/javascript/script.js"></script>
     <script src="/javascript/cors_upload.js"></script>
     <script src="/javascript/upload_video.js"></script>
@@ -69,7 +68,7 @@
           <span
             class="g-signin"
             data-callback="signinCallback"
-            data-clientid=""
+            data-clientid="<%= process.env.OAUTH2_CLIENT_ID %>"
             data-cookiepolicy="single_host_origin"
             data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
           </span>
@@ -91,6 +90,7 @@
           <span
             class="g-signin"
             data-callback="signinCallback"
+            data-clientid="<%= process.env.OAUTH2_CLIENT_ID %>"
             data-clientid=""
             data-cookiepolicy="single_host_origin"
             data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
