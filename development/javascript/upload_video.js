@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 var signinCallback = function (result){
+  console.log("in signin callback func");
   if(result.access_token) {
     var uploadVideo = new UploadVideo();
     uploadVideo.ready(result.access_token);

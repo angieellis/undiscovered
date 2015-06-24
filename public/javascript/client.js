@@ -41,11 +41,8 @@
         },
       })
 
-      var toursView = new ToursView()
-
-      var individualTourView = new IndividualTourView()
-
-
+      var toursView = new ToursView();
+      var individualTourView = new IndividualTourView();
     },
     interestRender: function() {
       console.log("Interest Render")
@@ -59,7 +56,7 @@
         model: filterCollection,
         initialize: function() {
           console.log(selectedInterest)
-          var filterCollection = tourCollection.where({city: selectedInterest})
+          var filterCollection = tourCollection.where({tag: selectedInterest})
           console.log(filterCollection)
 
           var template = $("#selected-city-template").html();
@@ -72,7 +69,8 @@
         },
       })
 
-
+      var toursView = new ToursView();
+      var individualTourView = new IndividualTourView();
     }
   })
 
@@ -296,7 +294,7 @@ var CurrentUserView = Backbone.View.extend({
   initialize: function() {
     this.model.fetch({
       success: function(response) {
-        console.log("Successful")
+        console.log("response")
       },
       error: function() {
         console.log("Failed to get user")
@@ -305,11 +303,11 @@ var CurrentUserView = Backbone.View.extend({
     this.listenTo(this.model, 'sync', this.render)
   },
   render: function() {
-    var template = $("#current-user-info-template").html();
+    var template = $("#individual-user-dashboard-template").html();
     console.log(this.model.attributes[0].user)
     var compiled = Handlebars.compile(template);
     var html = compiled(this.model.attributes[0].user);
-    $("#current-user-information").html(html)
+    $("#individual-user-dashboard-display").html(html)
 
 
     var recommendedTourTemplate = $("#recommended-tour-template").html();
@@ -331,7 +329,6 @@ var CurrentUserView = Backbone.View.extend({
 
 var currentUserView = new CurrentUserView()
 
-// debugger
 
 // **************************************************************************
 // LIST CITIES

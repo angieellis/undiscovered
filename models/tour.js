@@ -42,7 +42,7 @@ var tourSchema = new Schema({
     trim: true
   },
 
-  tags: {
+  tag: {
     type: String,
     trim: true
   },
@@ -52,10 +52,8 @@ var tourSchema = new Schema({
     default: Date.now
   },
 
-  trailer: {
-    description: String,
-    photo_url: String
-  },
+  trailer_description: String,
+  trailer_photo_url: String,
 
   tour_guide: {
     _id: {

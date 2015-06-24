@@ -1,10 +1,4 @@
-<div class="not-index container">
-
-<div id="individual-tour-display">
-
-</div>
-
-
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 <script id="individual-tour-template" type="text/x-handlebars-template">
 
   <div class="tour-text p-sm debug">
@@ -41,11 +35,7 @@
       src="http://www.youtube.com/embed/{{video_id}}">
     </iframe>
 </script>
-
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-
 <script>
-
 var coordinate = $('#coordinates').html().split(",");
 // var coordinate = [71.0589, 42.3601]
 function initialize() {
@@ -78,6 +68,10 @@ function setMarkers(map, locations) {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>
-<div  class="debug" id="map-canvas"></div>
 
+<div class="not-index container">
+<div id="individual-tour-display">
 </div>
+<div class="debug" id="map-canvas"></div>
+</div>
+</div><p></p>

@@ -5,9 +5,9 @@ var passport = require('passport');
 
 // get route method to show index page
 exports.index = function(req, res, next) {
-  if (req.user) {
+  if (req.session.user || req.session.googleUser) {
     //redirect if user is in session
-    res.redirect('/dashboard');
+    res.redirect('/show_dashboard');
   } else {
     res.render('index');
   };
@@ -28,7 +28,11 @@ exports.signin = function(req, res, next) {
         if (err) {
           return res.json(err);
         } else {
-          res.redirect('/dashboard/' + user.id);
+          req.session.user = user;
+          req.session.googleUser = null;
+          req.session.save(function(err) {
+            res.redirect('/show_dashboard');
+          })
         }
       })
     };
@@ -40,22 +44,30 @@ exports.signin = function(req, res, next) {
 
 // post route method to sign out user and clear session
 exports.signout = function(req, res, next) {
-  // if (req.isAuthenticated()) {
-  //   req.session = null;
-  // };
+  if (req.isAuthenticated()) {
+    req.session.user = null;
+    req.session.save(function(err) {
+      res.redirect('/');
+    });
+  };
   res.redirect('/');
 };
 
-exports.signinGoogle = function(req, res, next) {
-  passport.authenticate('google', { scope:
-      [ 'https://www.googleapis.com/auth/plus.login',
-      , 'https://www.googleapis.com/auth/plus.profile.emails.read' ] }
-  )
-};
+var LocalStrategy = require('passport-local').Strategy,
+    GoogleStrategy = require('passport-google-oauth2').Strategy;
 
-exports.oauthRedirect = function(req, res, next) {
-  passport.authenticate( 'google', {
-          successRedirect: '/dashboard',
-          failureRedirect: '/auth/google'
-  });
-};
+passport.use(new LocalStrategy(
+  // method to find user and validate password
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
