@@ -17,37 +17,37 @@
     <div class="row container p-md debug">
       <div class="recommend gutters-t gutters-d">
         <h1>Recommended goes here</h1>
-          <div class="trailer col debug">
+          <div class="trailer col debug" id="recommended-0">
             boom this is a tour
           </div>
-          <div class="trailer col debug">
+          <div class="trailer col debug" id="recommended-1">
             boom this is a tour
           </div>
-          <div class="trailer col debug">
+          <div class="trailer col debug" id="recommended-2">
             boom this is a tour
           </div>
-          <div class="trailer col debug">
+          <div class="trailer col debug" id="recommended-3">
             boom this is a tour
           </div>
       </div>
       <div class="recommend gutters-t gutters-d">
-          <div class="trailer col debug">
+          <div class="trailer col debug" id="recommended-4">
             boom this is a tour
           </div>
-          <div class="trailer col debug">
+          <div class="trailer col debug" id="recommended-5">
             boom this is a tour
           </div>
-          <div class="trailer col debug">
+          <div class="trailer col debug" id="recommended-6">
             boom this is a tour
           </div>
-          <div class="trailer col debug">
+          <div class="trailer col debug" id="recommended-7">
             boom this is a tour
           </div>
       </div>
     </div>
 
     <div class="row container debug">
-      <div class="wish">
+      <div class="wish" id="dashboard-wishlist">
         <h1>Wishlist goes here</h1>
       </div>
     </div>
@@ -58,5 +58,36 @@
       </div>
     </div>
 
+
+    <div id="current-user-information">
+
+    </div>
+
+
+
   </body>
 </html>
+
+
+<script id="current-user-info-template" type="text/x-handlebars-template">
+  <p>
+    {{username}}
+  </p>
+</script>
+
+
+<script id="recommended-tour-template" type="text/x-handlebars-template">
+  <p>
+    {{title}}
+    <br>
+    {{city}}
+  </p>
+</script>
+
+<script id="dashboard-wishlist-tour-template" type="text/x-handlebars-template">
+  <p>
+    {{title}}
+    <br>
+    {{_id}}
+  </p>
+</script>

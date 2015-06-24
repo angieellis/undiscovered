@@ -1,12 +1,13 @@
 require('dotenv').load();
 var exports = module.exports = {};
 var User = require('../models/user').User;
+var passport = require('passport');
 
 // get route method to show index page
 exports.index = function(req, res, next) {
   if (req.user) {
     //redirect if user is in session
-    res.redirect('/');
+    res.redirect('/dashboard');
   } else {
     res.render('index');
   };
@@ -18,12 +19,19 @@ exports.signin = function(req, res, next) {
 
   // authenticate user through passport module
   passport.authenticate('local', function(err, user, info) {
-    if (err) { return res.json(err); }
-    if (!user) { return res.json(false); }
-    req.logIn(user, function(err) {
-      if (err) { return res.json(err); }
-      return res.json(user);
-    });
+    if (err) {
+      return res.json(err);
+    } else if (!user) {
+      return res.json(false);
+    } else {
+      req.logIn(user, function(err) {
+        if (err) {
+          return res.json(err);
+        } else {
+          res.redirect('/dashboard/' + user.id);
+        }
+      })
+    };
   })(req, res, next);
   // returns user object if signin is successful
   // returns false if user doesn't exist
@@ -32,9 +40,9 @@ exports.signin = function(req, res, next) {
 
 // post route method to sign out user and clear session
 exports.signout = function(req, res, next) {
-  if (req.isAuthenticated()) {
-    req.logout();
-  };
+  // if (req.isAuthenticated()) {
+  //   req.session = null;
+  // };
   res.redirect('/');
 };
 
@@ -51,52 +59,3 @@ exports.oauthRedirect = function(req, res, next) {
           failureRedirect: '/auth/google'
   });
 };
-
-// passport module configuration
-var passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy,
-    GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
-
-// method to save user session
-passport.serializeUser(function(user, done) {
-  var userInfo = { id: user.id, googleId: user.googleId };
-  done(null, userInfo);
-});
-
-// method to clear user session
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
-
-passport.use(new LocalStrategy(
-  // method to find user and validate password
-  function(username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-  }
-));
-
-// method to validate user with Google Oauth
-passport.use(new GoogleStrategy({
-    clientID:     process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://yourdormain:3000/auth/google/callback",
-    passReqToCallback   : true
-  },
-  function(request, accessToken, refreshToken, profile, done) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return done(err, user);
-    });
-  }
-));
-

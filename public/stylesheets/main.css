@@ -72,9 +72,9 @@ ul, ol {
     -moz-opacity: 0.80;
     -khtml-opacity: 0.8;
     opacity: 0.8;
-    /*Opacity end*/
     color: white;
-    position: fixed;
+    position: absolute;
+    top: 0;
     padding: 0;
     margin: 0;
 }
@@ -154,6 +154,8 @@ footer {
     width: 100%;
     bottom: 0px;
 }
+
+.ind-tour{ margin-top: 60px }
 
 .discover {
     width: 15em;
