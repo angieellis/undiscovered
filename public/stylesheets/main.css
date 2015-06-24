@@ -67,7 +67,6 @@ ul, ol {
 .op-head {
     background-color: #D32F2F;
     color: white;
-    position: absolute;
     top: 0;
     padding: 0;
     margin: 0;
@@ -78,11 +77,20 @@ ul, ol {
     border: 1px solid red;
 }
 
+.mt-none { margin-top: 0; }
 .m-none { margin: 0; }
+.mb-none { margin-bottom: 0;}
+.mb-md { margin-bottom: 5em; }
 .m-sm { margin: .5em; }
+.m-ssm { margin: 2em; }
 .mr-small { margin-right: .5em; }
+.mr-xss { margin-right: 1.5em; }
+
+.mt-sm { margin-top: 1em; }
+.mt-xss { margin-top: 1.5em; }
 .mt-md { margin-top: 2em; }
 .mb-md { margin-bottom: .5em; }
+.mb-lg { margin-bottom: 1em; }
 .mb-sm { margin-bottom: .25em; }
 
 .b-lft { border-left: 2px solid white; }
@@ -95,8 +103,12 @@ ul, ol {
 .p-bttm { padding-bottom: .1em; }
 .p-rt { padding-right: .25em; }
 .p-lt { padding-left: .25em; }
+.p-rt-md {padding-right: 4em;}
+.p-lf-md {padding-left: 4em;}
 .p-xs { padding: .5em;}
+.p-xss { padding: .75em;}
 .p-sm { padding: 1em;}
+.p-ssm { padding: 2em;}
 .p-md { padding: 4em; }
 .p-lg { padding: 7em;}
 .p-xxl { padding: 10em; }
@@ -105,7 +117,10 @@ ul, ol {
 
 .lh-sm { line-height: 80%; }
 
+.fz-xxxs { font-size: 1em; }
+.fz-xxs { font-size: 1.25em; }
 .fz-xs { font-size: 1.5em; }
+.fz-xxss { font-size: 1.6em; }
 .fz-xss { font-size: 2em; }
 .fz-sm { font-size: 2.5em; }
 .fz-md { font-size: 3em; }
@@ -176,6 +191,20 @@ footer {
     opacity: 0.8;
     /*Opacity end*/
 }
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
 
 /* ==========================================================================
    Media Queries

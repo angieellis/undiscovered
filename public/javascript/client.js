@@ -414,13 +414,13 @@ var InterestView = Backbone.View.extend({
     var template = $("#interest-template").html();
     var compiled = Handlebars.compile(template);
     var html = compiled(this.model);
-    $(".list-of-interests").append(html)
+    $(".browse-interests").append(html)
   }
 })
 
 var InterestsView = Backbone.View.extend({
   model: interestsCollection,
-  el: $(".list-of-interests"),
+  el: $(".browse-interests"),
   initialize: function() {
     var self = this;
     this.model.fetch({
@@ -474,13 +474,3 @@ var filterCollection = new TourCollection()
 
 
 var individualTourView = new IndividualTourView()
-
-// **************************************************************************
-// LIST TOURS BY CITIES
-// **************************************************************************
-
-
-
-// **************************************************************************
-// LIST TOURS BY INTERESTS
-// **************************************************************************

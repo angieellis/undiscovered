@@ -1,0 +1,32 @@
+a .city-img-text {
+  color: white;
+}
+
+.cl-b {
+  clear: both;
+}
+
+#center-box {
+  clear: both;
+}
+
+.browse-interests {
+  padding: 3em 4em 3em 4em;
+}
+
+.box-225 {
+  height: 225px;
+  width: 225px;
+  position: relative;
+}
+
+.city-img {
+  height: 225px;
+  width: 100%;
+}
+
+.city-img-text {
+  position: absolute;
+  top: 65px;
+  text-align: center;
+}
