@@ -41,6 +41,8 @@
         },
       })
 
+      var toursView = new ToursView();
+      var individualTourView = new IndividualTourView();
     },
     interestRender: function() {
       console.log("Interest Render")
