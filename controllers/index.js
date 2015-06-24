@@ -40,9 +40,9 @@ exports.signin = function(req, res, next) {
 
 // post route method to sign out user and clear session
 exports.signout = function(req, res, next) {
-  if (req.isAuthenticated()) {
-    req.session = null;
-  };
+  // if (req.isAuthenticated()) {
+  //   req.session = null;
+  // };
   res.redirect('/');
 };
 

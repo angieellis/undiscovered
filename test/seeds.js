@@ -40,6 +40,7 @@ for (var i = 0; i < 10; i++) {
 
   var userName = faker.internet.userName();
   var user = new User({
+    profile_pic: "https://avatars1.githubusercontent.com/u/24913?v=3&s=400",
     username: userName,
     password: userName,
     first_name: faker.name.firstName(),

@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 // create schema for User model
 var userSchema = new Schema({
   googleId: String,
+  profile_pic: String,
 
   username: {
     type: String,
