@@ -2,12 +2,11 @@
 // at {{ https://cloud.google.com/console }}.
 // If you run this code from a server other than http://localhost,
 // you need to register your own client ID.
-require('dotenv').load();
+var dotenv = require('dotenv').config({path: '../../.env'});
+dotenv.load();
 var OAUTH2_CLIENT_ID = process.env.OAUTH2_CLIENT_ID;
-var OAUTH2_SCOPES = [
-  process.env.OAUTH2_SCOPES
-];
-
+var OAUTH2_SCOPES = ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/youtube', 'https://www.googleapis.com/auth/youtube.upload'];
+console.log("in auth.js");
 // Upon loading, the Google APIs JS client automatically invokes this callback.
 googleApiClientReady = function() {
   gapi.auth.init(function() {
@@ -33,7 +32,7 @@ function handleAuthResult(authResult) {
   if (authResult && !authResult.error) {
     // Authorization was successful. Hide authorization prompts and show
     // content that should be visible after authorization succeeds.
-    // $('.pre-auth').hide();
+    $('.pre-auth').hide();
     $('.post-auth').show();
     loadAPIClientInterfaces();
   } else {

@@ -1,4 +1,5 @@
 // require node modules
+<<<<<<< HEAD
 var express = require('express');
 var session = require('express-session');
 var path = require('path');
@@ -8,17 +9,37 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var ejsLayouts = require('express-ejs-layouts');
+=======
+require('dotenv').load();
+var express = require('express'),
+    path = require('path'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
+    flash = require('connect-flash'),
+    bodyParser = require('body-parser'),
+    passport = require('passport'),
+    ejsLayouts = require('express-ejs-layouts');
+>>>>>>> master
 
 // set up connection to database
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/yourguide_development');
 
 // require controllers for setting routes
+<<<<<<< HEAD
 var main = require('./controllers/index');
 var users = require('./controllers/users');
 var tours = require('./controllers/tours');
+=======
+var main = require('./controllers/index'),
+    users = require('./controllers/users'),
+    tours = require('./controllers/tours'),
+    User = require('./models/user').User,
+>>>>>>> master
 
-var app = express();
+    app = express();
 
 // setting up ejsLayouts
 app.use(ejsLayouts);
@@ -37,12 +58,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// session initialization
-app.use(session({
-  secret: "yourguide",
+// enable sessions
+app.use(cookieParser('keyboard cat'));
+app.use(session(
+  { secret: 'yourguide',
+  saveUninitialized: true,
   resave: false,
-  saveUninitialized: true
-}));
+  cookie: {
+    secure: false,
+    maxAge: 864000000 // 10 Days in miliseconds
+}}));
+app.use(flash());
 
 // passport initialization
 app.use(passport.initialize());
@@ -60,11 +86,17 @@ app.post('/', main.signin);
 app.post('/signout', main.signout);
 
 // set routes for Google Oauth
-app.get('/auth/google', main.signinGoogle);
-app.get('/auth/google/callback', main.oauthRedirect);
+app.get('/auth/google', passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/youtube' }));
+
+app.get('/auth/google/callback',
+  function(req, res) {
+    req.session.user.googleLogin = true;
+    req.session.save(function(err){
+      res.redirect('/tours/new_tour');
+    })
+});
 
 // set routes for user controller
-app.get('/signup', users.newUser);
 app.post('/signup', users.add);
 
 app.get('/dashboard', users.showDash);
@@ -79,6 +111,7 @@ app.delete('/users/:id', users.destroy);
 
 // set routes for tour controller
 app.get('/tours/new', tours.newTour);
+app.get('/tours/new_tour', tours.renderNewTour);
 app.get('/tours/show', tours.showTour);
 app.post('/tours/new', tours.add);
 
@@ -103,6 +136,56 @@ app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
+});
+
+// passport module configuration
+var LocalStrategy = require('passport-local').Strategy,
+    GoogleStrategy = require('passport-google-oauth2').Strategy;
+
+passport.use(new LocalStrategy(
+  // method to find user and validate password
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
+
+// method to validate user with Google Oauth
+passport.use(new GoogleStrategy({
+    clientID:     process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/callback",
+    passReqToCallback   : true
+  },
+  function(request, accessToken, refreshToken, profile, done) {
+    console.log("in google strategy");
+    console.log(profile);
+    // User.findOrCreate({ googleId: profile.id }, function (err, user) {
+    //   return done(err, user);
+    // });
+  }
+));
+
+// method to save user session
+passport.serializeUser(function(user, done) {
+  // var userInfo = { id: user.id, googleId: user.googleId };
+  // console.log(userInfo);
+  done(null, user.id);
+});
+
+// method to clear user session
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
 });
 
 // error handlers

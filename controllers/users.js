@@ -8,11 +8,9 @@ var main = require('./index');
 // get route method to show user dashboard
 exports.showDash = function(req, res, next) {
   var userInfo = [];
-  console.log("Session user: ");
-  console.log(req.session.user._id)
   // use promises to handle async callbacks
   // find user from given id
-  User.findOneQ(mongoose.Types.ObjectId("5589d37e77bba8daace44eb5"))
+  User.findOneQ(mongoose.Types.ObjectId(req.session.user._id))
     .then(function(user) {
       userInfo.push({"user" : user });
       findRecommendedTours(user);
@@ -42,12 +40,7 @@ exports.showDash = function(req, res, next) {
 };
 
 exports.renderDash = function(req, res, next) {
-  res.render('dashboard');
-};
-
-// get route method to render new user form
-exports.newUser = function(req, res, next) {
-  res.render('signup', { title: 'Signup' });
+  res.render('dashboard', { id: req.session.user._id });
 };
 
 // post route method to add new user record
@@ -55,17 +48,7 @@ exports.add = function(req, res, next) {
   // expects to receive json object with new user attributes
 
   // create new user
-  var user = new User(req.params);
-    // username: req.body.username,
-    // password: req.body.password,
-    // first_name: req.body.first_name,
-    // last_name: req.body.last_name,
-    // email: req.body.email,
-    // phone_number: req.body.phone_numbers,
-    // city: req.body.city,
-    // state: req.body.state,
-    // zip: req.body.zip
-  // });
+  var user = new User(req.body);
 
   user.save(function(err, saved) {
     if (err || !saved) {
@@ -73,7 +56,11 @@ exports.add = function(req, res, next) {
       console.log("Error: ", err);
       res.json(err);
     } else {
-      res.json(true);
+      console.log("success!");
+      req.session.user = user;
+      req.session.save(function(err) {
+        res.json(true);
+      })
     };
   });
   // returns true if user was added to collection
