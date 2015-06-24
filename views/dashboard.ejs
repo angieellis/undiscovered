@@ -54,6 +54,145 @@
 
 </div>
  -->
+
+
+ <link rel="stylesheet" href="/stylesheets/tour_new.css">
+<link rel="stylesheet" href="/stylesheets/user_page.css">
+<div class="not-index container">
+<div id="container w100" >
+  <div id="left-box" class="span-3-t left-box">
+    <div id="inner-left-box" class="inner-box">
+      <h1>User Page</h1>
+      <div id="individual-user-display"></div>
+      <div id="user-authored-list"></div>
+      <script id="individual-user-template" type="text/x-handlebars-template">
+        <p><label class="sm-label">Username:</label></p>
+        <p>{{username}}</p>
+        <p><label class="sm-label">First Name:</label> </p><p>{{first_name}}</p>
+        <p><label class="sm-label">Last Name:</label></p><p> {{last_name}}</p>
+        <p><label class="sm-label">Email:</label></p><p> {{email}}</p>
+        _id: {{_id}}
+        <br>
+      </script>
+    </div>
+  </div>
+  <div id="right-box" class="span-9-t right-box">
+    <div id="inner-right-box" class="inner-box">
+    <h3>This user's post</h3>
+    <div class="photo-list">
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+    </div>
+    <h3>Favorite</h3>
+    <div class="photo-list">
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+    </div>
+    <h3>Wishlist</h3>
+    <div class="photo-list">
+     <div class="photo-list">
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+    </div>
+    </div>
+  </div>
+
+<script id="individual-user-authored-template" type="text/x-handlebars-template">
+  Authored ID: {{_id}}
+  <br>
+</script>
+</div>
+
 <script id="current-user-info-template" type="text/x-handlebars-template">
   <p>
     {{username}}

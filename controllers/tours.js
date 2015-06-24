@@ -26,9 +26,9 @@ exports.showTour = function(req, res, next) {
 // post route method to add new tour record
 exports.add = function(req, res, next) {
   // expects to receive json object with new tour attributes
-  console.log("+++++++++++++++++++++++++++");
-  console.log(req.params);
-  console.log("+++++++++++++++++++++++++++");
+  // console.log("+++++++++++++++++++++++++++");
+  // console.log(req.params);
+  // console.log("+++++++++++++++++++++++++++");
   // check if user has google oauth session
   if(req.user.googleId === null) {
     return res.redirect('/auth/google');
@@ -53,17 +53,16 @@ exports.findTours = function(req, res, next) {
   //expects to receive geolocation of search in json object with longitude and latitude coordinates
   Tour.find({ "coordinates" :
     { $geoWithin : {
-        $centerSphere : [ [req.lng, req.lat], 25/3959 ] }
+        $centerSphere : [ [req.body.lng, req.body.lat], 25/3959 ] }
     }},
     function(err, tours) {
-    if (err || !tours) {
-      // return error message if error occurs
-      console.log("Error: ", err);
-      return res.json(err);
-    } else {
-      console.log(tours);
-      return res.json(tours);
-    };
+      if (err || !tours) {
+        // return error message if error occurs
+        console.log("Error: ", err);
+        return res.json(err);
+      } else {
+        return res.json(tours);
+      };
   })
   // returns nearby tour objects if found
   // otherwise, returns error message
@@ -202,6 +201,5 @@ exports.renderBrowse = function(req, res, next) {
 }
 
 exports.renderTour = function(req, res, next) {
-  debugger
   res.render("individual_tour");
 }

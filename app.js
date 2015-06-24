@@ -1,5 +1,6 @@
 // require node modules
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -16,7 +17,6 @@ mongoose.connect('mongodb://localhost/yourguide_development');
 var main = require('./controllers/index');
 var users = require('./controllers/users');
 var tours = require('./controllers/tours');
-var User = require('./models/user').User;
 
 var app = express();
 
@@ -34,11 +34,25 @@ app.use(express.static(__dirname + '../public'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// session initialization
+app.use(session({
+  secret: "yourguide",
+  resave: false,
+  saveUninitialized: true
+}));
 
 // passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(function(req,res,next) {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.user = req.user;
+  next();
+})
 
 // set main routes for index controller
 app.get('/', main.index);
@@ -91,54 +105,6 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// passport module configuration
-var LocalStrategy = require('passport-local').Strategy,
-    GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
-
-passport.use(new LocalStrategy(
-  // method to find user and validate password
-  function(username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-  }
-));
-
-// method to validate user with Google Oauth
-passport.use(new GoogleStrategy({
-    clientID:     process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://yourdormain:3000/auth/google/callback",
-    passReqToCallback   : true
-  },
-  function(request, accessToken, refreshToken, profile, done) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return done(err, user);
-    });
-  }
-));
-
-// method to save user session
-passport.serializeUser(function(user, done) {
-  // var userInfo = { id: user.id, googleId: user.googleId };
-  // console.log(userInfo);
-  done(null, user.id);
-});
-
-// method to clear user session
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
-
 // error handlers
 
 // development error handler
@@ -162,7 +128,5 @@ app.use(function(err, req, res, next) {
   //   error: {}
   // });
 });
-
-// app.listen(3000);
 
 module.exports = app;

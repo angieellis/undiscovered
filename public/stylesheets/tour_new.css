@@ -75,8 +75,12 @@
 }
 
 .inner-box {
-	width:80%;
-	padding:10%;
+	width:90%;
+	padding-left:10%;
+}
+
+#inner-left-box p {
+	word-wrap: break-word;
 }
 
 #panel input[type="text"]{

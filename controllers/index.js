@@ -7,7 +7,7 @@ var passport = require('passport');
 exports.index = function(req, res, next) {
   if (req.user) {
     //redirect if user is in session
-    res.redirect('/dashboard');
+    res.redirect('/show_dashboard');
   } else {
     res.render('index');
   };
@@ -28,7 +28,10 @@ exports.signin = function(req, res, next) {
         if (err) {
           return res.json(err);
         } else {
-          res.redirect('/dashboard/' + user.id);
+          req.session.user = user;
+          req.session.save(function(err) {
+            res.redirect('/show_dashboard');
+          })
         }
       })
     };
@@ -40,9 +43,9 @@ exports.signin = function(req, res, next) {
 
 // post route method to sign out user and clear session
 exports.signout = function(req, res, next) {
-  // if (req.isAuthenticated()) {
-  //   req.session = null;
-  // };
+  if (req.isAuthenticated()) {
+    req.session.user = null;
+  };
   res.redirect('/');
 };
 
