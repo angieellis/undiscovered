@@ -41,7 +41,7 @@ exports.showDash = function(req, res, next) {
 };
 
 exports.renderDash = function(req, res, next) {
-  res.render('dashboard');
+  res.render('dashboard', { id: req.session.user._id });
 };
 
 // post route method to add new user record
