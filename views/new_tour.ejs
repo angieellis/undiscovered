@@ -1,3 +1,4 @@
+<div class="not-index container">
 
     <!-- <link rel="stylesheet" href="/stylesheets/googlemap.css">
     <link rel="stylesheet" href="/stylesheets/uploadvideo.css"> -->
@@ -13,7 +14,7 @@
       <span
         class="g-signin"
         data-callback="signinCallback"
-        data-clientid=""
+        data-clientid="<%= process.env.OAUTH2_CLIENT_ID %>"
         data-cookiepolicy="single_host_origin"
         data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
       </span>
@@ -68,3 +69,4 @@
     <script src="/javascript/upload_video.js"></script>
 
 
+</div>
