@@ -30,7 +30,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <h1>Browse</h1>
   <div class="browse-wrapper">
 
-  <br>
+    <br>
 
     <div class="browse-search">
       <h3>Browse Search</h3>
@@ -63,29 +63,30 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
   </div>
 
-  <br>
-
+  <!-- <br> -->
+  <!--
   <div>
     <h3>Tours List</h3>
     <div class="tours-list">
     </div>
-  </div>
+  </div> -->
 
 </body>
 
 <script id="interest-template" type="text/x-handlebars-template">
-  <a href="#{{title}}"><p>{{title}}</p></a>
+  <a href="#interest_item">
+    <h2>{{name}}</h2>
+  </a>
 </script>
 
 <script id="city-template" type="text/x-handlebars-template">
-  <a href="#{{name}}"><div>
+  <a href="#city_item"><div>
     <h2>{{name}}</h2>
   </div></a>
 </script>
 
 <script id="search-result-template" type="text/x-handlebars-template">
   <p>
-    <a href="/tours/{{_id}}">
     // {{trailer.photo_url}}
     {{city}}
     {{state}}
