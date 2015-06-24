@@ -55,12 +55,11 @@ exports.add = function(req, res, next) {
   // create new user
   var user = new User(req.params);
     // username: req.body.username,
-    // password_hash: req.body.password,
+    // password: req.body.password,
     // first_name: req.body.first_name,
-    // middle_initial: req.body.middle_initial,
     // last_name: req.body.last_name,
     // email: req.body.email,
-    // phone_numbers: req.body.phone_numbers,
+    // phone_number: req.body.phone_numbers,
     // city: req.body.city,
     // state: req.body.state,
     // zip: req.body.zip
