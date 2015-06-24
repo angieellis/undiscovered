@@ -32,7 +32,7 @@ var interestTags = ["Food", "Shopping", "Hiking", "Sports", "Beer/Wine", "Nature
 
 var cities = [["San Francisco, California", "http://s3.amazonaws.com/tgc-ee2/articles/San-Francisco.jpg"], ["Manhattan, New York", "http://www.rew-online.com/wp-content/uploads/2013/02/LowerManhattan.jpg"], ["Boston, Massachusetts", "http://lizzdurbin.files.wordpress.com/2010/09/boston.jpg"], ["Seattle, Washington", "http://doubletree3.hilton.com/resources/media/dt/CTAC-DT/en_US/img/shared/full_page_image_gallery/main/dh_seattleskyline_11_677x380_FitToBoxSmallDimension_Center.jpg"], ["Portland, Oregon", "http://joshblatteryoga.com/wp-content/uploads/2013/06/oregon.jpg"], ["Salt Lake City, Utah", "https://www.dfcu.com/images/backgrounds/salt-lake-city-skyline-cropped.jpg"]];
 
-var citiesHash = [["San Francisco", "CA", 94105, [122.4167, 37.7833]], ["Manhattan", "NY", 10021, [73.9597, 40.7903]], ["Boston", "MA", 02108, [42.3601, 71.0589]], ["Seattle", "WA", 98101, [122.3331, 47.6097]], ["Portland", "OR", 97201, [122.6819, 45.5200]], ["Salt Lake City", "UT", 84101, [111.8833, 40.7500]]];
+var citiesHash = [["San Francisco", "CA", 94105, [-122.4167, 37.7833]], ["Manhattan", "NY", 10021, [-73.96, 40.80]], ["Boston", "MA", 02108, [-71.06, 42.36]], ["Seattle", "WA", 98101, [-122.3331, 47.61]], ["Portland", "OR", 97201, [-122.68, 45.52]], ["Salt Lake City", "UT", 84101, [-111.8833, 40.75]]];
 
 for (var i = 0; i < 10; i++) {
   // create fake users
@@ -57,7 +57,7 @@ for (var i = 0; i < 10; i++) {
     if (err) console.log(err);
   });
 
-  for (var x = 0; x < 2; x++) {
+  for (var x = 0; x < 4; x++) {
     //create fake tours
     var city = citiesHash[Math.floor(Math.random()*citiesHash.length)];
 
@@ -70,7 +70,7 @@ for (var i = 0; i < 10; i++) {
       video_id: "gDJ2THIbfQw",
       photo_urls: [faker.image.imageUrl(), faker.image.imageUrl()],
       content: faker.lorem.paragraph(),
-      tags: interestTags[Math.floor(Math.random()*interestTags.length)],
+      tag: interestTags[Math.floor(Math.random()*interestTags.length)],
       trailer: {
         description: faker.lorem.sentence(),
         photo_url: faker.image.imageUrl()

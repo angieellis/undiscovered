@@ -4,6 +4,8 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var flash = require('connect-flash');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var ejsLayouts = require('express-ejs-layouts');
@@ -35,6 +37,18 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// enable sessions
+app.use(cookieParser('keyboard cat'));
+app.use(session(
+  { secret: 'yourguide',
+  saveUninitialized: true,
+  resave: false,
+  cookie: {
+    secure: false,
+    maxAge: 864000000 // 10 Days in miliseconds
+}}));
+app.use(flash());
 
 // passport initialization
 app.use(passport.initialize());

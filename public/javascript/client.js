@@ -41,11 +41,6 @@
         },
       })
 
-      var toursView = new ToursView()
-
-      var individualTourView = new IndividualTourView()
-
-
     },
     interestRender: function() {
       console.log("Interest Render")
@@ -59,7 +54,7 @@
         model: filterCollection,
         initialize: function() {
           console.log(selectedInterest)
-          var filterCollection = tourCollection.where({city: selectedInterest})
+          var filterCollection = tourCollection.where({tag: selectedInterest})
           console.log(filterCollection)
 
           var template = $("#selected-city-template").html();
@@ -72,7 +67,8 @@
         },
       })
 
-
+      var toursView = new ToursView();
+      var individualTourView = new IndividualTourView();
     }
   })
 

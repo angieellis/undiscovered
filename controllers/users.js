@@ -8,9 +8,11 @@ var main = require('./index');
 // get route method to show user dashboard
 exports.showDash = function(req, res, next) {
   var userInfo = [];
+  console.log("Session user: ");
+  console.log(req.session.user._id)
   // use promises to handle async callbacks
   // find user from given id
-  User.findOneQ(mongoose.Types.ObjectId("5589b20dc3d2f7bf352874a0"))
+  User.findOneQ(mongoose.Types.ObjectId(req.session.user._id))
     .then(function(user) {
       userInfo.push({"user" : user });
       findRecommendedTours(user);
