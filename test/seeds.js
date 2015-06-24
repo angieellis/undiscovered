@@ -18,8 +18,7 @@ var Interest = require('../models/categories').Interest;
 
 var faker = require('faker');
 
-var coordinates = [[122.4167, 37.7833], [73.9597, 40.7903], [71.0589, 42.3601], [122.3331, 47.6097],
-  [122.6819, 45.5200], [111.8833, 40.7500]]
+// var coordinates = [[122.4167, 37.7833], [73.9597, 40.7903], [71.0589, 42.3601], [122.3331, 47.6097], [122.6819, 45.5200], [111.8833, 40.7500]]
 
 // // SF: 37.7833° N, 122.4167°
 // // NY: 40.7903° N, 73.9597° W
@@ -32,7 +31,7 @@ var interestTags = ["Food", "Shopping", "Outdoors", "Sights", "Lifestyle", "Park
 var otherTags = ["Beach", "Hike", "Quick", "Group", "Parking", "Dangerous", "Easy", "Relaxing", "Physical"];
 var cities = ["San Francisco, California", "Manhattan, New York", "Boston, Massachusetts", "Seattle, Washington", "Portland, Oregon", "Salt Lake City, Utah"];
 
-var citiesHash = [["San Francisco", "CA", 94105, [122.4167, 37.7833]], ["Manhattan", "NY", 10021, [73.9597, 40.7903]], ["Boston", "MA", 02108, [71.0589, 42.3601]], ["Seattle", "WA", 98101, [122.3331, 47.6097]], ["Portland", "OR", 97201, [122.6819, 45.5200]], ["Salt Lake City", "UT", 84101, [111.8833, 40.7500]]];
+var citiesHash = [["San Francisco", "CA", 94105, [122.4167, 37.7833]], ["Manhattan", "NY", 10021, [73.9597, 40.7903]], ["Boston", "MA", 02108, [42.3601, 71.0589]], ["Seattle", "WA", 98101, [122.3331, 47.6097]], ["Portland", "OR", 97201, [122.6819, 45.5200]], ["Salt Lake City", "UT", 84101, [111.8833, 40.7500]]];
 
 for (var i = 0; i < 10; i++) {
   // create fake users

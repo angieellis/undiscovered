@@ -22,7 +22,7 @@
       {{tags}}
     </div>
 
-    <p id="coordinates" style="display:none;">{{coordinates}}</p>
+    <p id="coordinates">{{coordinates}}</p>
   </div>
 
   <div class="actions span-4-t debug">
@@ -45,7 +45,7 @@
 <script>
 
 var coordinate = $('#coordinates').html().split(",");
-
+// var coordinate = [71.0589, 42.3601]
 function initialize() {
   var mapOptions = {
     zoom: 10,
