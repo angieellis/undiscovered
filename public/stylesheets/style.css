@@ -1,0 +1,61 @@
+.form_area {
+	width: 100%;
+}
+
+.formbox {
+	position: absolute;
+	top:100px;
+	left:35%;
+	width:30%;
+	min-width:400px;
+	max-width:600px;
+	margin:0 auto;
+	text-align: center;
+	background-color:rgba(0,0,0,0.9);
+	border-radius: 5px;
+	border: 1px solid #656565;
+	padding:2% 2%;
+	z-index:2;
+}
+
+.formbox h3, .formbox p {
+	color:white;
+}
+
+.formbox input[type="text"], .formbox input[type="password"]{
+	font-size:16px;
+	height:32px;
+	padding:5px;
+	width:90%;
+	margin-top:10px;
+	text-align:center;
+	outline: none;
+}
+
+.formbox input[type="text"]:focus, .formbox input[type="password"]:focus{
+	border: 1px solid #7a7a7a ;
+}
+
+.formbox input[type="submit"] {
+	background-color:#1E88E5;
+	width:110px;
+	color:white;
+	font-size:14px;
+	height:32px;
+	margin:15px;
+	padding:7px 20px;
+	border:0 none;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 2px;
+}
+
+.formbox input[type="submit"]:hover{
+	background-color:#42A5F5;
+}
+
+.signinbox, .signupbox {
+	display:none;
+}
+
+
