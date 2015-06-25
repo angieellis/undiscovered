@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title></title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/stylesheets/normalize.min.css"/>
     <link rel="stylesheet" href="/stylesheets/trg.css"/>
@@ -28,33 +29,61 @@
     <script src="/javascript/tour_new.js"></script>
     <script src="/javascript/cors_upload.js"></script>
     <script src="/javascript/upload_video.js"></script>
+     <script>
+      // console.log("------------------------");
+      // console.log(window.sessionStorage["userID"]);
+      // console.log("------------------------");
+     function load() {
+        if (window.sessionStorage["userID"]){
+          document.getElementsByClassName("notlogined")[0].style.display = "none";
+          document.getElementsByClassName("logined")[0].style.display = "";
+          $('.logined').show();
+        } else {
+          document.getElementsByClassName("notlogined")[0].style.display = "";
+          document.getElementsByClassName("logined")[0].style.display = "none";
+        }
+      };
+      $(document).ready(function(){
+        $(document).on("click", ".logout", function(e){
+          e.preventDefault();
+          window.sessionStorage.removeItem("userID");
+        });
+      });
+      window.onload = load;
+    </script>
   </head>
 
 
   <body class="fs-index">
 
     <div class="op-head full-container fz-xs">
-      <header class="clearfix fc-light txt-sdw p-xs">
-
-
+      <header class="clearfix fc-light  p-xs">
         <h4 class="fl-l m-none">-- unDiscovered --</h4>
-
-        <ul class="fl-r lis-n">
-            <li class="fl-l b-bttm mr-small clearfix signin">
+        <ul class="fl-r lis-n notlogined nav">
+            <li class="fl-l mr-small clearfix signin">
                 SignIn
-                <a href="/auth/google">google</a>
             </li>
-            <li class="fl-l b-bttm clearfix signup">
+            <li class="fl-l clearfix signup">
                 Signup
             </li>
         </ul>
-
+        <ul class="fl-r lis-n logined nav">
+            <li class="fl-l  clearfix">
+                <a href="/show_dashboard">DashBoard</a>
+            </li>
+            <li class="fl-l clearfix">
+                <a href="/browse_tours">Browse</a>
+            </li>
+             <li class="fl-l mr-small clearfix logout">
+                <a href="/signout" class="logout">Logout</a>
+            </li>
+        </ul>
       </header>
     </div>
 
     <div id="form_area" class="form_area">
       <div class='formbox signupbox'>
-      <p class="close"><i class="fa fa-times"></i></p>
+        <p class="close"><i class="fa fa-times"></i></p>
         <form action="/signup" method="post" id="subForm">
           <h3>Signup</h3>
           <div class="input">
@@ -73,9 +102,22 @@
             <p class="close"><i class="fa fa-times"></i> close</p>
         </form>
       </div>
+      <div class='formbox signinbox '>
+        <form action="" method="post" id="subForm">
+          <h3>Signin</h3>
+          <div class="input">
+            <input type="text" name="username" id="name" placeholder="username" />
+          </div>
+          <div class="input">
+            <input type="password" name="password" id="nklki-nklki" placeholder="password" />
+          </div>
+          <input type="submit" value="Signin" />
+          <p class="close"><i class="fa fa-times"></i> close</p>
+         </form>
+      </div>
     </div>
-
     <%- body %>
+    <% console.log("aaaa"); %>
   </body>
 </html>
 

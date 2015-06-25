@@ -46,6 +46,7 @@ exports.signin = function(req, res, next) {
 exports.signout = function(req, res, next) {
   if (req.isAuthenticated()) {
     req.session.user = null;
+    console.log("signout");
     req.session.save(function(err) {
       res.redirect('/');
     });

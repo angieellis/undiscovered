@@ -304,12 +304,11 @@ var CurrentUserView = Backbone.View.extend({
   },
   render: function() {
     var template = $("#individual-user-dashboard-template").html();
+    window.sessionStorage["userID"] = this.model.attributes[0].user._id
     console.log(this.model.attributes[0].user)
     var compiled = Handlebars.compile(template);
     var html = compiled(this.model.attributes[0].user);
     $("#individual-user-dashboard-display").html(html)
-
-
     var recommendedTourTemplate = $("#recommended-tour-template").html();
     var compiledTours = Handlebars.compile(recommendedTourTemplate);
     for (var i=0; i < this.model.attributes[1].recommended_tours.length; i++) {
