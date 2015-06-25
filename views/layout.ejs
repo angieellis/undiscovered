@@ -30,15 +30,10 @@
     <script src="/javascript/upload_video.js"></script>
   </head>
 
-
   <body class="fs-index">
-
     <div class="op-head full-container fz-xs">
       <header class="clearfix fc-light txt-sdw p-xs">
-
-
         <h4 class="fl-l m-none">-- unDiscovered --</h4>
-
         <ul class="fl-r lis-n">
             <li class="fl-l b-bttm mr-small clearfix signin">
                 SignIn
@@ -47,13 +42,11 @@
                 Signup
             </li>
         </ul>
-
       </header>
     </div>
 
     <div id="form_area" class="form_area">
       <div class='formbox signupbox'>
-      <p class="close"><i class="fa fa-times"></i></p>
         <form action="/signup" method="post" id="subForm">
           <h3>Signup</h3>
           <div class="input">
@@ -69,11 +62,25 @@
             <input type="password" name="password_confirmation" id="password_confirmation" placeholder="password again" />
           </div>
           <input type="submit" value="Signup" />
-            <p class="close"><i class="fa fa-times"></i> close</p>
+          <p class="close"><i class="fa fa-times"></i> close</p>
         </form>
       </div>
-    </div>
 
+      <div class='formbox signinbox '>
+        <form action="" method="post" id="subForm">
+          <h3>Signin</h3>
+          <div class="input">
+            <input type="text" name="username" id="name" placeholder="username" />
+          </div>
+          <div class="input">
+            <input type="password" name="password" id="nklki-nklki" placeholder="password" />
+          </div>
+          <input type="submit" value="Signin" />
+          <p class="close"><i class="fa fa-times"></i> close</p>
+         </form>
+      </div>
+    </div>
+    </div>
     <%- body %>
   </body>
 </html>
