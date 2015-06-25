@@ -25,7 +25,7 @@ exports.renderNewTour = function(req, res, next) {
 exports.showTour = function(req, res, next) {
   Tour.find(function(err, tours){
     if (err || !tours) {
-      // return error message if error occurs or tour isn't saved
+      // return error message if error occurs or tour isn't found
       console.log("Error: ", err);
       res.json(err);
     };
@@ -56,6 +56,8 @@ exports.add = function(req, res, next) {
 };
 
 exports.findTours = function(req, res, next) {
+  console.log(req.body);
+  console.log(res.body);
   //expects to receive geolocation of search in json object with longitude and latitude coordinates
   Tour.find({ "coordinates" :
     { $geoWithin : {
@@ -77,17 +79,33 @@ exports.findTours = function(req, res, next) {
 // get route method to find and show tour
 exports.getTour = function(req, res, next) {
   // expects to receive json object with tour id
+  var tourInfo = [];
   // find tour to show
   Tour.findOne(mongoose.Types.ObjectId(req.params.id), function(err, tour) {
     if (err || !tour) {
       // return error message if error occurs
       console.log("Error: ", err);
-      res.json(err);
+      return res.json(err);
     } else {
-      res.json(tour);
+      tourInfo.push({"tour": tour});
+      findTourGuide(tour.tour_guide["_id"]);
     };
   });
-  // returns tour object if found
+
+  var findTourGuide = function(user_id) {
+    User.findOne(mongoose.Types.ObjectId(user_id), function(err, user) {
+      if (err || !user) {
+        // return error message if error occurs
+        console.log("Error: ", err);
+        return res.json(err);
+      } else {
+        tourInfo.push({"user": { "_id": user._id, "username": user.username, "description": user.user_description, "profile_pic": user.profile_pic }});
+        console.log(tourInfo);
+        return res.json(tourInfo);
+      }
+    });
+  };
+  // returns tour object and associated tour guide if found
   // otherwise, returns error message
 };
 
@@ -181,7 +199,8 @@ exports.browse = function(req, res, next) {
     Interest.findQ()
     .then(function(interests) {
       categories.push(interests);
-      res.json(categories);
+      console.log(categories);
+      return res.json(categories);
     })
     .catch(function(err) {
       console.log("Error: ", err);

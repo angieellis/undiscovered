@@ -92,16 +92,6 @@ exports.update = function(req, res, next) {
   User.findByIdAndUpdate(mongoose.Types.ObjectId(req.params.id), {
     // update user attributes
     $set: req.params
-      // username: req.body.username,
-      // password_hash: req.body.password,
-      // first_name: req.body.first_name,
-      // middle_initial: req.body.middle_initial,
-      // last_name: req.body.last_name,
-      // email: req.body.email,
-      // phone_numbers: req.body.phone_numbers,
-      // city: req.body.city,
-      // state: req.body.state,
-      // zip: req.body.zip
   }, function(err, saved) {
     if (err || !saved) {
       // return error message if error occurs or user isn't saved

@@ -36,19 +36,27 @@
       // console.log("------------------------");
      function load() {
         if (window.sessionStorage["userID"]){
-          document.getElementsByClassName("notlogined")[0].style.display = "none";
-          document.getElementsByClassName("logined")[0].style.display = "";
+          document.getElementsByClassName("logined")[0].style.display = "block";
         } else {
-          document.getElementsByClassName("notlogined")[0].style.display = "";
-          document.getElementsByClassName("logined")[0].style.display = "none";
+          document.getElementsByClassName("notlogined")[0].style.display = "block";
         }
       };
-      // $(document).ready(function(){
-      //   $(document).on("click", ".logout", function(e){
-      //     e.preventDefault();
-      //     window.sessionStorage.removeItem("userID");
-      //   });
-      // });
+      $(document).ready(function(){
+        $(".logout").on("click", function(e){
+          e.preventDefault();
+          window.sessionStorage.removeItem("userID");
+          $.ajax({
+            type: "GET",
+            url: "/signout"
+          })
+          .done(function(result) {
+            window.location.href = '/';
+          })
+          .fail(function(result) {
+            console.log(result);
+          })
+        });
+      });
       window.onload = load;
     </script>
   </head>
@@ -65,12 +73,12 @@
                 Signup
             </li>
         </ul>
-        <ul class="fl-r lis-n logined nav logined">
+        <ul class="fl-r lis-n logined nav">
             <li class="fl-l  clearfix">
                 <a href="/show_dashboard">DashBoard</a>
             </li>
             <li class="fl-l mr-small clearfix logout">
-                <a href="/tours/new" class="">Post tour</a>
+                <a href="/tours/new" class="">Post Tour</a>
             </li>
             <li class="fl-l clearfix">
                 <a href="/browse_tours">Browse</a>

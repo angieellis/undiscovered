@@ -18,6 +18,11 @@ var userSchema = new Schema({
     required: true
   },
 
+  user_description: {
+    type: String,
+    trim: true
+  },
+
   first_name: {
     type: String,
     trim: true
