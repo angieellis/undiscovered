@@ -8,8 +8,9 @@ a .city-img-text {
 
 .browse-discover-title {
   text-align: center;
-  margin-top: 2.5em;
-  font-size: 2.5em;
+  font-family: CiceroSerif;
+  margin: 1.3em 0em 0.3em 0em;
+  font-size: 3em !important;
   color: #424242;
   font-weight: 500;
 }
@@ -38,14 +39,19 @@ a .city-img-text {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   position: relative;
+  transition: background-color 0.5s ease;
 }
 
 .interest-tag-titles {
   text-align: right;
   margin: 0;
-  font-size: 0.8em;
+  font-size: 0.8em !important;
   font-weight: 300;
   color: #F5F5F5;
+}
+
+.interest-template-div:hover {
+  background-color: #5092B9;
 }
 
 .tag-border-line {
@@ -128,6 +134,11 @@ a .city-img-text {
   position: relative;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+  transition: background-color 0.5s ease;
+}
+
+.enable-gps-button:hover {
+  background-color: #5092B9;
 }
 
 .location-button-filler {
@@ -154,10 +165,6 @@ a .city-img-text {
   color: white;
 }
 
-
-
-
 .tour-display-template {
   float: left;
-
 }
