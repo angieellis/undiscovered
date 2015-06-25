@@ -56,8 +56,6 @@ exports.add = function(req, res, next) {
 };
 
 exports.findTours = function(req, res, next) {
-  console.log(req.body);
-  console.log(res.body);
   //expects to receive geolocation of search in json object with longitude and latitude coordinates
   Tour.find({ "coordinates" :
     { $geoWithin : {
@@ -79,7 +77,6 @@ exports.findTours = function(req, res, next) {
 // get route method to find and show tour
 exports.getTour = function(req, res, next) {
   // expects to receive json object with tour id
-  var tourInfo = [];
   // find tour to show
   Tour.findOne(mongoose.Types.ObjectId(req.params.id), function(err, tour) {
     if (err || !tour) {
@@ -87,20 +84,20 @@ exports.getTour = function(req, res, next) {
       console.log("Error: ", err);
       return res.json(err);
     } else {
-      tourInfo.push({"tour": tour});
-      findTourGuide(tour.tour_guide["_id"]);
+      findTourGuide(tour);
     };
   });
 
-  var findTourGuide = function(user_id) {
-    User.findOne(mongoose.Types.ObjectId(user_id), function(err, user) {
+  var findTourGuide = function(tour) {
+    User.findOne(mongoose.Types.ObjectId(tour.tour_guide["_id"]), function(err, user) {
       if (err || !user) {
         // return error message if error occurs
         console.log("Error: ", err);
         return res.json(err);
       } else {
-        tourInfo.push({"user": { "_id": user._id, "username": user.username, "description": user.user_description, "profile_pic": user.profile_pic }});
-        console.log(tourInfo);
+        var tourInfo = tour.toObject();
+        tourInfo.tour_guide.description = user.user_description;
+        tourInfo.tour_guide.profile_pic = user.profile_pic;
         return res.json(tourInfo);
       }
     });
