@@ -211,7 +211,9 @@ footer {
 .title-box{
     display:inline-block;
     width: 100%;
-    padding:4% 2%;
+    padding:2% 2%;
+    margin: 2% 0%;
+    border-bottom:1px solid #e2e4e6;
 }
 
 .not-index {

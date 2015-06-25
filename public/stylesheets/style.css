@@ -112,4 +112,11 @@ header a {
 }
 
 
+.user-info {
+	height:400px;
+	text-align: left ;
+	background-color:#fbfbfb ;
+	border: 1px solid #e2e4e6;
+}
+
 
