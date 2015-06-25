@@ -77,6 +77,16 @@ ul, ol {
     opacity: 1;
 }
 
+.footer_buffer {
+    height: 5em;
+}
+
+.footer {
+    height: 4em;
+    bottom: 0px;
+    background-color: #00897B;
+}
+
 .debug {
     border: 1px solid red;
 }
@@ -183,7 +193,7 @@ footer {
 
 .tour-text{}
 
-.discover_link {
+.link_btn {
     text-decoration: none;
     color: white;
 }
