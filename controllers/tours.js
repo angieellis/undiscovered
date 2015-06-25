@@ -1,6 +1,7 @@
 var exports = module.exports = {};
 var mongoose = require("mongoose-q")();
 
+var User = require('../models/user').User;
 var Tour = require('../models/tour').Tour;
 var City = require('../models/categories').City;
 var Interest = require('../models/categories').Interest;
@@ -89,6 +90,32 @@ exports.getTour = function(req, res, next) {
   // returns tour object if found
   // otherwise, returns error message
 };
+
+// post route to add tour to user's tour wishlist
+exports.wishlistTour = function(req, res, next) {
+  Tour.find(
+    { "_id": mongoose.Types.ObjectId(req.params.id) },
+    function(err, tour) {
+      if (err || !tour) {
+        // return error message if error occurs
+        console.log("Error: ", err);
+        return res.json(err);
+      } else {
+        User.findByIdAndUpdate(
+          mongoose.Types.ObjectId(req.session.user._id),
+          { $push: { wishlist: { "_id": tour.id, "title": tour.title }}},
+          function(err, user) {
+            if (err || !user) {
+            // return error message if error occurs
+              console.log("Error: ", err);
+              return res.json(err);
+            } else {
+              return res.json(true);
+            }
+        })
+      }
+    })
+}
 
 // put route method to find and update tour
 exports.update = function(req, res, next) {
