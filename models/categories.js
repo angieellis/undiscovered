@@ -3,9 +3,13 @@ var Schema = mongoose.Schema;
 
 // create schema for Category model
 var citySchema = new Schema({
-  name: {
+  city: {
     type: String,
     unique: true,
+    trim: true
+  },
+  state: {
+    type: String,
     trim: true
   },
   photo_url: String
