@@ -14,7 +14,7 @@ var dotenv = require('dotenv').load(),
 
 // set up connection to database
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/yourguide_development');
+// mongoose.connect('mongodb://localhost/yourguide_development');
 mongoose.connect('mongodb://undiscovered:undiscovered@ds047652.mongolab.com:47652/heroku_r8psfsns');
 
 // require controllers for setting routes
