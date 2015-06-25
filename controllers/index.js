@@ -1,4 +1,3 @@
-require('dotenv').load();
 var exports = module.exports = {};
 var User = require('../models/user').User;
 var passport = require('passport');
@@ -54,8 +53,7 @@ exports.signout = function(req, res, next) {
   res.redirect('/');
 };
 
-var LocalStrategy = require('passport-local').Strategy,
-    GoogleStrategy = require('passport-google-oauth2').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 
 passport.use(new LocalStrategy(
   // method to find user and validate password
