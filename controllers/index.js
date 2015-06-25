@@ -43,9 +43,6 @@ exports.signin = function(req, res, next) {
 
 // post route method to sign out user and clear session
 exports.signout = function(req, res, next) {
-  console.log("------------------------");
-  console.log(req.session);
-  console.log("------------------------");
   if (req.session.user) {
     req.session.user = null;
     req.session.destroy();

@@ -43,12 +43,22 @@
           document.getElementsByClassName("logined")[0].style.display = "none";
         }
       };
-      // $(document).ready(function(){
-      //   $(document).on("click", ".logout", function(e){
-      //     e.preventDefault();
-      //     window.sessionStorage.removeItem("userID");
-      //   });
-      // });
+      $(document).ready(function(){
+        $(".logout").on("click", function(e){
+          e.preventDefault();
+          window.sessionStorage.removeItem("userID");
+          $.ajax({
+            type: "GET",
+            url: "/signout"
+          })
+          .done(function(result) {
+            window.location.href = '/';
+          })
+          .fail(function(result) {
+            console.log(result);
+          })
+        });
+      });
       window.onload = load;
     </script>
   </head>
