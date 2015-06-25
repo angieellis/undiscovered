@@ -1,2 +1,7 @@
+.footer {
+  width: 100% !important;
+}
 
-
+.dashboard-title {
+  font-family: CiceroSerif;
+}
