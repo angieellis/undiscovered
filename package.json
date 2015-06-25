@@ -1,13 +1,15 @@
 {
-  "name": "yourguide",
-  "version": "0.0.0",
+  "name": "Undiscovered",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "make test"
+    "start": "node app.js",
+    "test": "mocha"
   },
   "dependencies": {
     "body-parser": "~1.12.4",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^0.8.1",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
     "dotenv": "^1.2.0",
@@ -16,8 +18,10 @@
     "express": "~4.12.4",
     "express-ejs-layouts": "^1.1.0",
     "express-session": "^1.11.3",
+    "express-session-mongo": "https://github.com/trottski/express-session-mongo/archive/master.tar.gz",
     "faker": "^2.1.5",
     "googleapis": "^2.0.5",
+    "heroku-env": "^0.2.0",
     "jade": "~1.9.2",
     "mocha": "^2.2.5",
     "mongoose": "^4.0.5",
@@ -25,7 +29,6 @@
     "morgan": "~1.5.3",
     "nodemon": "^1.3.7",
     "passport": "^0.2.2",
-    "passport-google": "^0.3.0",
     "passport-google-oauth2": "^0.1.6",
     "passport-local": "^1.0.0",
     "serve-favicon": "~2.2.1",
@@ -41,5 +44,23 @@
     "less": "^2.5.1",
     "path": "^0.11.14",
     "plumber": "^0.4.8"
-  }
+  },
+  "engines": {
+    "node": "0.12.x"
+  },
+  "description": "Local authentic experiences",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angieellis/yourguide-js.git"
+  },
+  "author": "kei spenser angie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angieellis/yourguide-js/issues"
+  },
+  "homepage": "https://github.com/angieellis/yourguide-js"
 }

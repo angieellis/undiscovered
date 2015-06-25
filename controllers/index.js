@@ -1,4 +1,3 @@
-require('dotenv').load();
 var exports = module.exports = {};
 var User = require('../models/user').User;
 var passport = require('passport');
@@ -44,17 +43,15 @@ exports.signin = function(req, res, next) {
 
 // post route method to sign out user and clear session
 exports.signout = function(req, res, next) {
-  if (req.isAuthenticated()) {
+  console.log(req.session);
+  if (req.session.user) {
     req.session.user = null;
-    req.session.save(function(err) {
-      res.redirect('/');
-    });
+    req.session.destroy();
   };
   res.redirect('/');
 };
 
-var LocalStrategy = require('passport-local').Strategy,
-    GoogleStrategy = require('passport-google-oauth2').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 
 passport.use(new LocalStrategy(
   // method to find user and validate password
