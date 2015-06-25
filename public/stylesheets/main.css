@@ -84,10 +84,10 @@ ul, ol {
 
 .op-head {
     background-color: #00897B;
-    position:absolute;
+    position: relative;
     color: white;
     top: 0;
-    padding: 0;
+    pad
     margin: 0;
     opacity: 1;
 }
@@ -106,9 +106,34 @@ ul, ol {
 
 .footer {
     width:100%;
-    height: 3em;
+    height: 4em;
     bottom: 0px;
     background-color: #00897B;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.footer-text {
+    font-weight: 300;
+    font-size: 0.8em;
+    color: white;
+    margin: 0;
+    padding-top: 5px;
+}
+
+.facebook-logo {
+    height: 35px;
+    width: 35px;
+}
+
+.twitter-logo {
+    height: 35px;
+    width: 35px;
+}
+
+.google-plus-logo {
+    height: 35px;
+    width: 35px;
 }
 
 .debug {
@@ -151,7 +176,7 @@ ul, ol {
 .p-lg { padding: 7em;}
 .p-xxl { padding: 10em; }
 .p-none { padding: 0;}
-.p-hero { padding: 23em; } /* ask josh about this */
+/*.p-hero { padding: 23em; } /* ask josh about this */
 
 .lh-sm { line-height: 80%; }
 
@@ -169,6 +194,7 @@ ul, ol {
 */    /*font-family: 'Cabin', sans-serif;*/
 font-family: 'Oxygen', sans-serif;
 }
+
 .fc-light {color: white;}
 .fc-dark {color: #042037};
 .bgc-cool { background-color: blue; }
@@ -186,6 +212,14 @@ font-family: 'Oxygen', sans-serif;
     width: 50px;
 }
 
+#logo {
+    margin-top: -25px;
+    margin-left: -10px;
+    height: 60px;
+    width: auto;
+    padding: 0;
+}
+
 .hero {
   background:
     linear-gradient(
@@ -196,7 +230,7 @@ font-family: 'Oxygen', sans-serif;
   background-size: cover;
   background-position: center;
   width: 100%;
-  height:100%;
+  height: 100vh;
 }
 
 .va-mid { vertical-align: middle; }
@@ -211,7 +245,6 @@ body { background-color: white; }
 footer {
     right: 0;
     left: 0;
-/*    position: fixed;*/
     width: 100%;
     bottom: 0px;
 }
@@ -250,6 +283,15 @@ footer {
     /*Opacity end*/
 }
 
+.nav-header {
+    padding: 30px 15px 15px 20px !important;
+    bottom: -15px !important;
+}
+
+.header-options {
+    padding: 0px;
+}
+
 .discover a {
     font-size:18px;
     vertical-align: middle;
@@ -277,6 +319,8 @@ footer {
 .clearfixboth {
     clear:both;
 }
+
+
 /* start commented backslash hack \*/
 * html .clearfix { height: 1%; }
 .clearfix { display: block; }
@@ -288,9 +332,11 @@ footer {
 }
 
 @font-face {
-    font-family: aracneUltraCondensedLight;
-    src: url("../images/ARACNE-ULTRA-CONDENSED_light.otf") format("opentype");
+    font-family: CiceroSerif;
+    src: url("../images/CiceroSerif.ttf") format("truetype");
 }
+
+
 
 /* ==========================================================================
    Media Queries

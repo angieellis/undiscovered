@@ -1,11 +1,53 @@
+.op-head {
+  background-color: transparent;
+  position: absolute;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.80;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+}
+
 #main-title {
   font-family: theSkinnyFont;
   color: white;
-  font-size: 8.5em;
+  font-size: 11em !important;
   text-shadow: 3px 3px 3px black;
-  margin: 0em 0em 0.3em 0em;
+  margin: 0px 0px 5px 0px;
+  padding-top: 22.5vh;
 }
 
 .footer {
   display: none;
 }
+
+#index-subtitle {
+  color: white;
+  font-weight: 300 !important;
+  font-size: 1.5em !important;
+  margin: 0em 0em 3.5em 0em;
+}
+
+.discover-button-wrapper {
+  padding: 20px 0px 15px 10px;
+  width: 135px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+
+.button-wrapper-p {
+  margin-top: 0;
+  font-weight: 300;
+  font-size: 1.7em;
+  transition: color 0.5s ease;
+}
+
+.discover-search-icon {
+  font-size: 1em;
+}
+
+.button-wrapper-p:hover {
+  color: #EF6C00;
+};
