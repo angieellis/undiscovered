@@ -30,9 +30,31 @@ var faker = require('faker');
 
 var interestTags = ["Food", "Shopping", "Hiking", "Sports", "Beer/Wine", "Nature", "Educational", "Historic", "Arts", "Music", "Theater", "Group", "Lifestyle", "Parks", "Festivals", "Alternative", "Technology", "Business", "Museum"];
 
-var cities = [["San Francisco, California", "http://s3.amazonaws.com/tgc-ee2/articles/San-Francisco.jpg"], ["Manhattan, New York", "http://www.rew-online.com/wp-content/uploads/2013/02/LowerManhattan.jpg"], ["Boston, Massachusetts", "http://lizzdurbin.files.wordpress.com/2010/09/boston.jpg"], ["Seattle, Washington", "http://doubletree3.hilton.com/resources/media/dt/CTAC-DT/en_US/img/shared/full_page_image_gallery/main/dh_seattleskyline_11_677x380_FitToBoxSmallDimension_Center.jpg"], ["Portland, Oregon", "http://joshblatteryoga.com/wp-content/uploads/2013/06/oregon.jpg"], ["Salt Lake City, Utah", "https://www.dfcu.com/images/backgrounds/salt-lake-city-skyline-cropped.jpg"], ["Los Angeles, California", "http://students.marshall.usc.edu/undergrad/files/2012/04/Selling-Your-Los-Angeles-Home1.jpeg"], ["Chicago, Illinois", "http://www.socrata.com/wp-content/uploads/2014/06/chicago-dreary-bean-1.jpg"], ["Houston, Texas", "http://www.photohome.com/pictures/texas-pictures/houston/downtown-houston-5a.jpg"], ["Philadelphia, Pennsylvania", "http://www.urbanohio.com/UOThreads/Philadelphia/April2008/08MarchPhiladelphia41.jpg"], ["Phoenix, Arizona", "http://westwoodps.com/sites/default/files/styles/slideshow_slide_small/public/phoenix_1_0.jpg?itok=qw1E-P3V"], ["Denver, Colorado", "http://www.travelweekly.com/uploadedImages/Shutterstock_images/denverskyline.jpg"]];
+var cities = [
+  ["San Francisco", "California", "http://s3.amazonaws.com/tgc-ee2/articles/San-Francisco.jpg"],
+  ["Manhattan", "New York", "http://www.rew-online.com/wp-content/uploads/2013/02/LowerManhattan.jpg"],
+  ["Boston", "Massachusetts", "http://wikitravel.org/upload/shared//thumb/1/19/Boston_Back_Bay.jpg/400px-Boston_Back_Bay.jpg"],
+  ["Seattle", "Washington", "http://doubletree3.hilton.com/resources/media/dt/CTAC-DT/en_US/img/shared/full_page_image_gallery/main/dh_seattleskyline_11_677x380_FitToBoxSmallDimension_Center.jpg"],
+  ["Portland", "Oregon", "http://joshblatteryoga.com/wp-content/uploads/2013/06/oregon.jpg"],
+  ["Salt Lake City", "Utah", "https://www.dfcu.com/images/backgrounds/salt-lake-city-skyline-cropped.jpg"],
+  ["Los Angeles", "California", "http://students.marshall.usc.edu/undergrad/files/2012/04/Selling-Your-Los-Angeles-Home1.jpeg"],
+  ["Chicago", "Illinois", "http://www.socrata.com/wp-content/uploads/2014/06/chicago-dreary-bean-1.jpg"],
+  ["Houston", "Texas", "http://www.photohome.com/pictures/texas-pictures/houston/downtown-houston-5a.jpg"],
+  ["Philadelphia", "Pennsylvania", "http://www.urbanohio.com/UOThreads/Philadelphia/April2008/08MarchPhiladelphia41.jpg"],
+  ["Phoenix", "Arizona", "http://westwoodps.com/sites/default/files/styles/slideshow_slide_small/public/phoenix_1_0.jpg?itok=qw1E-P3V"],
+  ["Denver", "Colorado", "http://www.travelweekly.com/uploadedImages/Shutterstock_images/denverskyline.jpg"]
+];
 
-var citiesHash = [["San Francisco", "CA", 94105, [-122.4167, 37.7833]], ["Manhattan", "NY", 10021, [-73.96, 40.80]], ["Boston", "MA", 02108, [-71.06, 42.36]], ["Seattle", "WA", 98101, [-122.3331, 47.61]], ["Portland", "OR", 97201, [-122.68, 45.52]], ["Salt Lake City", "UT", 84101, [-111.8833, 40.75]]];
+var citiesHash = [
+  ["San Francisco", "CA", 94105, [-122.4167, 37.7833]],
+  ["Manhattan", "NY", 10021, [-73.96, 40.80]],
+  ["Boston", "MA", 02108, [-71.06, 42.36]],
+  ["Seattle", "WA", 98101, [-122.3331, 47.61]],
+  ["Portland", "OR", 97201, [-122.68, 45.52]],
+  ["Salt Lake City", "UT", 84101, [-111.8833, 40.75]]
+];
+
+var tourNames = ["Vintage and Resale Shops", "Wine Tasting for Red Wine Lovers", "Summer Concerts in the Park", "Hike Summit Overlooking City", "Tech Museum with Old Military Mainframes", "Rugby Field with Community Games", "Mom and Pop Shops", "Used Book Store with Antique Books", "Weekly Art Show on Main Street", "Historic Citadel Tours", "Alternative Lifestyles Celebration", "Unique Foodie Spots"];
 
 for (var i = 0; i < 10; i++) {
   // create fake users
@@ -93,8 +115,9 @@ for (var i = 0; i < 10; i++) {
 
 for (var i = 0; i < cities.length; i++) {
   City.create({
-    "name" : cities[i][0],
-    "photo_url" : cities[i][1]
+    "city" : cities[i][0],
+    "state" : cities[i][1],
+    "photo_url" : cities[i][2]
   }, function(err, categories) {
     if (err) {
       console.log(err);
