@@ -31,11 +31,13 @@
 .youtube iframe {
 	margin:0 auto;
 }
+
 .wishlist {
 	text-align:center;
 	vertical-align: middle;
 	display:inline-block;
 }
+
 .wishlist i{
  font-size:24px;
  display:block;

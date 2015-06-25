@@ -14,7 +14,7 @@ header a {
 /*}*/
 
 .nav {
-	font-size:18px;
+	font-size:16px;
 	color:white;
 }
 
@@ -24,9 +24,13 @@ header a {
 
 
 .nav li {
-	margin-right: 15px;
+	margin-right: 20px;
 	padding-top:3px;
 	font-weight:300;
+}
+
+.nav li:hover {
+	color:#e2e4e6;
 }
 
 .h1 {

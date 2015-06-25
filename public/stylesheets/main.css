@@ -204,7 +204,7 @@ body { background-color: white; }
 footer {
     right: 0;
     left: 0;
-    position: fixed;
+/*    position: fixed;*/
     width: 100%;
     bottom: 0px;
 }
