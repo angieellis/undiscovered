@@ -64,8 +64,9 @@
   <div class="title-box">
     <h1 class="h1">Dashboard</h1>
   </div>
-  <div id="left-box" class="span-3-t left-box">
-    <div id="inner-left-box" class="inner-box">
+  <div id="left-box" class="span-3-t left-box profile-box">
+    <h4 class="h4">Your Profile</h4>
+    <div id="inner-left-box" class="profile-inner-box">
       <div id="individual-user-dashboard-display"></div>
       <div id="user-authored-list"></div>
     </div>
@@ -109,16 +110,67 @@
       </div>
     </div>
     </div>
+    <h3 class="h3">Your Post</h3>
+    <div class="photo-list">
+     <div class="photo-list">
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+      <div class="photo">
+        <img src="" alt="" class="square200">
+        <p class="post-title">testetss</P>
+      </div>
+    </div>
+    </div>
   </div>
 
 
 <script id="individual-user-dashboard-template" type="text/x-handlebars-template">
-  <p><label class="sm-label">Username:</label></p>
-  <p>{{username}}</p>
-  <p><label class="sm-label">First Name:</label> </p><p>{{first_name}}</p>
-  <p><label class="sm-label">Last Name:</label></p><p> {{last_name}}</p>
-  <p><label class="sm-label">Email:</label></p><p> {{email}}</p>
-  <input type="hidden" value="{{_id}}">
+      <div class="inner-line-box">
+        <p><label class="sm-label"></p>
+        <img src="{{profile_pic}}" class="circle-pic">
+      </div>
+      <div class="inner-line-box">
+        <p><label class="sm-label">Username:</label></p>
+        <p>{{username}}</p>
+      </div>
+      <div class="inner-line-box">
+        <p><label class="sm-label">First Name:</label> </p><p>{{first_name}}</p>
+      </div>
+      <div class="inner-line-box">
+        <p><label class="sm-label">Last Name:</label></p><p> {{last_name}}</p>
+      </div>
+      <div class="inner-line-box">
+        <p><label class="sm-label">Email:</label></p><p> {{email}}</p>
+      </div>
+      <input type="hidden" value="{{_id}}">
+    </div>
+  </div>
 </script>
 
 <script id="individual-user-authored-template" type="text/x-handlebars-template">

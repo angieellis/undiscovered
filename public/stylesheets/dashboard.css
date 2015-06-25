@@ -1,2 +1,30 @@
+ .profile-box {
 
+		/*text-align: left ;*/
+		box-sizing:border-box;
+		background-color:#fbfbfb ;
+		border: 1px solid #e2e4e6;
+		border-radius: 4px;
+ }
 
+ .inner-line-box {
+ 	background-color: #fbfbfb;
+ 	border-top:1px solid #e2e4e6;
+ 	padding:10px 12px !important;
+ 	/*margin-top: -7px !important;*/
+ }
+
+ .profile-inner-box {
+ 	width:100%;
+ }
+
+ .h4 {
+ 		font-weight: 300;
+ 		margin-left:15px;
+		font-size:14px !important;
+ }
+
+ .circle-pic {
+	 	width:150px;
+	 	heigth:150px;
+ }
