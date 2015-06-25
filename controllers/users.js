@@ -7,6 +7,7 @@ var main = require('./index');
 
 // get route method to show user dashboard
 exports.showDash = function(req, res, next) {
+  console.log(req);
   var userInfo = [];
   // use promises to handle async callbacks
   // find user from given id

@@ -77,13 +77,22 @@ ul, ol {
     opacity: 1;
 }
 
+.footer_buffer {
+    height: 5em;
+}
+
+.footer {
+    height: 4em;
+    bottom: 0px;
+    background-color: #00897B;
+}
+
 .debug {
     border: 1px solid red;
 }
 
 .mt-none { margin-top: 0; }
 .m-none { margin: 0; }
-<<<<<<< HEAD
 .mb-none { margin-bottom: 0;}
 .mb-md { margin-bottom: 5em; }
 .m-ssm { margin: 2em; }
@@ -184,6 +193,10 @@ footer {
 
 .tour-text{}
 
+.link_btn {
+    text-decoration: none;
+    color: white;
+}
 
 .discover {
     width: 15em;
