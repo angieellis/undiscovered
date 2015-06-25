@@ -56,6 +56,8 @@ exports.add = function(req, res, next) {
 };
 
 exports.findTours = function(req, res, next) {
+  console.log(req.body);
+  console.log(res.body);
   //expects to receive geolocation of search in json object with longitude and latitude coordinates
   Tour.find({ "coordinates" :
     { $geoWithin : {

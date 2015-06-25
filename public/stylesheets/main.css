@@ -92,6 +92,14 @@ ul, ol {
     opacity: 1;
 }
 
+.logined {
+    display: none;
+}
+
+.notlogined {
+    display: none;
+}
+
 .footer_buffer {
     height: 5em;
 }
