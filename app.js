@@ -14,8 +14,8 @@ var dotenv = require('dotenv').load(),
 
 // set up connection to database
 var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/yourguide_development');
-mongoose.connect('mongodb://undiscovered:undiscovered@ds047652.mongolab.com:47652/heroku_r8psfsns');
+mongoose.connect('mongodb://localhost/yourguide_development');
+// mongoose.connect('mongodb://undiscovered:undiscovered@ds047652.mongolab.com:47652/heroku_r8psfsns');
 
 // require controllers for setting routes
 var main = require('./controllers/index'),
@@ -67,13 +67,13 @@ app.use(function(req,res,next) {
 // set up heroku port
 app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'), function() {
-  console.log("Node app is running on port:" + app.get('port'))
+  // console.log("Node app is running on port:" + app.get('port'))
 })
 
 // set main routes for index controller
 app.get('/', main.index);
 app.post('/', main.signin);
-app.post('/signout', main.signout);
+app.get('/signout', main.signout);
 
 // set routes for Google Oauth
 app.get('/auth/google', passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/youtube' }));
