@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title></title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/stylesheets/normalize.min.css"/>
     <link rel="stylesheet" href="/stylesheets/trg.css"/>
@@ -28,6 +29,28 @@
     <script src="/javascript/tour_new.js"></script>
     <script src="/javascript/cors_upload.js"></script>
     <script src="/javascript/upload_video.js"></script>
+     <script>
+      // console.log("------------------------");
+      // console.log(window.sessionStorage["userID"]);
+      // console.log("------------------------");
+     function load() {
+        if (window.sessionStorage["userID"]){
+          document.getElementsByClassName("notlogined")[0].style.display = "none";
+          document.getElementsByClassName("logined")[0].style.display = "";
+          $('.logined').show();
+        } else {
+          document.getElementsByClassName("notlogined")[0].style.display = "";
+          document.getElementsByClassName("logined")[0].style.display = "none";
+        }
+      };
+      // $(document).ready(function(){
+      //   $(document).on("click", ".logout", function(e){
+      //     e.preventDefault();
+      //     window.sessionStorage.removeItem("userID");
+      //   });
+      // });
+      window.onload = load;
+    </script>
   </head>
 
   <body class="fs-index">
@@ -38,8 +61,19 @@
             <li class="fl-l b-bttm mr-small clearfix signin">
                 SignIn
             </li>
-            <li class="fl-l b-bttm clearfix signup">
+            <li class="fl-l clearfix signup">
                 Signup
+            </li>
+        </ul>
+        <ul class="fl-r lis-n logined nav">
+            <li class="fl-l  clearfix">
+                <a href="/show_dashboard">DashBoard</a>
+            </li>
+            <li class="fl-l clearfix">
+                <a href="/browse_tours">Browse</a>
+            </li>
+             <li class="fl-l mr-small clearfix logout">
+                <a href="/signout" class="logout">Logout</a>
             </li>
         </ul>
       </header>
@@ -65,7 +99,6 @@
           <p class="close"><i class="fa fa-times"></i> close</p>
         </form>
       </div>
-
       <div class='formbox signinbox '>
         <form action="" method="post" id="subForm">
           <h3>Signin</h3>
