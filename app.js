@@ -1,11 +1,12 @@
 // require node modules
-require('dotenv').load();
-var express = require('express'),
+var dotenv = require('dotenv').load(),
+    express = require('express'),
     path = require('path'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
+    MongoStore = require('connect-mongo')(session),
     flash = require('connect-flash'),
     bodyParser = require('body-parser'),
     passport = require('passport'),
@@ -13,7 +14,8 @@ var express = require('express'),
 
 // set up connection to database
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/yourguide_development');
+// mongoose.connect('mongodb://localhost/yourguide_development');
+mongoose.connect('mongodb://undiscovered:undiscovered@ds047652.mongolab.com:47652/heroku_r8psfsns');
 
 // require controllers for setting routes
 var main = require('./controllers/index'),
@@ -41,10 +43,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // enable sessions
 app.use(cookieParser('keyboard cat'));
-app.use(session(
-  { secret: 'yourguide',
+app.use(session({
+  secret: 'yourguide',
   saveUninitialized: true,
   resave: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
   cookie: {
     secure: false,
     maxAge: 864000000 // 10 Days in miliseconds
@@ -59,6 +62,12 @@ app.use(function(req,res,next) {
   res.locals.isAuthenticated = req.isAuthenticated();
   res.locals.user = req.user;
   next();
+})
+
+// set up heroku port
+app.set('port', (process.env.PORT || 5000));
+app.listen(app.get('port'), function() {
+  console.log("Node app is running on port:" + app.get('port'))
 })
 
 // set main routes for index controller
@@ -140,20 +149,23 @@ passport.use(new LocalStrategy(
 ));
 
 // method to validate user with Google Oauth
-passport.use(new GoogleStrategy({
+if (process.env.OAUTH2_CLIENT_ID) { passport.use(new GoogleStrategy({
     clientID:     process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/callback",
     passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
-    console.log("in google strategy");
-    console.log(profile);
-    // User.findOrCreate({ googleId: profile.id }, function (err, user) {
-    //   return done(err, user);
-    // });
+    process.nextTick(function() {
+      console.log("in google strategy");
+      console.log(profile);
+      // User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      //   return done(err, user);
+      // });
+    })
   }
 ));
+}
 
 // method to save user session
 passport.serializeUser(function(user, done) {
