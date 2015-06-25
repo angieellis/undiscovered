@@ -28,3 +28,11 @@
 	 	width:150px;
 	 	heigth:150px;
  }
+
+.footer {
+  width: 100% !important;
+}
+
+.dashboard-title {
+  font-family: CiceroSerif;
+}

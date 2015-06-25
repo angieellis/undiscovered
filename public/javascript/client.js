@@ -21,8 +21,8 @@
       console.log("City Render")
       console.log(tourCollection)
       $(".browse-container").html("")
-      var userSelection = window.location.toString().split("?")[1]
-      var selectedCity = userSelection.split(",")[0]
+      console.log(window.location.toString().split("?"))
+      var selectedCity = window.location.toString().split("?")[1]
       console.log(selectedCity)
 
       var ToursView = Backbone.View.extend({
@@ -373,7 +373,6 @@ var CityView = Backbone.View.extend({
   model: new City(),
   tagName: "div",
   render: function() {
-    // debugger
     var template = $("#city-template").html();
     var compiled = Handlebars.compile(template);
     var html = compiled(this.model);
