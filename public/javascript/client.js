@@ -14,7 +14,8 @@
   App.Router = Backbone.Router.extend({
     routes: {
       "city_item" : "cityRender",
-      "interest_item" : "interestRender"
+      "interest_item" : "interestRender",
+      "close_to_you" : "geoRender"
     },
     cityRender: function() {
       console.log("City Render")
@@ -33,6 +34,8 @@
 
           var template = $("#selected-city-template").html();
           var compiled = Handlebars.compile(template);
+          $(".browse-container").append("<h2 class='browse-title'>Tours Based on Chosen City</h2>")
+          $(".not-index").empty()
           for (var i=0; i < filterCollection.length; i++) {
             console.log(filterCollection[i])
             var html = compiled(filterCollection[i].attributes);
@@ -61,6 +64,8 @@
 
           var template = $("#selected-city-template").html();
           var compiled = Handlebars.compile(template);
+          $(".browse-container").append("<h2 class='browse-title'>Tours Based on Chosen Interest</h2>")
+          $(".not-index").empty()
           for (var i=0; i < filterCollection.length; i++) {
             console.log(filterCollection[i])
             var html = compiled(filterCollection[i].attributes);
@@ -71,7 +76,26 @@
 
       var toursView = new ToursView();
       var individualTourView = new IndividualTourView();
-    }
+    },
+    geoRender : function () {
+      setTimeout(function() {
+        geoTourCollection.fetch()
+        console.log("Geo Render")
+        console.log(geoTourCollection)
+      }, 5000)
+
+      $(".browse-container").html("")
+
+      var ToursView = Backbone.View.extend({
+        model: filterCollection,
+        initialize: function() {
+          var filterCollection = tourCollection
+        }
+      })
+    },
+
+    // var toursView = new ToursView();
+    // var individualTourView = new IndividualTourView();
   })
 
   new App.Router;
@@ -226,7 +250,9 @@ var IndividualTourView = Backbone.View.extend({
   }
 })
 
-var individualTourView = new IndividualTourView()
+setTimeout(function() {
+  var individualTourView = new IndividualTourView()
+}, 500)
 
 
 // **************************************************************************
@@ -462,11 +488,17 @@ var TourCollection = Backbone.Collection.extend({
   url: "/tours/show"
 })
 
+var GeoTourCollection = Backbone.Collection.extend({
+  url: "/tours/"
+})
+
 var tourCollection = new TourCollection()
 
+var geoTourCollection = new GeoTourCollection()
+
 tourCollection.fetch()
+geoTourCollection.fetch()
 
 var filterCollection = new TourCollection()
-
 
 var individualTourView = new IndividualTourView()
