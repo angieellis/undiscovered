@@ -83,7 +83,6 @@ ul, ol {
 
 .mt-none { margin-top: 0; }
 .m-none { margin: 0; }
-<<<<<<< HEAD
 .mb-none { margin-bottom: 0;}
 .mb-md { margin-bottom: 5em; }
 .m-ssm { margin: 2em; }
@@ -184,6 +183,10 @@ footer {
 
 .tour-text{}
 
+.discover_link {
+    text-decoration: none;
+    color: white;
+}
 
 .discover {
     width: 15em;
