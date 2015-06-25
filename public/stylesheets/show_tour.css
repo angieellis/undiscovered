@@ -1,0 +1,88 @@
+.tag-box {
+	height:100px;
+	width:90%;
+	padding:10px 0%;
+}
+.location i {
+	color:#EF5350;
+	margin-right:5px;
+}
+
+.user-info {
+	height:400px;
+	text-align: left ;
+	background-color:#fbfbfb ;
+	border: 1px solid #e2e4e6;
+}
+
+.user-info .img {
+
+}
+
+.user-info a {
+	color:#1C7F7F;
+}
+
+
+.youtube {
+	width:100%;
+}
+
+.youtube iframe {
+	margin:0 auto;
+}
+.wishlist {
+	text-align:center;
+	vertical-align: middle;
+	display:inline-block;
+}
+.wishlist i{
+ font-size:24px;
+ display:block;
+ margin-top:20px;
+ color:#a9a9a9 ;
+ font-shadow:1px 1px 1px#d2b953;
+}
+
+.wishlist i:hover{
+ color:#e5c955 ;
+}
+
+.margin100 {
+	margin-top: 100px;
+}
+
+.location {
+	vertical-align:middle;
+	display:inline-block;
+
+}
+
+.inline-block {
+	display:inline-block;
+}
+
+.post-title {
+	padding:10px;
+	border-bottom:1px solid #f4f4f4;
+}
+
+.img {
+	background-color:gray;
+	width:150px;
+	height:150px;
+}
+
+.yeah {
+	margin:0 auto;
+	margin-left:200px;
+}
+
+.description {
+	margin-left:5%;
+}
+
+.inner-box {
+	width:90%;
+	padding-left:5%;
+}
