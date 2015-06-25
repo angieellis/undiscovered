@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title></title>
+    <title>unDiscovered</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/stylesheets/normalize.min.css"/>
@@ -11,11 +11,13 @@
     <link rel="stylesheet" href="/stylesheets/googlemap.css"/>
     <link rel="stylesheet" href="/stylesheets/main.css"/>
     <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <link rel="stylesheet" href="/stylesheets/animate.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="/stylesheets/all.min.css"/> -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700' rel='stylesheet' type='text/css'>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//apis.google.com/js/client:plusone.js"></script>
@@ -55,27 +57,27 @@
 
   <body class="fs-index">
     <div class="op-head full-container fz-xs">
-      <header class="clearfix fc-light txt-sdw p-xs nav">
-        <a href="/" class="link_btn"><h4 class="fl-l m-none">-- unDiscovered --</h4></a>
+      <header class="clearfix fc-light p-xs nav nav-header">
+        <a href="/" class="link_btn"><img src="../images/UnDiscovered-logo-white.png" id="logo"></a>
         <ul class="fl-r lis-n notlogined">
-            <li class="fl-l mr-small clearfix signin">
+            <li class="fl-l mr-small clearfix signin header-options">
                 SignIn
             </li>
-            <li class="fl-l clearfix signup">
+            <li class="fl-l clearfix signup header-options">
                 Signup
             </li>
         </ul>
         <ul class="fl-r lis-n logined nav logined">
-            <li class="fl-l  clearfix">
+            <li class="fl-l  clearfix header-options">
                 <a href="/show_dashboard">DashBoard</a>
             </li>
-            <li class="fl-l mr-small clearfix logout">
-                <a href="/tours/new" class="">Post your tour</a>
+            <li class="fl-l mr-small clearfix logout header-options">
+                <a href="/tours/new" class="">Post Tour</a>
             </li>
-            <li class="fl-l clearfix">
+            <li class="fl-l clearfix header-options">
                 <a href="/browse_tours">Browse</a>
             </li>
-             <li class="fl-l mr-small clearfix logout">
+             <li class="fl-l mr-small clearfix logout header-options">
                 <a href="/signout" class="logout">Logout</a>
             </li>
         </ul>
@@ -119,7 +121,12 @@
     </div>
     <%- body %>
   <!--   <div class="footer_buffer clearfixboth">&nbsp;</div> -->
-    <footer class="footer clearfixboth">&nbsp;</footer>
+    <footer class="footer clearfixboth">
+      <img src="../images/facebook.png" class="facebook-logo">&nbsp;&nbsp;
+      <img src="../images/twitter.png" class="twitter-logo">&nbsp;&nbsp;
+      <img src="../images/google_plus.png" class="google-plus-logo">
+      <h4 class="footer-text">&copy; 2015 Team Keiter | unDiscovered</h4>
+    </footer>
   </body>
 </html>
 

@@ -15,7 +15,7 @@
     routes: {
       "city_item" : "cityRender",
       "interest_item" : "interestRender",
-      "close_to_you" : "geoRender"
+      // "close_to_you" : "geoRender"
     },
     cityRender: function() {
       console.log("City Render")
@@ -77,22 +77,22 @@
       var toursView = new ToursView();
       var individualTourView = new IndividualTourView();
     },
-    geoRender : function () {
-      setTimeout(function() {
-        geoTourCollection.fetch()
-        console.log("Geo Render")
-        console.log(geoTourCollection)
-      }, 5000)
+    // geoRender : function () {
+    //   setTimeout(function() {
+    //     geoTourCollection.fetch()
+    //     console.log("Geo Render")
+    //     console.log(geoTourCollection)
+    //   }, 5000)
 
-      $(".browse-container").html("")
+    //   $(".browse-container").html("")
 
-      var ToursView = Backbone.View.extend({
-        model: filterCollection,
-        initialize: function() {
-          var filterCollection = tourCollection
-        }
-      })
-    },
+    //   var ToursView = Backbone.View.extend({
+    //     model: filterCollection,
+    //     initialize: function() {
+    //       var filterCollection = tourCollection
+    //     }
+    //   })
+    // },
 
     // var toursView = new ToursView();
     // var individualTourView = new IndividualTourView();
@@ -488,16 +488,16 @@ var TourCollection = Backbone.Collection.extend({
   url: "/tours/show"
 })
 
-var GeoTourCollection = Backbone.Collection.extend({
-  url: "/tours/"
-})
+// var GeoTourCollection = Backbone.Collection.extend({
+//   url: "/tours/"
+// })
 
 var tourCollection = new TourCollection()
 
-var geoTourCollection = new GeoTourCollection()
+// var geoTourCollection = new GeoTourCollection()
 
 tourCollection.fetch()
-geoTourCollection.fetch()
+// geoTourCollection.fetch()
 
 var filterCollection = new TourCollection()
 
