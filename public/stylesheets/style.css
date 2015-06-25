@@ -1,10 +1,21 @@
+header {
+	padding:2% !important;
+}
+
 header a {
 	text-decoration: none;
 	color:white;
 }
 
+
+
+/*.user-info {*/
+	/*width:;*/
+/*}*/
+
 .nav {
-	font-size:16px;
+	font-size:18px;
+	color:white;
 }
 
 .form_area {
@@ -20,14 +31,19 @@ header a {
 
 .h1 {
 	color:gray;
-	font-weight:300;
+	font-size:32px;
+	font-weight:400;
 }
 
 .h3 {
 	color:gray;
+	font-size:24px;
 	font-weight:300;
 }
 
+.description{
+	font-size:16px;
+}
 
 .formbox {
 	position: absolute;
@@ -84,5 +100,12 @@ header a {
 .signinbox, .signupbox {
 	display:none;
 }
+
+
+.sm-label{
+	font-size:12px;
+	color:#676767;
+}
+
 
 

@@ -55,19 +55,22 @@
 
   <body class="fs-index">
     <div class="op-head full-container fz-xs">
-      <header class="clearfix fc-light txt-sdw p-xs">
+      <header class="clearfix fc-light txt-sdw p-xs nav">
         <a href="/" class="link_btn"><h4 class="fl-l m-none">-- unDiscovered --</h4></a>
-        <ul class="fl-r lis-n">
-            <li class="fl-l b-bttm mr-small clearfix signin">
+        <ul class="fl-r lis-n notlogined">
+            <li class="fl-l mr-small clearfix signin">
                 SignIn
             </li>
             <li class="fl-l clearfix signup">
                 Signup
             </li>
         </ul>
-        <ul class="fl-r lis-n logined nav">
+        <ul class="fl-r lis-n logined nav logined">
             <li class="fl-l  clearfix">
                 <a href="/show_dashboard">DashBoard</a>
+            </li>
+            <li class="fl-l mr-small clearfix logout">
+                <a href="/tours/new" class="">Post your tour</a>
             </li>
             <li class="fl-l clearfix">
                 <a href="/browse_tours">Browse</a>
@@ -115,8 +118,8 @@
     </div>
     </div>
     <%- body %>
-    <div class="footer_buffer">&nbsp;</div>
-    <div class="footer">&nbsp;</div>
+  <!--   <div class="footer_buffer clearfixboth">&nbsp;</div> -->
+    <footer class="footer clearfixboth">&nbsp;</footer>
   </body>
 </html>
 

@@ -60,19 +60,15 @@
 .btn-normal {
 	color:white;
 	font-size:12px;
-	background-color:#546E7A;
+	background-color:#616161;
 	border-bottom: 2px solid #37474F;
 }
 
 .btn-normal:hover {
-	background-color:#607D8B;
+	background-color:#757575;
 }
 
 
-.sm-label{
-	font-size:12px;
-	color:gray;
-}
 
 .inner-box {
 	width:90%;

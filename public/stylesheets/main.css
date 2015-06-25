@@ -3,6 +3,10 @@
     letter-spacing: 1px;
 }
 
+body {
+    color: #616161;
+}
+
 html {
     color: #222;
     font-size: 1em;
@@ -26,6 +30,17 @@ hr {
     border-top: 1px solid #ccc;
     margin: 1em 0;
     padding: 0;
+}
+
+
+h1 {
+    font-size:24px !important;
+    font-weight: 400;
+}
+
+h3 {
+    font-size:18px !important;
+    font-weight: 400;
 }
 
 audio,
@@ -82,7 +97,8 @@ ul, ol {
 }
 
 .footer {
-    height: 4em;
+    width:100%;
+    height: 3em;
     bottom: 0px;
     background-color: #00897B;
 }
@@ -149,7 +165,7 @@ font-family: 'Raleway', sans-serif;
 .fc-dark {color: #042037};
 .bgc-cool { background-color: blue; }
 
-.txt-sdw { text-shadow: 2px 2px #042037; }
+.txt-sdw { text-shadow: 0px 3px 13px #042037; }
 
 .fl-l { float: left; }
 .fl-r { float: right; }
@@ -192,8 +208,14 @@ footer {
     bottom: 0px;
 }
 
+.title-box{
+    display:inline-block;
+    width: 100%;
+    padding:4% 2%;
+}
+
 .not-index {
-    margin-top: 60px;
+    padding-top: 60px;
 }
 
 .tour-text{}
@@ -204,18 +226,30 @@ footer {
 }
 
 .discover {
-    width: 15em;
+    padding: 10px 35px;
     display: inline-block;
-    margin: auto;
-    border-radius: .5em;
+    border-radius: 2px;
     background-color: #00796B;
+    border-bottom: 2px solid #005a50;
     /*Opacity start*/
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+ /*   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     filter: alpha(opacity=80);
     -moz-opacity: 0.80;
-    -khtml-opacity: 0.8;
+    -khtml-opacity: 0.8;*/
 /*    opacity: 0.8;*/
     /*Opacity end*/
+}
+
+.discover a {
+    font-size:18px;
+    vertical-align: middle;
+}
+
+.discover i {
+    margin-top:-4px;
+    margin-right:5px;
+    font-size:14px;
+    vertical-align: middle;
 }
 
 .clearfix:after {
@@ -226,7 +260,13 @@ footer {
      clear: both;
      height: 0;
      }
-.clearfix { display: inline-block; }
+.clearfix {
+    display: inline-block;
+}
+
+.clearfixboth {
+    clear:both;
+}
 /* start commented backslash hack \*/
 * html .clearfix { height: 1%; }
 .clearfix { display: block; }
