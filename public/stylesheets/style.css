@@ -120,3 +120,30 @@ header a {
 }
 
 
+.inner-line-box {
+ 	background-color: #fbfbfb;
+ 	border-top:1px solid #e2e4e6;
+ 	padding:10px 12px !important;
+ 	/*margin-top: -7px !important;*/
+ }
+
+
+ .profile-box {
+		background-color: white !important;
+		/*text-align: left ;*/
+		box-sizing:border-box;
+		background-color:#fbfbfb ;
+		border: 1px solid #e2e4e6;
+		border-radius: 4px;
+ }
+
+.user-info a,  .profile-box a {
+	color:#1C7F7F;
+}
+
+.profile-box h3 {
+	font-size:14px !important;
+	margin-left:12px;
+}
+
+

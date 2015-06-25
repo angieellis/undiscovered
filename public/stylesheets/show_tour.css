@@ -15,14 +15,14 @@
 	border: 1px solid #e2e4e6;
 }
 
-.user-info .img {
-
-}
 
 .user-info a {
 	color:#1C7F7F;
 }
 
+.line {
+	height:100px;
+}
 
 .youtube {
 	width:100%;
@@ -50,8 +50,8 @@
  color:#e5c955 ;
 }
 
-.margin100 {
-	margin-top: 100px;
+.margin30 {
+	margin-top: 30px;
 }
 
 .location {
@@ -69,10 +69,11 @@
 	border-bottom:1px solid #f4f4f4;
 }
 
-.img {
+.circle-img {
 	background-color:gray;
-	width:150px;
-	height:150px;
+	width:50px;
+	height:50px;
+	border-radius:150px;
 }
 
 .yeah {
