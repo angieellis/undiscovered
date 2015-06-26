@@ -76,14 +76,6 @@ a .city-img-text {
   position: relative;
 }
 
-.shadow {
-  position: absolute;
-  display: inline;
-  width: 100%;
-  height: 5px;
-  background-color: orange;
-  bottom: 125px;
-}
 
 .city-img {
   height: 200px;
@@ -170,10 +162,11 @@ a .city-img-text {
 
 
 
-.card-box-200 {
+
+.card-box-275 {
   border: solid 1px gray;
-  height: 325px;
-  width: 200px;
+  height: 400px;
+  width: 275px;
   float: left;
   margin: 1.4em;
   position: relative;
@@ -185,13 +178,40 @@ a .city-img-text {
   border-left: 0px;
 }
 
+.card-shadow {
+  position: absolute;
+  display: inline;
+  width: 100%;
+  height: 7px;
+  background-color: #FFB300;
+  bottom: 125px;
+}
+
+.card-img {
+  height: 275px;
+  width: 100%;
+  z-index: 10;
+}
+
+.card-img-text {
+  position: absolute;
+  top: 270px;
+  width: 100%;
+  font-size: 1.3em;
+  text-align: center;
+  font-weight: 300;
+  z-index: 1000;
+  color: black;
+}
+
 .card-circle-img {
-  height: 50px;
-  width: 50px;
+  height: 75px;
+  width: 75px;
   border-radius: 100px;
   position: absolute;
-  margin-left: 140px;
-  top: 140px;
+  margin-left: 185px;
+  top: 185px;
+  border: solid 1px white;
 }
 
 .card-tag-template-div {
@@ -223,7 +243,7 @@ a .city-img-text {
   left: 0px;
   position: absolute;
   display: inline;
-  z-index: 10000;
+  z-index: 1000;
   height: 28px;
   bottom: 0;
 }
