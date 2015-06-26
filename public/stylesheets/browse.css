@@ -10,8 +10,8 @@ a .city-img-text {
   text-align: center;
   font-family: CiceroSerif;
   margin: 1.3em 0em 0.3em 0em;
-  font-size: 3em !important;
-  color: #424242;
+  font-size: 4em !important;
+  color: #212121;
   font-weight: 500;
 }
 
@@ -26,26 +26,40 @@ a .city-img-text {
 
 .browse-title {
   font-weight: 400;
-  font-size: 1.3em;
+  font-size: 1.7em;
+  color: #424242;
+}
+
+.location-title {
+  font-weight: 400;
+  font-size: 0.8em !important;
+  color: #424242;
+}
+
+.page-title {
+  font-weight: 400;
+  font-size: 0.85em !important;
+  color: #424242;
 }
 
 .interest-template-div {
   float: left;
-  padding: 5px 30px 5px 20px;
+  padding: 5px 40px 5px 30px;
   margin-top: 0.8em;
   margin-bottom: 1em;
   margin-right: 1.5em;
   background-color: #525252;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
   position: relative;
   transition: background-color 0.5s ease;
+  height: 25px;
 }
 
 .interest-tag-titles {
   text-align: right;
   margin: 0;
-  font-size: 0.8em !important;
+  font-size: 1.1em !important;
   font-weight: 300;
   color: #F5F5F5;
 }
@@ -55,12 +69,13 @@ a .city-img-text {
 }
 
 .tag-border-line {
-  border-left: thick solid #FF7043;
+  border-left: thick solid #FFA726;
+  border-left-width: 10px;
   left: 0px;
   position: absolute;
   display: inline;
   z-index: 10000;
-  height: 28px;
+  height: 35px;
   bottom: 0;
 }
 
@@ -68,39 +83,16 @@ a .city-img-text {
   margin-right: 20px;
 }
 
-.box-200 {
-  height: 325px;
-  width: 200px;
-  float: left;
-  margin: 1.4em;
-  position: relative;
-}
-
-
-.city-img {
-  height: 200px;
-  width: 100%;
-  z-index: 10;
-}
-
-.city-img-text {
-  position: absolute;
-  top: 195px;
-  width: 100%;
-  font-size: 1.1em;
-  text-align: center;
-  font-weight: 300;
-  z-index: 1000;
-  color: black;
-}
-
 .browse-close-to-you {
+  margin-top: 1.6em;
   margin-bottom: 2em;
 }
 
 .enable-gps-text {
   margin-left: 2em;
+  font-size: 1.3em;
   font-weight: 400;
+  color: black;
 }
 
 .not-index {
@@ -109,16 +101,16 @@ a .city-img-text {
 
 .enable-gps-button {
   margin-top: 1em;
-  margin-left: 1.6em;
+  margin-left: 1.8em;
   background-color: #525252;
   color: white;
   border: none;
-  height: 35px;
-  width: 120px;
-  font-size: 1.1em;
+  height: 50px;
+  width: 150px;
+  font-size: 1.5em;
   font-weight: 100;
-  padding-right: 6em;
-  padding-left: 0.8em;
+  padding-right: 6.5em;
+  padding-left: 1.2em;
   position: relative;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -131,9 +123,9 @@ a .city-img-text {
 
 .location-button-filler {
   z-index: 10;
-  width: 37px;
+  width: 50px;
   height: 100%;
-  background-color: #FF7043;
+  background-color: #FFA726;
   position: absolute;
   display: inline;
   right: 0;
@@ -147,8 +139,9 @@ a .city-img-text {
   display: inline;
   bottom: 0;
   right: 0;
-  padding-right: 11px;
-  padding-bottom: 8.5px;
+  padding-right: 14px;
+  font-size: 1.2em;
+  padding-bottom: 12px;
   z-index: 100;
   color: white;
 }
@@ -158,96 +151,3 @@ a .city-img-text {
 }
 
 
-
-
-
-
-
-.card-box-275 {
-  border: solid 1px gray;
-  height: 400px;
-  width: 275px;
-  float: left;
-  margin: 1.4em;
-  position: relative;
-  box-shadow: 1px 1px 1px 1px #BDBDBD;
-  border-style: solid;
-  border-top: 1px;
-  border-right: 2px;
-  border-bottom: 2px;
-  border-left: 0px;
-}
-
-.card-shadow {
-  position: absolute;
-  display: inline;
-  width: 100%;
-  height: 7px;
-  background-color: #FFB300;
-  bottom: 125px;
-}
-
-.card-img {
-  height: 275px;
-  width: 100%;
-  z-index: 10;
-}
-
-.card-img-text {
-  position: absolute;
-  top: 270px;
-  width: 100%;
-  font-size: 1.3em;
-  text-align: center;
-  font-weight: 300;
-  z-index: 1000;
-  color: black;
-}
-
-.card-circle-img {
-  height: 75px;
-  width: 75px;
-  border-radius: 100px;
-  position: absolute;
-  margin-left: 185px;
-  top: 185px;
-  border: solid 1px white;
-}
-
-.card-tag-template-div {
-  float: left;
-  padding: 5px 30px 5px 20px;
-  background-color: #525252;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  position: relative;
-  margin-top: 85px;
-  margin-left: 10px;
-  transition: background-color 0.5s ease;
-}
-
-.card-tag-titles {
-  text-align: right;
-  margin: 0;
-  font-size: 0.8em !important;
-  font-weight: 300;
-  color: #F5F5F5;
-}
-
-.card-template-div:hover {
-  background-color: #5092B9;
-}
-
-.card-tag-border-line {
-  border-left: thick solid #FF7043;
-  left: 0px;
-  position: absolute;
-  display: inline;
-  z-index: 1000;
-  height: 28px;
-  bottom: 0;
-}
-
-.card-tag {
-  margin-right: 20px;
-}

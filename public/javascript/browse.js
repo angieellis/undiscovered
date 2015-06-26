@@ -15,7 +15,7 @@ function getCurrentPosition(){
 			data: position
 		}).done(function(response){
 			console.log(response);
-			var template = $("#selected-city-template").html();
+			var template = $("#selected-tour-template").html();
       var compiled = Handlebars.compile(template);
 
       $(".browse-container").html("")

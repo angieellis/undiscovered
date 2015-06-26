@@ -1,187 +1,97 @@
 <link rel="stylesheet" href="/stylesheets/tour_new.css">
 <link rel="stylesheet" href="/stylesheets/user_page.css">
 <link rel="stylesheet" href="/stylesheets/dashboard.css">
+
 <div class="not-index container">
   <div id="container" >
     <div class="title-box">
-      <h1 class="h1">Dashboard</h1>
+      <h1 class="dashboard-title">Dashboard</h1>
     </div>
-    <div id="left-box" class="span-3-t left-box profile-box">
+    <div id="left-box" class="left-box profile-box">
       <h4 class="h4">Your Profile</h4>
       <div id="inner-left-box" class="profile-inner-box">
         <div id="individual-user-dashboard-display"></div>
         <div id="user-authored-list"></div>
       </div>
-      <div id="left-box" class="span-3-t left-box">
-        <div id="inner-left-box" class="inner-box">
-          <div id="individual-user-dashboard-display"></div>
-          <div id="user-authored-list"></div>
+    </div>
+    <div class=" right-box">
+      <div id="inner-right-box" class="inner-box dash-right-box">
+        <h2 class="browse-title">Recommended Tours</h2>
+        <div class="recommended-tours clearfix">
+          <div class="recommended-0">
+          </div>
+          <div class="recommended-1">
+          </div>
+          <div class="recommended-2">
+          </div>
+          <div class="recommended-3">
+          </div>
+          <div class="recommended-4">
+          </div>
+          <div class="recommended-5">
+          </div>
         </div>
       </div>
     </div>
-    <div id="right-box" class="span-9-t right-box">
-      <div id="inner-right-box" class="inner-box">
-        <h3 class="h3">Wishlist</h3>
-        <div class="photo-list">
-          <div class="photo">
-            <img src="" alt="" class="square200">
-            <p class="post-title">testetss
-            </P>
-          </div>
-          <div class="photo">
-            <img src="" alt="" class="square200">
-            <p class="post-title">testetss
-            </P>
-          </div>
-          <div class="photo">
-            <img src="" alt="" class="square200">
-            <p class="post-title">testetss
-            </P>
-          </div>
-          <div class="photo">
-            <img src="" alt="" class="square200">
-            <p class="post-title">testetss
-            </P>
-          </div>
-          <div class="photo">
-            <img src="" alt="" class="square200">
-            <p class="post-title">testetss
-            </P>
-          </div>
-          <div class="photo">
-            <img src="" alt="" class="square200">
-            <p class="post-title">testetss
-            </P>
-          </div>
-          <div class="photo">
-            <img src="" alt="" class="square200">
-            <p class="post-title">testetss
-            </P>
-          </div>
-          <div class="photo">
-            <img src="" alt="" class="square200">
-            <p class="post-title">testetss
-            </P>
-          </div>
+    <br>
+    <div>
+      <div class="clearfix wishlist-on-dash cl-b ">
+        <h2 class="browse-title">Wishlist</h2>
+        <div class="dashboard-wishlist">
         </div>
-        <h3 class="h3">Your Post</h3>
-        <div class="photo-list">
-          <div class="photo-list">
-            <div class="photo">
-              <img src="" alt="" class="square200">
-              <p class="post-title">testetss
-              </P>
-            </div>
-            <div class="photo">
-              <img src="" alt="" class="square200">
-              <p class="post-title">testetss
-              </P>
-            </div>
-            <div class="photo">
-              <img src="" alt="" class="square200">
-              <p class="post-title">testetss
-              </P>
-            </div>
-            <div class="photo">
-              <img src="" alt="" class="square200">
-              <p class="post-title">testetss
-              </P>
-            </div>
-            <div class="photo">
-              <img src="" alt="" class="square200">
-              <p class="post-title">testetss
-              </P>
-            </div>
-            <div class="photo">
-              <img src="" alt="" class="square200">
-              <p class="post-title">testetss
-              </P>
-            </div>
-            <div class="photo">
-              <img src="" alt="" class="square200">
-              <p class="post-title">testetss
-              </P>
-            </div>
-            <div class="photo">
-              <img src="" alt="" class="square200">
-              <p class="post-title">testetss
-              </P>
-            </div>
-          </div>
+      </div>
+      <div class="clearfix authored-tours-on-dash cl-b">
+        <h2 class="browse-title">Your Posts</h2>
+        <div class="dashboard-authored-tours">
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div id="individual-user-dashboard-display">
-  <h1>Individual User Dashboard Display</h1>
-</div>
 
-<div id="recommended-1">
-  <h1>Recommended 1</h1>
-</div>
 
-<div id="dashboard-wishlist">
-  <h1>Wishlist</h1>
-</div>
+<script id="dashboard-tour-template" type="text/x-handlebars-template">
+  <a href="tours/display/{{_id}}">
+    <div class="card-box-275">
+      <div class="card-shadow"></div>
+      <img src="{{photo_url}}" class="card-img ">
+      <h2 class="card-img-text">{{title}}</h2>
+      <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/8/005/038/221/2d4502f.jpg" class="card-circle-img">
+      <div class="card-tag-template-div">
+        <div class="card-tag-border-line">&nbsp;</div>
+        <h3 class="card-tag-titles">
+          <i class="fa fa-tags card-tag"></i>
+          Interest
+        </h3>
+      </div>
+    </div>
+  </a>
+</script>
 
-<div id="dashboard-authored-tours">
-  <h1>Authored Tours</h1>
-</div>
 
 
 
 <script id="individual-user-dashboard-template" type="text/x-handlebars-template">
-      <div class="inner-line-box">
+      <div class="image-inner-line-box">
         <p><label class="sm-label"></p>
         <img src="{{profile_pic}}" class="circle-pic">
       </div>
       <div class="inner-line-box">
         <p><label class="sm-label">Username:</label></p>
-        <p>{{username}}</p>
+        <p class="lg-label">{{username}}</p>
       </div>
       <div class="inner-line-box">
-        <p><label class="sm-label">First Name:</label> </p><p>{{first_name}}</p>
+        <p><label class="sm-label">First Name:</label></p>
+        <p class="lg-label">{{first_name}}</p>
       </div>
       <div class="inner-line-box">
-        <p><label class="sm-label">Last Name:</label></p><p> {{last_name}}</p>
+        <p><label class="sm-label">Last Name:</label></p>
+        <p class="lg-label">{{last_name}}</p>
       </div>
       <div class="inner-line-box">
-        <p><label class="sm-label">Email:</label></p><p> {{email}}</p>
+        <p><label class="sm-label">Email:</label></p>
+        <p class="lg-label">{{email}}</p>
       </div>
       <input type="hidden" value="{{_id}}">
 </script>
-<script id="individual-user-authored-template" type="text/x-handlebars-template">
-  Authored ID: {{_id}}
-  <br>
-</script>
-<script id="current-user-info-template" type="text/x-handlebars-template">
-  <p>
-    {{username}}
-  </p>
-</script>
-<script id="recommended-tour-template" type="text/x-handlebars-template">
-  <p>
-    {{title}}
-    <br>
-    {{city}}
-  </p>
-</script>
-<script id="dashboard-wishlist-tour-template" type="text/x-handlebars-template">
-  <p>
-    {{title}}
-    <br>
-    {{_id}}
-  </p>
-
-</script>
-
-<script id="dashboard-authored-tour-template" type="text/x-handlebars-template">
-  <p>
-    {{title}}
-    <br>
-    {{_id}}
-  </p>
-</script>
-
