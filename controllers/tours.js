@@ -41,14 +41,13 @@ exports.add = function(req, res, next) {
 
   // create new tour
   var tour = new Tour(tourParams);
-  tour.save(function(err, saved) {
-    if (err || !saved) {
+  tour.save(function(err, tour) {
+    if (err || !tour) {
       // return error message if error occurs or tour isn't saved
       console.log("Error: ", err);
       res.json(err);
     } else {
-      console.log('successful!');
-      res.json(true);
+      res.json(tour._id);
     };
   });
   // returns true if tour is successfully added to collection
@@ -196,7 +195,6 @@ exports.browse = function(req, res, next) {
     Interest.findQ()
     .then(function(interests) {
       categories.push(interests);
-      console.log(categories);
       return res.json(categories);
     })
     .catch(function(err) {

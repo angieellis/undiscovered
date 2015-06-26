@@ -23,6 +23,7 @@ $(document).on('click', '#tour-submit', function(e){
 		data: tourParams
 	}).done(function(response){
 		console.log(response);
+		window.location.href = '/tours/display/' + response;
 	}).fail(function(response){
 		console.log(response);
 	});

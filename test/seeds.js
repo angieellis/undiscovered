@@ -27,7 +27,13 @@ var faker = require('faker');
 // // WA: 47.6097° N, 122.3331° W
 // // OR: 45.5200° N, 122.6819° W
 // // UT: 40.7500° N, 111.8833° W
-
+var demoUsers = ["keiter", "keiter", "Kei", "Oka", "keioka@gmail.com"];
+var demoTours = [["The Streets of San Francisco Bitter Wine", "99osT5PMmas", "https://i.ytimg.com/vi_webp/IVhykm-Llmo/mqdefault.webp"], ["Where to Eat Like A Local", "Q16bLlXXPOQ", "https://i.ytimg.com/vi/Q16bLlXXPOQ/mqdefault.jpg"], ["San Francisco Local Secrets", "S5T08fH0hSQ", "https://i.ytimg.com/vi_webp/S5T08fH0hSQ/mqdefault.webp"], ["Old Secret Military Battery in San Francisco", "FQk5UCadvqk", "https://i.ytimg.com/vi/FQk5UCadvqk/mqdefault.jpg"], ["A Walk Through the Tenderloin", "mp4eAkQbieQ", "https://i.ytimg.com/vi/mp4eAkQbieQ/mqdefault.jpg"]]
+// cable car to chinatown (sf): 4uBqcAxTEAQ
+// bay area bridge: ZlnxQQqIc64
+// San Francisco local secrets: S5T08fH0hSQ
+// where to eat like a local: Q16bLlXXPOQ
+// secret underground bunker: IVhykm-Llmo
 var interestTags = ["Food", "Shopping", "Hiking", "Sports", "Beer/Wine", "Nature", "Educational", "Historic", "Arts", "Music", "Theater", "Group", "Lifestyle", "Parks", "Festivals", "Alternative", "Technology", "Business", "Museum"];
 
 var cities = [
@@ -45,8 +51,9 @@ var cities = [
   ["Denver", "Colorado", "http://www.travelweekly.com/uploadedImages/Shutterstock_images/denverskyline.jpg"]
 ];
 
+var sf = ["San Francisco", "CA", 94105, [-122.4167, 37.7833]];
+
 var citiesHash = [
-  ["San Francisco", "CA", 94105, [-122.4167, 37.7833]],
   ["Manhattan", "NY", 10021, [-73.96, 40.80]],
   ["Boston", "MA", 02108, [-71.06, 42.36]],
   ["Seattle", "WA", 98101, [-122.3331, 47.61]],
@@ -54,7 +61,7 @@ var citiesHash = [
   ["Salt Lake City", "UT", 84101, [-111.8833, 40.75]]
 ];
 
-var tourNames = ["Vintage and Resale Shops", "Wine Tasting for Red Wine Lovers", "Summer Concerts in the Park", "Hike Summit Overlooking City", "Tech Museum with Old Military Mainframes", "Rugby Field with Community Games", "Mom and Pop Shops", "Used Book Store with Antique Books", "Weekly Art Show on Main Street", "Historic Citadel Tours", "Alternative Lifestyles Celebration", "Unique Foodie Spots"];
+var tourNames = ["Vintage and Resale Shops", "Wine Tasting for Red Wine Lovers", "Summer Concerts in the Park", "Hike Summit Overlooking City", "Tech Museum with Old Military Mainframes", "Rugby Field with Community Games", "Mom and Pop Shops", "Used Book Store with Antique Books", "Weekly Art Show on Main Street", "Historic Citadel Tours", "Alternative Lifestyles Celebration", "Unique Foodie Spots", "Italian Cooking Classes"];
 
 for (var i = 0; i < 10; i++) {
   // create fake users
@@ -84,13 +91,14 @@ for (var i = 0; i < 10; i++) {
     var city = citiesHash[Math.floor(Math.random()*citiesHash.length)];
 
     var tour = new Tour({
-      title: faker.lorem.sentence(),
+      title: tourNames[Math.floor(Math.random()*tourNames.length)],
       city: city[0],
       state: city[1],
       zip: city[2],
       coordinates: city[3],
       video_id: "gDJ2THIbfQw",
-      photo_urls: [faker.image.imageUrl(), faker.image.imageUrl()],
+      photo_url: faker.image.imageUrl(),
+      photo_urls: faker.image.imageUrl(),
       content: faker.lorem.paragraph(),
       tag: interestTags[Math.floor(Math.random()*interestTags.length)],
       trailer_description: faker.lorem.sentence(),
@@ -132,6 +140,91 @@ for (var i = 0; i < interestTags.length; i++) {
     }
   });
 };
+
+// create meaningful tour for specific tour demo
+var tour = new Tour({
+  title: demoTours[0][0],
+  city: sf[0],
+  state: sf[1],
+  zip: sf[2],
+  coordinates: sf[3],
+  video_id: demoTours[0][1],
+  photo_url: "http://media5.starkinsider.com/wordpress/wp-content/uploads/2011/01/Wine-Competition.jpg",
+  photo_urls: [
+  "http://media5.starkinsider.com/wordpress/wp-content/uploads/2011/01/Wine-Competition.jpg",
+  "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRfB5svZRNWI-0WWwk1ssOYeiwzFGVyeqK4soII8p1HuU-_ehBt",
+  "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR9rDyH-llgllFEcsTDVCnGSpZk8KnySBKZ-wmQXCsIpPAKuSZl",
+  "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSPb-_NkQvaStUCqDA-pL2XBn9ACbGCq-Av8ukMDWomGEOsUs2C8Q"],
+  content: "We recently traveled to San Francisco and then on to Napa Valley. The wine tours were amazing, especially Hall and Rutherford where you see the wine-tasting cave. All in all we visited Hall and Rutherford, Anomoly, Nickel and Nickel, CakeBread, and a couple others I cannot remember.",
+  tag: "Beer/Wine",
+  trailer_description: faker.lorem.sentence(),
+  trailer_photo_url: "http://media5.starkinsider.com/wordpress/wp-content/uploads/2011/01/Wine-Competition.jpg",
+  tour_guide: {
+    _id: user._id,
+    username: user.username
+  },
+  comments: [],
+  tour_votes: []
+});
+
+tour.save(function(err, tour) {
+  if (err) {
+    console.log(err);
+  }
+});
+
+// create meaningful user for demo
+var user = new User({
+  profile_pic: "https://avatars1.githubusercontent.com/u/24913?v=3&s=400",
+  username: demoUsers[0],
+  password: demoUsers[1],
+  first_name: demoUsers[2],
+  last_name: demoUsers[3],
+  email: demoUsers[4],
+  phone_number: faker.phone.phoneNumber(),
+  city: sf[0],
+  state: sf[1],
+  zip: sf[2],
+  coordinates: sf[3],
+  wishlist: [{"_id": mongoose.Types.ObjectId(tour._id), "title": tour.title}]
+});
+
+user.save(function(err, user) {
+  if (err) console.log(err);
+});
+
+// create meaningful tours for general demo
+for (var i = 1; i < demoTours.length; i++) {
+  var userName = faker.internet.userName();
+  var tour = new Tour({
+    title: demoTours[i][0],
+    city: sf[0],
+    state: sf[1],
+    zip: sf[2],
+    coordinates: sf[3],
+    video_id: demoTours[i][1],
+    photo_url: demoTours[i][2],
+    photo_urls: demoTours[i][2],
+    content: faker.lorem.paragraph(),
+    tag: interestTags[Math.floor(Math.random()*interestTags.length)],
+    trailer_description: faker.lorem.sentence(),
+    trailer_photo_url: demoTours[i][2],
+    tour_guide: {
+      _id: user._id,
+      username: user.username
+    },
+    comments: [],
+    tour_votes: []
+  });
+
+  tour.save(function(err, tour) {
+    if (err) {
+      console.log(err);
+    }
+  });
+
+  user.wishlist.push({"_id": mongoose.Types.ObjectId(tour._id), "title": tour.title});
+}
 
 setTimeout( function () {
   mongoose.disconnect();

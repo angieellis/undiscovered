@@ -32,6 +32,11 @@ var tourSchema = new Schema({
     trim: true
   },
 
+  photo_url: {
+    type: String,
+    trim: true
+  },
+
   photo_urls: {
     type: [String],
     trim: true

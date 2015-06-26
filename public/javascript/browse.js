@@ -14,7 +14,19 @@ function getCurrentPosition(){
 			type: "POST",
 			data: position
 		}).done(function(response){
-			console.log("success");
+			console.log(response);
+			var template = $("#selected-city-template").html();
+      var compiled = Handlebars.compile(template);
+
+      $(".browse-container").html("")
+      $(".browse-container").append("<h2 class='browse-title'>Tours Near You</h2>")
+      $(".not-index").empty()
+
+      for (var i=0; i < response.length; i++) {
+        var html = compiled(response[i]);
+			console.log(html);
+        $(".browse-container").append(html);
+      }
 		}).fail(function(response){
 			console.log("error");
 		});
