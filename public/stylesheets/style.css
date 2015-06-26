@@ -51,22 +51,22 @@ header a {
 
 .formbox {
 	position: absolute;
-	top:100px;
-	left:35%;
-	width:30%;
-	min-width:400px;
-	max-width:600px;
+	top:200px;
+	left:38%;
+	width:20%;
 	margin:0 auto;
 	text-align: center;
-	background-color:rgba(0,0,0,0.9);
+	background-color:rgba(255,255,255,1);
 	border-radius: 5px;
-	border: 1px solid #656565;
+	border: 2px solid #e7e7e7#e7e7e7;
+	box-shadow: 1px 1px 1px gray;
 	padding:2% 2%;
 	z-index:2;
 }
 
 .formbox h3, .formbox p {
-	color:white;
+	font-size:18px;
+	color:#5c5c5c;
 }
 
 .formbox input[type="text"], .formbox input[type="password"]{
@@ -80,9 +80,9 @@ header a {
 }
 
 .formbox input[type="text"]:focus, .formbox input[type="password"]:focus{
-	border: 1px solid #7a7a7a ;
+	border: 1px solid #00897b ;
 }
-
+/*
 .formbox input[type="submit"] {
 	background-color:#1E88E5;
 	width:110px;
@@ -99,7 +99,7 @@ header a {
 
 .formbox input[type="submit"]:hover{
 	background-color:#42A5F5;
-}
+}*/
 
 .signinbox, .signupbox {
 	display:none;
@@ -145,5 +145,51 @@ header a {
 	font-size:14px !important;
 	margin-left:12px;
 }
+
+
+
+.btn {
+	border:none;
+	padding:12px 32px;
+	border-radius: 2px;
+}
+
+.btn-submit {
+	color:white;
+	background-color:#00897b;
+	border-bottom: 2px solid #095252;
+	margin-top:30px;
+}
+
+
+.btn-submit:hover {
+	background-color: #009687;
+}
+
+.btn-clear {
+	border:none;
+	background-color: rgba(0,0,0,0);
+	color:#1C7F7F;
+	text-decoration: underline;
+	font-weight:bold;
+	font-size:14px;
+}
+
+.btn-clear:hover {
+	color:#095252;
+}
+
+.btn-normal {
+	color:white;
+	font-size:12px;
+	background-color:#616161;
+	border-bottom: 2px solid #37474F;
+}
+
+.btn-normal:hover {
+	background-color:#757575;
+}
+
+
 
 
