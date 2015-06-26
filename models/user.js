@@ -73,7 +73,9 @@ var userSchema = new Schema({
       required: true
     },
 
-    title: String
+    title: String,
+    photo_url: String,
+    tag: String
   }],
 
   authored_tours: [{
@@ -83,7 +85,9 @@ var userSchema = new Schema({
       required: true
     },
 
-    title: String
+    title: String,
+    photo_url: String,
+    tag: String
   }],
 
   tour_votes: [{

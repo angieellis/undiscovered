@@ -28,7 +28,7 @@ var faker = require('faker');
 // // OR: 45.5200° N, 122.6819° W
 // // UT: 40.7500° N, 111.8833° W
 var demoUsers = ["keiter", "keiter", "Kei", "Oka", "keioka@gmail.com"];
-var demoTours = [["The Streets of San Francisco Bitter Wine", "99osT5PMmas", "https://i.ytimg.com/vi_webp/IVhykm-Llmo/mqdefault.webp"], ["Where to Eat Like A Local", "Q16bLlXXPOQ", "https://i.ytimg.com/vi/Q16bLlXXPOQ/mqdefault.jpg"], ["San Francisco Local Secrets", "S5T08fH0hSQ", "https://i.ytimg.com/vi_webp/S5T08fH0hSQ/mqdefault.webp"], ["Old Secret Military Battery in San Francisco", "FQk5UCadvqk", "https://i.ytimg.com/vi/FQk5UCadvqk/mqdefault.jpg"], ["A Walk Through the Tenderloin", "mp4eAkQbieQ", "https://i.ytimg.com/vi/mp4eAkQbieQ/mqdefault.jpg"]]
+var demoTours = [["The Streets of San Francisco Bitter Wine", "99osT5PMmas", "https://i.ytimg.com/vi_webp/IVhykm-Llmo/mqdefault.webp"], ["Where to Eat Like A Local", "Q16bLlXXPOQ", "https://i.ytimg.com/vi/Q16bLlXXPOQ/mqdefault.jpg"], ["San Francisco Local Secrets", "S5T08fH0hSQ", "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTZomO2zk_EKYFAgZ9kV_57nTr7FKaN34Bck2KdzObybWfVUYnGwA"], ["Old Secret Military Battery in San Francisco", "FQk5UCadvqk", "https://i.ytimg.com/vi/FQk5UCadvqk/mqdefault.jpg"], ["A Walk Through the Tenderloin", "mp4eAkQbieQ", "https://i.ytimg.com/vi/mp4eAkQbieQ/mqdefault.jpg"]]
 // cable car to chinatown (sf): 4uBqcAxTEAQ
 // bay area bridge: ZlnxQQqIc64
 // San Francisco local secrets: S5T08fH0hSQ
@@ -186,6 +186,7 @@ var user = new User({
   state: sf[1],
   zip: sf[2],
   coordinates: sf[3],
+  authored_tours: [],
   wishlist: [{"_id": mongoose.Types.ObjectId(tour._id), "title": tour.title}]
 });
 

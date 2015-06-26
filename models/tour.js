@@ -64,12 +64,10 @@ var tourSchema = new Schema({
     _id: {
       type: Schema.Types.ObjectId,
       ref: 'User',
-      required: true
     },
 
     username: {
       type: String,
-      required: true
     }
   },
 
