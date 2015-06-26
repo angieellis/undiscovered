@@ -1,5 +1,5 @@
 a .city-img-text {
-  color: white;
+  color: black;
 }
 
 #center-box {
@@ -69,41 +69,37 @@ a .city-img-text {
 }
 
 .box-200 {
-  height: 200px;
+  height: 325px;
   width: 200px;
   float: left;
-  margin: 2em;
+  margin: 1.4em;
   position: relative;
 }
 
 .shadow {
-  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   display: inline;
-  z-index: 100;
   width: 100%;
-  height: 80px;
-  bottom: 0;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  height: 5px;
+  background-color: orange;
+  bottom: 125px;
 }
 
 .city-img {
   height: 200px;
   width: 100%;
-  border-radius: 10px;
   z-index: 10;
 }
 
 .city-img-text {
   position: absolute;
-  bottom: 0;
+  top: 195px;
   width: 100%;
-  font-size: 1.3em;
+  font-size: 1.1em;
   text-align: center;
-  font-weight: 100;
-  text-shadow: 2px 2px #000;
+  font-weight: 300;
   z-index: 1000;
+  color: black;
 }
 
 .browse-close-to-you {
@@ -167,4 +163,71 @@ a .city-img-text {
 
 .tour-display-template {
   float: left;
+}
+
+
+
+
+
+
+.card-box-200 {
+  border: solid 1px gray;
+  height: 325px;
+  width: 200px;
+  float: left;
+  margin: 1.4em;
+  position: relative;
+  box-shadow: 1px 1px 1px 1px #BDBDBD;
+  border-style: solid;
+  border-top: 1px;
+  border-right: 2px;
+  border-bottom: 2px;
+  border-left: 0px;
+}
+
+.card-circle-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  position: absolute;
+  margin-left: 140px;
+  top: 140px;
+}
+
+.card-tag-template-div {
+  float: left;
+  padding: 5px 30px 5px 20px;
+  background-color: #525252;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  position: relative;
+  margin-top: 85px;
+  margin-left: 10px;
+  transition: background-color 0.5s ease;
+}
+
+.card-tag-titles {
+  text-align: right;
+  margin: 0;
+  font-size: 0.8em !important;
+  font-weight: 300;
+  color: #F5F5F5;
+}
+
+.card-template-div:hover {
+  background-color: #5092B9;
+}
+
+.card-tag-border-line {
+  border-left: thick solid #FF7043;
+  left: 0px;
+  position: absolute;
+  display: inline;
+  z-index: 10000;
+  height: 28px;
+  bottom: 0;
+}
+
+.card-tag {
+  margin-right: 20px;
 }
