@@ -7,7 +7,7 @@
 <div class="not-index container">
   <div id="container" >
     <div class="title-box">
-      <h1 class="h1 post-tour-prompt">Post your tour</h1>
+      <h1 class="dashboard-title">Post a Tour</h1>
     </div>
     <div id="left-box" class="span-4-t left-box">
       <div id="inner-left-box" class="inner-box">
@@ -23,21 +23,21 @@
         <div class="post-sign-in">
           <div>
             <img id="channel-thumbnail">
-            <span id="channel-name"></span>
+            <span id="channel-name" class="lg-label"></span>
           </div>
 
           <div>
             <p><label for="title" class="sm-label">Title:</label></p>
-            <p><input id="title" type="text" placeholder="title"></p>
+            <p><input id="title" type="text" placeholder="title" class="lg-label"></p>
           </div>
           <div>
             <p><label for="description" class="sm-label">Description:</label></p>
-            <p><textarea id="description" placeholder="description"></textarea></P>
+            <p><textarea id="description" placeholder="description" class="lg-label"></textarea ></P>
           </div>
           <div>
             <p><label for="upload" class="sm-label">Choose your video:</label></P>
-            <p><input input type="file" id="file" class="button" accept="video/*"></P>
-            <button id="button" class="btn btn-normal">Upload Video</button>
+            <p><input input type="file" id="file" class="button" accept="video/*"class="sm-label"></P>
+            <button id="button" class="btn btn-normal lg-label">Upload Video</button>
           <div class="during-upload">
             <p><span id="percent-transferred"></span>% done (<span id="bytes-transferred"></span>/<span id="total-bytes"></span> bytes)</p>
             <progress id="upload-progress" max="1" value="0"></progress>
@@ -55,16 +55,16 @@
     <div id="right-box" class="span-8-t right-box">
       <div id="inner-right-box" class="inner-box">
         <div id="panel">
-          <p><label class="sm-label">Street: </label></p><p><input id="street" type="text" value="" placeholder="Street"></p>
-          <p><label class="sm-label">City: </label></p><p><input id="city" type="text" value="" placeholder="City"></p>
-          <p><label class="sm-label">State: </label></p><p><input id="state" type="text" value="" placeholder="State"></p>
+          <p><label class="sm-label">Street: </label></p><p><input id="street" type="text" value="" placeholder="Street" class="lg-label"></p>
+          <p><label class="sm-label">City: </label></p><p><input id="city" type="text" value="" placeholder="City" class="lg-label"></p>
+          <p><label class="sm-label">State: </label></p><p><input id="state" type="text" value="" placeholder="State" class="lg-label"></p>
 
-          <p><input type="button" class="btn-clear" value="Drop Pin on google map" onclick="codeAddress()"></p>
+          <p><input type="button" class="btn-clear sm-label" value="Drop Pin on google map" onclick="codeAddress()"></p>
           <p><input id="latitude" type="hidden" value="" ></p>
           <p><input id="longitude" type="hidden" value=""></p>
         </div>
         <div id="map-canvas" width="400px" height="400px"></div>
-        <button id="tour-submit" class="btn btn-submit">Submit</button>
+        <button id="tour-submit" class="btn btn-submit lg-label">Submit</button>
       </div>
     </div>
   </div>

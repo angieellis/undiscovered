@@ -9,12 +9,11 @@
 }
 
 .user-info {
-	height:400px;
+	height: 400px;
 	text-align: left ;
 	background-color:#fbfbfb ;
-	border: 1px solid #e2e4e6;
+	border: 2px solid #e2e4e6;
 }
-
 
 .user-info a {
 	color:#1C7F7F;
@@ -25,7 +24,10 @@
 }
 
 .youtube {
-	width:100%;
+	width: 70%;
+	float: left;
+	margin-left: 5%;
+	margin-top: 3em;
 }
 
 .youtube iframe {
@@ -33,15 +35,20 @@
 }
 
 .wishlist {
-	text-align:center;
+	text-align:right;
 	vertical-align: middle;
 	display:inline-block;
 }
 
+.sm-label {
+	font-size: 1em;
+}
+
 .wishlist i{
- font-size:24px;
+ font-size: 1.8em;
  display:block;
- margin-top:10px;
+ margin-right: 1.7em;
+ margin-top:12px;
  color:#a9a9a9 ;
  font-shadow:1px 1px 1px#d2b953;
 }
@@ -65,8 +72,8 @@
 }
 
 .post-title {
-	padding:10px;
-	border-bottom:1px solid #f4f4f4;
+	padding: 10px 0px 10px 0px;
+	border-bottom: 2px solid #BDBDBD;
 }
 
 .circle-img {
@@ -81,19 +88,70 @@
 	margin-left:200px;
 }
 
-.description {
-	margin-left:5%;
-}
-
 .inner-box {
 	width:90%;
 	padding-left:5%;
 }
 
-.fa-1.5x{
-	fint-size:1.7em;
-}
-
 .textright {
 	text-align: right;
+}
+
+.browse-title {
+  font-weight: 400;
+  font-size: 1.7em;
+  color: #424242;
+}
+
+.interest-template-div {
+  float: left;
+  padding: 5px 40px 5px 30px;
+  margin-top: 0.8em;
+  margin-bottom: 1em;
+  margin-right: 1.5em;
+  background-color: #525252;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  position: relative;
+  transition: background-color 0.5s ease;
+  height: 25px;
+}
+
+.interest-tag-titles {
+  text-align: right;
+  margin: 0;
+  font-size: 1.1em !important;
+  font-weight: 300;
+  color: #F5F5F5;
+}
+
+.interest-template-div:hover {
+  background-color: #525252;
+}
+
+.tag-border-line {
+  border-left: thick solid #FFA726;
+  border-left-width: 10px;
+  left: 0px;
+  position: absolute;
+  display: inline;
+  z-index: 10000;
+  height: 35px;
+  bottom: 0;
+}
+
+.interest-tag {
+  margin-right: 20px;
+}
+
+.page-title {
+	font-size: 0.85em !important;
+  font-weight: 400;
+  color: #424242;
+}
+
+.profile-box {
+	margin-top: 3em;
+	height: 605px;
+	text-align: center;
 }

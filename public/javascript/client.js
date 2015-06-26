@@ -32,7 +32,7 @@
           var filterCollection = tourCollection.where({city: selectedCity})
           console.log(filterCollection)
 
-          var template = $("#selected-city-template").html();
+          var template = $("#selected-tour-template").html();
           var compiled = Handlebars.compile(template);
           $(".browse-container").append("<h2 class='browse-title'>Tours Based on Chosen City</h2>")
           $(".not-index").empty()
@@ -62,7 +62,7 @@
           var filterCollection = tourCollection.where({tag: selectedInterest})
           console.log(filterCollection)
 
-          var template = $("#selected-city-template").html();
+          var template = $("#selected-tour-template").html();
           var compiled = Handlebars.compile(template);
           $(".browse-container").append("<h2 class='browse-title'>Tours Based on Chosen Interest</h2>")
           $(".not-index").empty()
@@ -292,7 +292,6 @@ var IndividualUserView = Backbone.View.extend({
 
     var userTourTemplate = $("#individual-user-authored-template").html();
     var compiledTours = Handlebars.compile(userTourTemplate);
-
     for (var i=0; i < this.model.attributes.authored_tours.length; i++) {
       var loopedAuthoredList = compiledTours(this.model.attributes.authored_tours[i])
       $("#user-authored-list").append(loopedAuthoredList)
@@ -336,27 +335,27 @@ var CurrentUserView = Backbone.View.extend({
     var html = compiled(this.model.attributes[0].user);
     $("#individual-user-dashboard-display").append(html)
 
-    var recommendedTourTemplate = $("#recommended-tour-template").html();
+    var recommendedTourTemplate = $("#dashboard-tour-template").html();
     var compiledTours = Handlebars.compile(recommendedTourTemplate);
     for (var i=0; i < this.model.attributes[1].recommended_tours.length; i++) {
       var recommendedToursList = compiledTours( this.model.attributes[1].recommended_tours[i])
-      $("#recommended-" + i ).append(recommendedToursList)
+      $(".recommended-" + i ).append(recommendedToursList)
     }
 
-    var dashboardWishlistTourTemplate = $("#dashboard-wishlist-tour-template").html();
+    var dashboardWishlistTourTemplate = $("#dashboard-tour-template").html();
     var compiledWishlistTours = Handlebars.compile(dashboardWishlistTourTemplate);
     for (var i=0; i < this.model.attributes[0].user.wishlist.length; i++) {
       var dashboardWishlist = compiledWishlistTours( this.model.attributes[0].user.wishlist[i])
       console.log(this.model.attributes[0].user.wishlist[i])
-      $("#dashboard-wishlist").append(dashboardWishlist)
+      $(".dashboard-wishlist").append(dashboardWishlist)
     }
 
-    var dashboardAuthoredTourTemplate = $("#dashboard-authored-tour-template").html();
+    var dashboardAuthoredTourTemplate = $("#dashboard-tour-template").html();
     var compiledDashboardAuthoredTours = Handlebars.compile(dashboardAuthoredTourTemplate);
     for (var i=0; i < this.model.attributes[0].user.authored_tours.length; i++) {
       var dashboardAuthoredList = compiledDashboardAuthoredTours( this.model.attributes[0].user.authored_tours[i] )
       console.log(this.model.attributes[0].user.authored_tours[i] )
-      $("#dashboard-authored-tours").append(dashboardAuthoredList)
+      $(".dashboard-authored-tours").append(dashboardAuthoredList)
     }
   }
 })
