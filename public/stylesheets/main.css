@@ -275,22 +275,17 @@ footer {
     border-radius: 2px;
     background-color: #00796B;
     border-bottom: 2px solid #005a50;
-    /*Opacity start*/
- /*   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-    filter: alpha(opacity=80);
-    -moz-opacity: 0.80;
-    -khtml-opacity: 0.8;*/
-/*    opacity: 0.8;*/
-    /*Opacity end*/
 }
 
 .nav-header {
-    padding: 30px 15px 15px 20px !important;
+    padding: 20px 0px 15px 0px !important;
     bottom: -15px !important;
 }
 
 .header-options {
-    padding: 0px;
+    padding: 0em 1.1em 0em 0em !important;
+    font-size: 1.3em;
+    margin: 0px;
 }
 
 .discover a {
@@ -336,6 +331,108 @@ footer {
     font-family: CiceroSerif;
     src: url("../images/CiceroSerif.ttf") format("truetype");
 }
+
+
+
+
+
+
+/* ==========================================================================
+   Card Box
+   ========================================================================== */
+
+
+.card-box-275 {
+  height: 400px;
+  width: 275px;
+  float: left;
+  margin: 1.4em;
+  position: relative;
+  box-shadow: 2px 2px 2px 2px #BDBDBD;
+  border-style: solid;
+  border-top: 1px;
+  border-right: 2px;
+  border-bottom: 2px;
+  border-left: 0px;
+}
+
+.card-shadow {
+  position: absolute;
+  display: inline;
+  width: 100%;
+  height: 7px;
+  background-color: #FFB300;
+  bottom: 125px;
+}
+
+.card-img {
+  height: 275px;
+  width: 100%;
+  z-index: 10;
+}
+
+.card-img-text {
+  position: absolute;
+  top: 270px;
+  width: 100%;
+  font-size: 1.3em;
+  text-align: center;
+  font-weight: 300;
+  z-index: 1000;
+  color: black;
+}
+
+.card-circle-img {
+  height: 75px;
+  width: 75px;
+  border-radius: 100px;
+  position: absolute;
+  margin-left: 185px;
+  top: 180px;
+  border: solid 1px #F5F5F5;
+}
+
+.card-tag-template-div {
+  float: left;
+  padding: 5px 35px 8px 25px;
+  background-color: #525252;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  position: relative;
+  margin-top: 80px;
+  margin-left: 15px;
+  transition: background-color 0.5s ease;
+  height: 20px;
+}
+
+.card-tag-titles {
+  text-align: right;
+  margin: 0;
+  font-size: 0.9em !important;
+  font-weight: 300;
+  color: #F5F5F5;
+}
+
+.card-template-div:hover {
+  background-color: #5092B9;
+}
+
+.card-tag-border-line {
+  border-left: thick solid #FFB300;
+  border-left-width: 10px;
+  left: 0px;
+  position: absolute;
+  display: inline;
+  z-index: 1000;
+  height: 33px;
+  bottom: 0;
+}
+
+.card-tag {
+  margin-right: 20px;
+}
+
+
 
 
 
