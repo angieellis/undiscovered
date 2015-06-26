@@ -115,16 +115,17 @@ exports.wishlistTour = function(req, res, next) {
         console.log("Error: ", err);
         return res.json(err);
       } else {
+        console.log(tour);
         User.findByIdAndUpdate(
           mongoose.Types.ObjectId(req.session.user._id),
-          { $push: { wishlist: { "_id": tour.id, "title": tour.title }}},
+          { $push: { wishlist: { "_id": tour._id, "title": tour.title }}},
           function(err, user) {
             if (err || !user) {
             // return error message if error occurs
               console.log("Error: ", err);
               return res.json(err);
             } else {
-              return res.json(true);
+              return res.json(user);
             }
         })
       }

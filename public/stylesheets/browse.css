@@ -197,7 +197,8 @@ a .city-img-text {
 .card-tag-template-div {
   float: left;
   padding: 5px 30px 5px 20px;
-  background-color: #525252;
+  background-color: #413E84;
+  /*background-color: #525252;*/
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   position: relative;
@@ -215,7 +216,8 @@ a .city-img-text {
 }
 
 .card-template-div:hover {
-  background-color: #5092B9;
+  background-color: #106AD5;
+  /*background-color: #549AE8;*/
 }
 
 .card-tag-border-line {

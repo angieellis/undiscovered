@@ -21,11 +21,14 @@
           </span>
         </span>
         <div class="post-sign-in">
-          <div>
+          <div class="border">
             <img id="channel-thumbnail">
-            <span id="channel-name"></span>
+            <div class="signin-profile inline">
+              <span id="channel-name"></span>
+              <i class="fa fa-google-plus-square"></i>
+            </div>
           </div>
-
+          <h3>What is this Video about?</h3>
           <div>
             <p><label for="title" class="sm-label">Title:</label></p>
             <p><input id="title" type="text" placeholder="title"></p>
@@ -39,14 +42,18 @@
             <p><textarea id="description" placeholder="description"></textarea></P>
           </div>
           <div>
+            <p><label for="upload" class="sm-label">Choose your photo:</label></P>
+            <p><input type="text"></p>
+          </div>
+          <div>
             <p><label for="upload" class="sm-label">Choose your video:</label></P>
             <p><input input type="file" id="file" class="button" accept="video/*"></P>
             <button id="button" class="btn btn-normal">Upload Video</button>
+          </div>
           <div class="during-upload">
             <p><span id="percent-transferred"></span>% done (<span id="bytes-transferred"></span>/<span id="total-bytes"></span> bytes)</p>
             <progress id="upload-progress" max="1" value="0"></progress>
           </div>
-
           <div class="post-upload">
             <p>Uploaded video with id <span id="video-id"></span>. Polling for status...</p>
             <ul id="post-upload-status"></ul>
@@ -55,9 +62,9 @@
         </div>
       </div>
     </div>
-    </div>
     <div id="right-box" class="span-8-t right-box">
       <div id="inner-right-box" class="inner-box">
+        <h3>Where is this Video taken?</h3>
         <div id="panel">
           <p><label class="sm-label">Street: </label></p><p><input id="street" type="text" value="" placeholder="Street"></p>
           <p><label class="sm-label">City: </label></p><p><input id="city" type="text" value="" placeholder="City"></p>

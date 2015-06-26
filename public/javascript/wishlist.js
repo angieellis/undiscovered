@@ -1,11 +1,11 @@
-$(document).on('pageload', function() {
+$(document).on('click', '.wishlist', function() {
   var end = getUrlEnd(window.location.href);
-
+  console.log("a");
   $.ajax({
-    type: 'GET',
-    url: '/tours/' + end
-  }).done(function(result) {;
-    if (window.sessionStorage.userID === result.tour_guide._id) {
+    type: 'POST',
+    url: '/tours/favorite/' + end
+  }).done(function(result) {
+    if (window.sessionStorage.userID === result._id) {
       $('.wishlist').css('display', 'none');
     }
   }).fail(function(result) {
