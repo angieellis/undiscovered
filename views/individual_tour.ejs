@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/stylesheets/show_tour.css">
+<link rel="stylesheet" href="/stylesheets/browse.css">
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 <script>
 
@@ -72,8 +73,14 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <h3 class="h3">{{title}}</h3>
     </div>
     <div class="span-12-t tag-box">
-      <label class="sm-label">Tags</label>
-      <p>{{tag}}</p>
+      <div class="interest-template-div">
+      <div class="tag-border-line">&nbsp;</div>
+
+      <h3 class="interest-tag-titles">
+        <i class="fa fa-tags interest-tag"></i>
+         {{tag}}
+      </h3>
+    </div>
     </div>
     <div class="profile-box span-4-t fl-l ">
         <h3 class="h3">User Info</h3>
