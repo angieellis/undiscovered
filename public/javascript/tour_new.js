@@ -16,7 +16,8 @@ $(document).on('click', '#tour-submit', function(e){
 		coordinates: coordinates,
 		state: $('#state').val().toUpperCase(),
 		city: $('#city').val().capitalizeString(),
-		tag: $('#tag').val().capitalizeString()
+		tag: $('#tag').val().capitalizeString(),
+		photo_url: $('#photo').val().capitalizeString()
 	};
 
 	$.ajax({
