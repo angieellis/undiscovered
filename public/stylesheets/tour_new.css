@@ -22,6 +22,10 @@
 	padding:8px;
 }
 
+input[type="text"]:focus {
+	border: 1px solid red;
+}
+
 .post-sign-in textarea {
 	height:200px;
 }

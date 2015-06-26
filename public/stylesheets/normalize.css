@@ -426,3 +426,7 @@ td,
 th {
   padding: 0;
 }
+
+progress#upload-progress {
+  width:100%;
+}
