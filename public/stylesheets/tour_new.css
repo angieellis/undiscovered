@@ -72,7 +72,9 @@ input[type="text"]:focus {
 	background-color:#757575;
 }
 
-
+.inline {
+	display: inline-block;
+}
 
 .inner-box {
 	width:90%;
@@ -101,6 +103,29 @@ input[type="text"]:focus, input[type="password"]:focus{
 	border: 1px solid #7a7a7a;
 }
 
+<<<<<<< HEAD
+.border {
+	border: 1px solid lightgray;
+	background-color:white;
+}
+
+.signin-profile {
+	margin-left:10px;
+	beckground-color:#f9f9f9;
+	color:#737676;
+	border-radius: 15px;
+}
+
+.signin-profile img{
+	border-right:1px solid lightgray;
+}
+
+.signin-profile i{
+	font-size:16px;
+	color:#c1523b;
+}
+
+=======
 .browse-title {
   font-weight: 400;
   font-size: 27px;
@@ -118,3 +143,4 @@ input[type="text"]:focus, input[type="password"]:focus{
 #channel-name {
 	margin-left: 1em;
 }
+>>>>>>> f3ec9f7bfb842918e0d37af8ac957fb0d7e58a65

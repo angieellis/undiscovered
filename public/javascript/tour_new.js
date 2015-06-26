@@ -8,13 +8,16 @@ String.prototype.capitalizeString = function() {
 
 $(document).on('click', '#tour-submit', function(e){
 	e.preventDefault();
+	var coordinates = [parseFloat($('#longitude').val()), parseFloat($('#latitude').val())];
 	var tourParams = {
 		title: $('#title').val().capitalizeString(),
 		description: $('#description').val().capitalizeFirstLetter(),
 		video_id: "4429jwyj0BQ",
-		coordinates: { "lng": $('#longitude').val(), "lat": $('#latitude').val()},
+		coordinates: coordinates,
 		state: $('#state').val().toUpperCase(),
-		city: $('#city').val().capitalizeString()
+		city: $('#city').val().capitalizeString(),
+		tag: $('#tag').val().capitalizeString(),
+		photo_url: $('#photo').val().capitalizeString()
 	};
 
 	$.ajax({
@@ -23,6 +26,7 @@ $(document).on('click', '#tour-submit', function(e){
 		data: tourParams
 	}).done(function(response){
 		console.log(response);
+		debugger
 		window.location.href = '/tours/display/' + response;
 	}).fail(function(response){
 		console.log(response);

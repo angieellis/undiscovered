@@ -151,3 +151,66 @@ a .city-img-text {
 }
 
 
+.card-box-200 {
+  border: solid 1px gray;
+  height: 325px;
+  width: 200px;
+  float: left;
+  margin: 1.4em;
+  position: relative;
+  box-shadow: 1px 1px 1px 1px #BDBDBD;
+  border-style: solid;
+  border-top: 1px;
+  border-right: 2px;
+  border-bottom: 2px;
+  border-left: 0px;
+}
+
+.card-circle-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  position: absolute;
+  margin-left: 140px;
+  top: 140px;
+}
+
+.card-tag-template-div {
+  float: left;
+  padding: 5px 30px 5px 20px;
+  background-color: #413E84;
+  /*background-color: #525252;*/
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  position: relative;
+  margin-top: 85px;
+  margin-left: 10px;
+  transition: background-color 0.5s ease;
+}
+
+.card-tag-titles {
+  text-align: right;
+  margin: 0;
+  font-size: 0.8em !important;
+  font-weight: 300;
+  color: #F5F5F5;
+}
+
+.card-template-div:hover {
+  background-color: #106AD5;
+  /*background-color: #549AE8;*/
+}
+
+.card-tag-border-line {
+  border-left: thick solid #FF7043;
+  left: 0px;
+  position: absolute;
+  display: inline;
+  z-index: 10000;
+  height: 28px;
+  bottom: 0;
+}
+
+.card-tag {
+  margin-right: 20px;
+}
