@@ -329,17 +329,18 @@ var CurrentUserView = Backbone.View.extend({
     this.listenTo(this.model, 'sync', this.render)
   },
   render: function() {
+
     var template = $("#individual-user-dashboard-template").html();
     window.sessionStorage["userID"] = this.model.attributes[0].user._id
-    console.log(this.model.attributes[0].user)
     var compiled = Handlebars.compile(template);
     var html = compiled(this.model.attributes[0].user);
-    $("#individual-user-dashboard-display").html(html)
+    $("#individual-user-dashboard-display").append(html)
+
     var recommendedTourTemplate = $("#recommended-tour-template").html();
     var compiledTours = Handlebars.compile(recommendedTourTemplate);
     for (var i=0; i < this.model.attributes[1].recommended_tours.length; i++) {
       var recommendedToursList = compiledTours( this.model.attributes[1].recommended_tours[i])
-      $("#recommended-" + i ).html(recommendedToursList)
+      $("#recommended-" + i ).append(recommendedToursList)
     }
 
     var dashboardWishlistTourTemplate = $("#dashboard-wishlist-tour-template").html();
@@ -349,10 +350,26 @@ var CurrentUserView = Backbone.View.extend({
       console.log(this.model.attributes[0].user.wishlist[i])
       $("#dashboard-wishlist").append(dashboardWishlist)
     }
+
+    var dashboardAuthoredTourTemplate = $("#dashboard-authored-tour-template").html();
+    var compiledDashboardAuthoredTours = Handlebars.compile(dashboardAuthoredTourTemplate);
+    for (var i=0; i < this.model.attributes[0].user.authored_tours.length; i++) {
+      var dashboardAuthoredList = compiledDashboardAuthoredTours( this.model.attributes[0].user.authored_tours[i] )
+      console.log(this.model.attributes[0].user.authored_tours[i] )
+      $("#dashboard-authored-tours").append(dashboardAuthoredList)
+    }
   }
 })
 
 var currentUserView = new CurrentUserView()
+
+
+
+
+
+
+
+
 
 
 // **************************************************************************

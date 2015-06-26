@@ -156,6 +156,22 @@
   </div>
 </div>
 
+<div id="individual-user-dashboard-display">
+  <h1>Individual User Dashboard Display</h1>
+</div>
+
+<div id="recommended-1">
+  <h1>Recommended 1</h1>
+</div>
+
+<div id="dashboard-wishlist">
+  <h1>Wishlist</h1>
+</div>
+
+<div id="dashboard-authored-tours">
+  <h1>Authored Tours</h1>
+</div>
+
 
 <script id="individual-user-dashboard-template" type="text/x-handlebars-template">
       <div class="inner-line-box">
@@ -200,6 +216,14 @@
 </script>
 
 <script id="dashboard-wishlist-tour-template" type="text/x-handlebars-template">
+  <p>
+    {{title}}
+    <br>
+    {{_id}}
+  </p>
+</script>
+
+<script id="dashboard-authored-tour-template" type="text/x-handlebars-template">
   <p>
     {{title}}
     <br>

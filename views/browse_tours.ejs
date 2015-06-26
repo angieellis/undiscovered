@@ -77,16 +77,36 @@
   </a>
 </script>
 
+
+
+
+
 <script id="city-template" type="text/x-handlebars-template">
   <a href="#city_item?{{city}}">
-    <div class="box-200">
-      <div class="shadow">
-      </div>
+    <div class="card-box-200 ">
+      <div class="shadow"></div>
       <img src="{{photo_url}}" class="city-img ">
       <h2 class="city-img-text">{{city}}, {{state}}</h2>
+
+      <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/8/005/038/221/2d4502f.jpg" class="card-circle-img">
+
+      <div class="card-tag-template-div">
+        <div class="card-tag-border-line">&nbsp;</div>
+
+        <h3 class="card-tag-titles">
+          <i class="fa fa-tags card-tag"></i>
+          Interest
+        </h3>
+      </div>
+
+
     </div>
   </a>
 </script>
+
+
+
+
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 

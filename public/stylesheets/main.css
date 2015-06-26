@@ -246,6 +246,10 @@ footer {
     bottom: 0px;
 }
 
+.post-tour-prompt {
+    font-family: CiceroSerif;
+}
+
 .title-box{
     display:inline-block;
     width: 100%;
