@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="/stylesheets/show_tour.css">
 <link rel="stylesheet" href="/stylesheets/browse.css">
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+<script src="/javascript/wishlist.js"></script>
 <script>
 
 function initialize() {
@@ -14,7 +15,6 @@ function initialize() {
 }
 
 function setMarkers(map, locations) {
-  console.log(coordinate)
   var coordinate = $('#coordinates').html().split(",");
   console.log("Google map is working")
   var shape = {
